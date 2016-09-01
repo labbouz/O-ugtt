@@ -12,3 +12,7 @@ h2.logo-ar {
 .checkbox label {
     padding-right: 25px;
 }
+
+.content-wrapper img.light-logo {
+    max-width: 60px;
+}
