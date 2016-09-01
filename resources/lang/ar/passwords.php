@@ -19,4 +19,10 @@ return [
     'token' => 'This password reset token is invalid.',
     'user' => "We can't find a user with that e-mail address.",
 
+    'recap_pass' => 'استرجاع كلمة المرور',
+    'desc_recap_pass' => 'يرجى إدخال عنوان البريد الإلكتروني الخاص بحسابك لدينا. سوف يتم إرسال كود التحقق إلى هذا العنوان. حالما تستلم كود التحقق, سيكون بإمكانك تعيين كلمة مرور جديدة.',
+    'email' => 'عنوان البريد الإلكتروني',
+    'send_pass' => 'إرسال',
+
+
 ];

@@ -13,6 +13,7 @@
     {!! Html::style('css/animate.css') !!}
     <!-- Custom CSS -->
     {!! Html::style('css/style.css') !!}
+    {!! Html::style('css/style-ar.css') !!}
     <!-- color CSS -->
     {!! Html::style('css/colors/blue.css') !!}
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

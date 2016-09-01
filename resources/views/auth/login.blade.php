@@ -8,11 +8,14 @@
                     {{ csrf_field() }}
                 <a href="javascript:void(0)" class="text-center db"><img src="{{ Request::root() }}/plugins/images/eliteadmin-logo-dark.png" alt="Home" />
                     <br/>
-                    <img src="{{ Request::root() }}/plugins/images/eliteadmin-text-dark.png" alt="Home" /></a>
+                    <h2 class="logo-ar"><strong>@lang('main.system')</strong> @lang('main.observatoir') </h2></a>
+
+
+
 
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} m-t-40">
                     <div class="col-xs-12">
-                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required="" placeholder="E-Mail Address">
+                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required="" placeholder="{{ trans('auth.email') }}">
 
                         @if ($errors->has('email'))
                             <span class="help-block">
@@ -23,7 +26,7 @@
                 </div>
                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                     <div class="col-xs-12">
-                        <input id="password" type="password" class="form-control" name="password" required="" placeholder="Password">
+                        <input id="password" type="password" class="form-control" name="password" required="" placeholder="{{ trans('auth.password') }}">
 
                         @if ($errors->has('password'))
                             <span class="help-block">
@@ -36,14 +39,13 @@
                     <div class="col-md-12">
                         <div class="checkbox checkbox-primary pull-left p-t-0">
                             <input id="checkbox-signup" type="checkbox" name="remember">
-                            <label for="checkbox-signup"> Remember me </label>
+                            <label for="checkbox-signup"> {{ trans('auth.remember') }} </label>
                         </div>
-                        <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> Forgot pwd?</a> </div>
-                    {{--  <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a> --}}
+                        <a href="{{ url('/password/reset') }}" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> {{ trans('auth.forgot_pwd') }}</a> </div>
                 </div>
                 <div class="form-group text-center m-t-20">
                     <div class="col-xs-12">
-                        <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Log In</button>
+                        <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">{{ trans('auth.submit_login') }}</button>
                     </div>
                 </div>
             </form>
