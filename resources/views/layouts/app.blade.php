@@ -33,24 +33,16 @@
 
 </head>
 <body class="fix-sidebar">
-    {{--
-    <a class="navbar-brand" href="{{ url('/') }}">
-        Observatoire UGTT
-    </a>
 
-    <a href="{{ url('/home') }}">Home</a>
-
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-        <a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a>
-
-    --}}
     <!-- Preloader -->
     <div class="preloader">
         <div class="cssload-speeding-wheel"></div>
     </div>
+    <!-- End Preloader -->
+
+    <!-- Wrapper -->
     <div id="wrapper">
+
         <!-- Top Navigation -->
         <nav class="navbar navbar-default navbar-static-top m-b-0">
             <div class="navbar-header">
@@ -70,6 +62,7 @@
                     </a>
                 </div>
                 <!-- /Logo -->
+
                 <!-- Search input and Toggle icon -->
                 <ul class="nav navbar-top-links navbar-left hidden-xs">
                     <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-right-circle ti-menu"></i></a></li>
@@ -80,6 +73,7 @@
                         </form>
                     </li>
                 </ul>
+
                 <!-- This is the message dropdown -->
                 <ul class="nav navbar-top-links navbar-right pull-right">
                     <li class="dropdown">
@@ -170,16 +164,19 @@
             <!-- /.navbar-static-side -->
         </nav>
         <!-- End Top Navigation -->
-        <!-- Left navbar-header -->
+
+
+        <!-- Left navbar-header Navigation -->
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse slimscrollsidebar">
+
                 <!-- .User Profile -->
                 <div class="user-profile">
                     <div class="dropdown user-pro-body">
                         <div><img src="{{ Request::root() }}/plugins/images/users/varun.jpg" alt="user-img" class="img-circle"></div>
-                        <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Steave Gection <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ Auth::user()->name }} <span class="caret"></span></a>
                         <ul class="dropdown-menu animated flipInY">
-                            <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                            <li><a href="{{ url('/myprofile') }}"><i class="ti-user"></i> My Profile</a></li>
                             <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
                             <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
                             <li role="separator" class="divider"></li>
@@ -201,52 +198,29 @@
                         </div>
                         <!-- /input-group -->
                     </li>
-                    <li class="nav-small-cap m-t-10">--- Main Menu</li>
-                    <li><a href="javascript:void(0)" class="waves-effect"><i data-icon="&#xe008;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Link type </span></a> </li>
-                    <li>
-                        <a href="javascript:void(0)" class="waves-effect active"><i data-icon="&#xe008;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Dropdown Link<span class="fa arrow"></span><span class="label label-rouded label-purple pull-right">2</span></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="javascript:void(0)">Link one</a></li>
-                            <li><a href="javascript:void(0)">Link Two</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)" class="waves-effect"><i data-icon="&#xe008;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Multi Dropdown<span class="fa arrow"></span></span></a>
-                        <ul class="nav nav-second-level">
-                            <li> <a href="javascript:void(0)">Second Level Item</a> </li>
-                            <li> <a href="javascript:void(0)">Second Level Item</a> </li>
-                            <li>
-                                <a href="javascript:void(0)" class="waves-effect">Third Level <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li> <a href="javascript:void(0)">Third Level Item</a> </li>
-                                    <li> <a href="javascript:void(0)">Third Level Item</a> </li>
-                                    <li> <a href="javascript:void(0)">Third Level Item</a> </li>
-                                    <li> <a href="javascript:void(0)">Third Level Item</a> </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
+                    @include('layouts.nav')
                 </ul>
             </div>
         </div>
-        <!-- Left navbar-header end -->
+        <!-- Left navbar-header Navigation end -->
 
-        <!-- Page Content -->
+        <!-- Start Page wrapper -->
         <div id="page-wrapper">
+
+            <!-- Start Container -->
             <div class="container-fluid">
                 <div class="row bg-title">
                     <!-- .page title -->
                     @yield('page-title')
                     <!-- /.page title -->
                     <!-- .breadcrumb -->
-                    @yield('breadcrumb')
+                    @include('layouts.breadcrumb')
                     <!-- /.breadcrumb -->
                 </div>
                 <!-- .row -->
-                <div class="row">
-                    @yield('content')
-                </div>
-                <!-- .row -->
+
+                @yield('content')
+
                 <!-- .right-sidebar -->
                 <div class="right-sidebar">
                     <div class="slimscrollright">
@@ -268,12 +242,15 @@
                 </div>
                 <!-- /.right-sidebar -->
             </div>
-            <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2016 &copy; Elite Admin brought to you by themedesigner.in </footer>
+            <!-- End container -->
+
+            <!-- footer -->
+            <footer class="footer text-center"> 2016 &copy; <strong>@lang('main.system')</strong>  @lang('main.observatoir')</footer>
+            <!-- footer -->
         </div>
-        <!-- /#page-wrapper -->
+        <!-- End Page wrapper -->
     </div>
-    <!-- /#wrapper -->
+    <!-- End Wrapper -->
 
     <!-- jQuery -->
     {!! Html::script('plugins/bower_components/jquery/dist/jquery.min.js') !!}

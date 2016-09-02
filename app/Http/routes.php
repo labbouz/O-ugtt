@@ -11,8 +11,20 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::group( ['middleware' => ['web' , 'admin'] ], function (){
+    /*
+     * user route
+     */
+    Route::get('/myprofile', 'UserController@myProfile');
 
-Route::auth();
+});
 
-Route::get('/home', 'HomeController@index');
+Route::group(['middleware' => 'web'], function () {
+    Route::get('/', 'HomeController@index');
+
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
+
+});
+
