@@ -68,7 +68,7 @@
                     <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-right-circle ti-menu"></i></a></li>
                     <li>
                         <form role="search" class="app-search hidden-xs">
-                            <input type="text" placeholder="Search..." class="form-control">
+                            <input type="text" placeholder="@lang('main.search') ..." class="form-control">
                             <a href=""><i class="fa fa-search"></i></a>
                         </form>
                     </li>
@@ -124,37 +124,6 @@
                     <!-- /.Task dropdown -->
                     </li>
                     <!-- /.dropdown -->
-                    <!-- .Megamenu -->
-                    <li class="mega-dropdown">
-                        <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><span class="hidden-xs">Mega</span> <i class="icon-options-vertical"></i></a>
-                        <ul class="dropdown-menu mega-dropdown-menu animated bounceInDown">
-                            <li class="col-sm-3">
-                                <ul>
-                                    <li class="dropdown-header">Header Title</li>
-                                    <li><a href="javascript:void(0)">Link of page</a> </li>
-                                </ul>
-                            </li>
-                            <li class="col-sm-3">
-                                <ul>
-                                    <li class="dropdown-header">Header Title</li>
-                                    <li><a href="javascript:void(0)">Link of page</a> </li>
-                                </ul>
-                            </li>
-                            <li class="col-sm-3">
-                                <ul>
-                                    <li class="dropdown-header">Header Title</li>
-                                    <li><a href="javascript:void(0)">Link of page</a> </li>
-                                </ul>
-                            </li>
-                            <li class="col-sm-3">
-                                <ul>
-                                    <li class="dropdown-header">Header Title</li>
-                                    <li> <a href="javascript:void(0)">Link of page</a> </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- /.Megamenu -->
                     <li class="right-side-toggle"> <a class="waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li>
                     <!-- /.dropdown -->
                 </ul>
@@ -176,13 +145,13 @@
                         <div><img src="{{ Request::root() }}/plugins/images/users/varun.jpg" alt="user-img" class="img-circle"></div>
                         <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ Auth::user()->name }} <span class="caret"></span></a>
                         <ul class="dropdown-menu animated flipInY">
-                            <li><a href="{{ url('/myprofile') }}"><i class="ti-user"></i> My Profile</a></li>
-                            <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
-                            <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
+                            <li><a href="{{ url('/myprofile') }}"><i class="ti-user"></i> @lang('main.mypofile')</a></li>
+                            <li><a href="#"><i class="ti-layout-tab"></i> @lang('main.myfiles')</a></li>
+                            <li><a href="#"><i class="ti-email"></i> @lang('main.inbox')</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
+                            <li><a href="#"><i class="ti-settings"></i> @lang('main.configuration')</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="{{ url('/logout') }}"><i class="fa fa-power-off"></i> Logout</a></li>
+                            <li><a href="{{ url('/logout') }}"><i class="fa fa-power-off"></i> @lang('main.logout')</a></li>
                         </ul>
                     </div>
                 </div>
