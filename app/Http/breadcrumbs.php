@@ -22,3 +22,23 @@ Breadcrumbs::register('users.create', function($breadcrumbs) {
 });
 
 
+
+Breadcrumbs::register('admins', function($breadcrumbs) {
+    $breadcrumbs->parent('users.index');
+    $breadcrumbs->push(trans('main.users'), route('admins'));
+});
+Breadcrumbs::register('observateurs', function($breadcrumbs) {
+    $breadcrumbs->parent('users.index');
+    $breadcrumbs->push(trans('main.users'), route('observateurs'));
+});
+Breadcrumbs::register('observateurs-regional', function($breadcrumbs) {
+    $breadcrumbs->parent('users.index');
+    $breadcrumbs->push(trans('main.obesrvateurs_regional'), route('observateurs-regional'));
+});
+Breadcrumbs::register('observateurs-secteur', function($breadcrumbs) {
+    $breadcrumbs->parent('users.index');
+    $breadcrumbs->push(trans('main.obesrvateurs_secteur'), route('observateurs-secteur'));
+});
+
+
+

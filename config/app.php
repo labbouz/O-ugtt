@@ -162,6 +162,8 @@ return [
 
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
 
+        Watson\Active\ActiveServiceProvider::class,
+
     ],
 
     /*
@@ -214,6 +216,8 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
+
+        'Active' => Watson\Active\Facades\Active::class,
 
     ],
 

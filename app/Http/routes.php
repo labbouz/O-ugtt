@@ -22,6 +22,11 @@ Route::group( ['middleware' => ['web' , 'admin'] ], function (){
      */
     Route::resource('users', 'UserController');
 
+    Route::get('admins', ['as' => 'admins', 'uses' => 'UserController@observateur']);
+    Route::get('observateurs_users', ['as' => 'observateurs', 'uses' => 'UserController@observateur']);
+    Route::get('observateurs_regional', ['as' => 'observateurs-regional', 'uses' => 'UserController@observateur']);
+    Route::get('observateurs_secteur', ['as' => 'observateurs-secteur', 'uses' => 'UserController@observateur']);
+
 });
 
 Route::group(['middleware' => 'web'], function () {

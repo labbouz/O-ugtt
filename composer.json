@@ -9,7 +9,8 @@
         "laravel/framework": "5.2.*",
         "laravelcollective/html": "5.2.*",
         "barryvdh/laravel-debugbar": "^2.2",
-        "davejamesmiller/laravel-breadcrumbs": "^3.0"
+        "davejamesmiller/laravel-breadcrumbs": "^3.0",
+        "watson/active": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
