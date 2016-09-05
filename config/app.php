@@ -160,6 +160,8 @@ return [
 
         Barryvdh\Debugbar\ServiceProvider::class,
 
+        DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
+
     ],
 
     /*
@@ -210,6 +212,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+
+        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
 
     ],
 

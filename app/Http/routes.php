@@ -10,12 +10,17 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
 Route::group( ['middleware' => ['web' , 'admin'] ], function (){
     /*
      * user route
      */
-    Route::get('/myprofile', 'UserController@myProfile');
+    Route::get('myprofile', ['as' => 'myprofile', 'uses' => 'UserController@myProfile']);
+
+
+    /*
+     * Gestion des utilisateurs
+     */
+    Route::resource('users', 'UserController');
 
 });
 
@@ -24,7 +29,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::auth();
 
-    Route::get('/home', 'HomeController@index');
+    Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 });
 

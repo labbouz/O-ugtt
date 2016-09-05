@@ -32,11 +32,23 @@ return [
     'logout' => 'تسجيل الخروج',
     'update_mypofile' => 'تعديل الحساب',
     'mypofile' => 'ملفي الشخصي',
+    'configuration_compte' => 'الإعدادات الخاصة',
     'configuration' => 'الإعدادات العامة',
     'inbox' => 'البريد',
 
     'stats' => 'إحصائيات',
+    'aministrators' => 'المشرفين',
+    'delegations' => 'المعتمديات',
+    'structures_syndicales' => 'الهياكل النقابية',
 
+    'violations_individuelles' => 'الانتهاكات الفردية',
+    'violations_massives' => 'الانتهاكات الجماعية',
+    'moves' => 'التحركات',
+    'syndicats' => 'النقابات',
+
+    'contacts' => 'جهات الاتصال',
+
+    'page' => 'صفحة',
 
 
 ];

@@ -149,7 +149,7 @@
                             <li><a href="#"><i class="ti-layout-tab"></i> @lang('main.myfiles')</a></li>
                             <li><a href="#"><i class="ti-email"></i> @lang('main.inbox')</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="ti-settings"></i> @lang('main.configuration')</a></li>
+                            <li><a href="#"><i class="ti-settings"></i> @lang('main.configuration_compte')</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-power-off"></i> @lang('main.logout')</a></li>
                         </ul>
