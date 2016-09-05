@@ -4,7 +4,7 @@
     <a href="javascript:void(0)" class="waves-effect"><i class="linea-icon linea-basic fa-fw icon-people"></i> <span class="hide-menu">@lang('main.users')<span class="fa arrow"></span></span></a>
     <ul class="nav nav-second-level">
         <li><a href="javascript:void(0)">@lang('main.add_user')</a></li>
-        <li><a href="javascript:void(0)">@lang('main.res_obesrvateurs_regional')</a></li>
+        <li><a href="javascript:void(0)">@lang('main.reg_obesrvateurs_regional')</a></li>
         <li><a href="javascript:void(0)">@lang('main.obesrvateurs_regional')</a></li>
         <li><a href="javascript:void(0)">@lang('main.obesrvateurs_secteur')</a></li>
     </ul>
