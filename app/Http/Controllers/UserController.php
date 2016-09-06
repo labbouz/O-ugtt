@@ -9,7 +9,7 @@ use Auth;
 
 use App\Http\Requests;
 use App\Http\Requests\AddUserRequestAdmin;
-
+use Illuminate\Support\Facades\Redirect;
 
 
 class UserController extends Controller
@@ -48,12 +48,11 @@ class UserController extends Controller
     public function store(AddUserRequestAdmin $request, User $user)
     {
 
-        return $request->is_admin;
-
         $user->create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
+            'is_admin' => $request->is_admin,
         ]);
 
         return redirect()->route('users.index')->withFlashMessage('تم اضافة العضو بنجاح');
@@ -100,7 +99,7 @@ class UserController extends Controller
         $userUpdated = $user->find($id);
         $userUpdated->fill( $request->all() )->save();
 
-        return Redirect::back()->withFlashMessage('تم التعديل بنجاح');
+        return redirect()->route('users.index')->withFlashMessage('تم التعديل بنجاح');
     }
 
     public  function updatePassword(Request $request, User $user) {

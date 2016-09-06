@@ -22,8 +22,8 @@ Route::group( ['middleware' => ['web' , 'admin'] ], function (){
      */
     Route::resource('users', 'UserController');
 
-    Route::resource('users/changePassword', 'UsersController@updatePassword');
-    Route::resource('users/{id}/delete', 'UsersController@destroy');
+    Route::post('users/changePassword', 'UserController@updatePassword');
+    Route::get('users/{id}/delete', 'UserController@destroy');
 
 
     Route::get('admins', ['as' => 'admins', 'uses' => 'UserController@observateur']);

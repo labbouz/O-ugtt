@@ -13,6 +13,8 @@
 
     <!-- Bootstrap Core CSS -->
     {!! Html::style('plugins/bower_components/bootstrap-rtl-master/dist/css/bootstrap-rtl.min.css') !!}
+    @yield('header')
+
     <!-- This is Sidebar menu CSS -->
     {!! Html::style('plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css') !!}
     <!-- This is a Animation CSS -->
@@ -28,8 +30,6 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-    @yield('header')
 
 </head>
 <body class="fix-sidebar">
