@@ -21,6 +21,12 @@ Breadcrumbs::register('users.create', function($breadcrumbs) {
     $breadcrumbs->push(trans('main.add_user'), route('users.create'));
 });
 
+Breadcrumbs::register('users.edit', function($breadcrumbs, $user)
+{
+    $breadcrumbs->parent('users.index');
+    $breadcrumbs->push(trans('main.add_user'), route('users.edit', $user->id));
+});
+
 
 
 Breadcrumbs::register('admins', function($breadcrumbs) {

@@ -10,13 +10,11 @@
 @endsection
 
 
-
 {{-- Block breadcrumb --}}
 
 @section('breadcrumb')
-    {!! Breadcrumbs::render() !!}
+    {!! Breadcrumbs::render('users.edit', $user) !!}
 @endsection
-
 
 
 {{-- Block header--}}
@@ -36,7 +34,7 @@
 
                 <p class="text-muted m-b-30 font-13"> All bootstrap element classies </p>
 
-                {!! Form::open( ['route' => 'users.store'] ) !!}
+                {{ Form::model($user, [ 'route' => ['users.update', $user->id], 'method' => 'PATCH'  ] ) }}
                 @include('users.form')
                 {{ Form::close() }}
 

@@ -8,6 +8,9 @@
     </div>
 @endsection
 
+@section('breadcrumb')
+    {!! Breadcrumbs::render() !!}
+@endsection
 
 
 @section('header')

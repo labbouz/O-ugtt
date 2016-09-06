@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use App\User;
 
 use Auth;
 
-use App\User;
+use App\Http\Requests;
+use App\Http\Requests\AddUserRequestAdmin;
+
 
 
 class UserController extends Controller
@@ -20,12 +21,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('users.index');
+        $users = User::all();
+        return view('users.index', compact('users'));
     }
 
     public function observateur()
     {
-        return view('users.index');
+        $users = User::all();
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -41,12 +44,20 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddUserRequestAdmin $request, User $user)
     {
-        //
+
+        return $request->is_admin;
+
+        $user->create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+
+        return redirect()->route('users.index')->withFlashMessage('تم اضافة العضو بنجاح');
+
     }
 
     /**
@@ -72,9 +83,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public  function edit($id, User $user) {
+        $user = $user->find($id);
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -84,9 +95,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, User $user, Request $request)
     {
-        //
+        $userUpdated = $user->find($id);
+        $userUpdated->fill( $request->all() )->save();
+
+        return Redirect::back()->withFlashMessage('تم التعديل بنجاح');
+    }
+
+    public  function updatePassword(Request $request, User $user) {
+        $userUpdated = $user->find($request->user_id);
+        $password = bcrypt($request->password);
+        $userUpdated->fill( ['password'=>$password] )->save();
+        return Redirect::back()->withFlashMessage('تم تغيير كلمة المرور بنجاح');
     }
 
     /**
@@ -95,8 +116,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, User $user)
     {
-        //
+        $userUpdated = $user->find($id)->delete();
+        return redirect()->route('users.index')->withFlashMessage('تم حذف العضو بنجاح');
     }
 }
