@@ -183,7 +183,7 @@
                     @yield('page-title')
                     <!-- /.page title -->
                     <!-- .breadcrumb -->
-                    @include('layouts.breadcrumb')
+                    @yield('breadcrumb')
                     <!-- /.breadcrumb -->
                 </div>
                 <!-- .row -->
