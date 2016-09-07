@@ -17,6 +17,7 @@ return [
     'users' => 'الراصدين',
     'user' => 'راصد',
     'add_user' => 'إضافة راصد جديد',
+    'edit_user' => 'تعديل الراصد',
     'obesrvateurs_secteur' => 'الراصدين القطاعيين',
     'obesrvateurs_regional' => 'الراصدين الجهويين',
     'reg_obesrvateurs_regional' => 'الراصدين',

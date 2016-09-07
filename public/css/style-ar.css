@@ -17,8 +17,6 @@ h2.logo-ar {
     max-width: 60px;
 }
 
-/*
-.icon-arrow-right-circle:before {
-    content: "\e68e";
+select.form-control {
+    padding: 4px 12px;
 }
-*/

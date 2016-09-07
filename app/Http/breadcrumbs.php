@@ -24,7 +24,7 @@ Breadcrumbs::register('users.create', function($breadcrumbs) {
 Breadcrumbs::register('users.edit', function($breadcrumbs, $user)
 {
     $breadcrumbs->parent('users.index');
-    $breadcrumbs->push(trans('main.add_user'), route('users.edit', $user->id));
+    $breadcrumbs->push(trans('main.edit_user') . ' ' . $user->name, route('users.edit', $user->id));
 });
 
 

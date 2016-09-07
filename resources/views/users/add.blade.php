@@ -32,11 +32,11 @@
     <div class="row">
         <div class="col-md-12">
             <div class="white-box">
-                <h3 class="box-title m-b-0"> @lang('main.page')  @lang('main.add_user') </h3>
+                <h3 class="box-title m-b-0">  @lang('users.details_user') </h3>
 
-                <p class="text-muted m-b-30 font-13"> All bootstrap element classies </p>
+                <p class="text-muted m-b-30"> @lang('users.desc_details_user') </p>
 
-                {!! Form::open( ['route' => 'users.store'] ) !!}
+                {!! Form::open( ['route' => 'users.store', 'data-toggle' => 'validator'] ) !!}
                 @include('users.form')
                 {{ Form::close() }}
 
@@ -50,5 +50,5 @@
 {{-- Block footer --}}
 
 @section('footer')
-
+    {!! Html::script('js/validator.js') !!}
 @endsection
