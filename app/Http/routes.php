@@ -31,6 +31,13 @@ Route::group( ['middleware' => ['web' , 'admin'] ], function (){
     Route::get('observateurs_regional', ['as' => 'observateurs-regional', 'uses' => 'UserController@observateur']);
     Route::get('observateurs_secteur', ['as' => 'observateurs-secteur', 'uses' => 'UserController@observateur']);
 
+
+    /*
+     * Administration
+     */
+
+    Route::resource('secteur', 'SecteurController');
+
 });
 
 Route::group(['middleware' => 'web'], function () {

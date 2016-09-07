@@ -47,4 +47,14 @@ Breadcrumbs::register('observateurs-secteur', function($breadcrumbs) {
 });
 
 
+/*
+ *  Breadcrumbs secteur
+ */
+
+Breadcrumbs::register('secteur.index', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('main.users'), route('secteur.index'));
+});
+
+
 
