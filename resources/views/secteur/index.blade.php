@@ -5,7 +5,7 @@
 
 @section('page-title')
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-        <h4 class="page-title"> @lang('main.users')  </h4>
+        <h4 class="page-title"> @lang('secteur.secteurs')  </h4>
     </div>
 @endsection
 
@@ -35,40 +35,46 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="white-box">
-                <h3 class="box-title m-b-0">@lang('users.users')</h3>
-                <p class="text-muted m-b-30">@lang('users.info_list_users')</p>
-                {{--
+                <div class="row">
+                    <div class="col-sm-12 col-md-8">
+                        <h3 class="box-title m-b-0">@lang('secteur.secteurs')</h3>
+                        <p class="text-muted m-b-0">@lang('secteur.description_secteurs')</p>
+                    </div>
+
+
+
+                    <div class="col-sm-12 col-md-4 button-box m-b-0">
+                        <a href="{{ route('secteur.create') }}" class="btn btn-block btn-info btn-lg  "><i class="fa fa-plus-circle m-l-5"></i>@lang('secteur.add_secteur') </a>
+                    </div>
+                </div>
+
+                <hr class="m-t-20 m-b-30">
+
+
                 <div class="table-responsive">
-                    <table id="myTable" class="table table-striped">
+                    <table id="lists_datas" class="table table-striped">
                         <thead>
                         <tr>
-                            <th>@lang('users.name_user')</th>
-                            <th>@lang('users.email')</th>
-                            <th>@lang('users.add_in')</th>
-                            <th class="no-sort">@lang('users.droits')</th>
-                            <th class="no-sort">@lang('users.tools')</th>
+                            <th>@lang('secteur.secteur_nom')</th>
+                            <th>@lang('main.add_in')</th>
+                            <th class="no-sort">@lang('main.tools')</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($users as $user)
+                        @foreach($secteurs as $secteur)
                             <tr>
-                                <td>{{  $user->name }}</td>
-                                <td>{{  $user->email }}</td>
-                                <td>{{  $user->created_at }}</td>
-                                <td>{{  $user->is_admin == 1 ? 'مدير' : 'عضو' }}</td>
+                                <td>{{  $secteur->nom_secteur }}</td>
+                                <td><?php $date_created_at = new Date($secteur->created_at); ?>{{ $date_created_at->format('l j F Y - H:i:s') }}</td>
                                 <td>
-
-                                    <a class="btn btn-success btn-circle" href="{{ url('/users/'.$user->id.'/edit')  }}"><i class="fa fa-edit"></i></a>
-
-                                    <a class="btn btn-danger btn-circle" href="{{ url('/users/'.$user->id.'/delete')  }}"><i class="fa fa-times"></i></a>
-
+                                    <a class="btn btn-success btn-circle" href="{{ url('/secteur/'.$secteur->id.'/edit')  }}"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-danger btn-circle" href="{{ url('/secteur/'.$secteur->id.'/delete')  }}"><i class="fa fa-times"></i></a>
                                 </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
                 </div>
-                --}}
+
             </div>
         </div>
     </div>
@@ -93,12 +99,15 @@
 
     <script>
         $(document).ready(function(){
-            $('#myTable').DataTable( {
+
+            $('#lists_datas').DataTable( {
+                "paging": false,
+                "info": false,
                 "language": {
                     "url": "{{ Request::root() }}/js/lang/Arabic.json"
                 },
                 "aoColumnDefs": [
-                    { 'bSortable': false, 'aTargets': [ -1, -2 ] }
+                    { 'bSortable': false, 'aTargets': [ -1 ] }
                 ]
             } );
 

@@ -37,6 +37,7 @@ Route::group( ['middleware' => ['web' , 'admin'] ], function (){
      */
 
     Route::resource('secteur', 'SecteurController');
+    Route::get('secteur/{id}/delete', 'SecteurController@destroy');
 
 });
 

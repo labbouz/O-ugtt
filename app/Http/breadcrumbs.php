@@ -53,7 +53,18 @@ Breadcrumbs::register('observateurs-secteur', function($breadcrumbs) {
 
 Breadcrumbs::register('secteur.index', function($breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push(trans('main.users'), route('secteur.index'));
+    $breadcrumbs->push(trans('secteur.secteurs'), route('secteur.index'));
+});
+
+Breadcrumbs::register('secteur.create', function($breadcrumbs) {
+    $breadcrumbs->parent('secteur.index');
+    $breadcrumbs->push(trans('secteur.add_secteur'), route('secteur.create'));
+});
+
+Breadcrumbs::register('secteur.edit', function($breadcrumbs, $secteur)
+{
+    $breadcrumbs->parent('secteur.index');
+    $breadcrumbs->push(trans('secteur.edit_user') . ' ' . $secteur->nom_secteur, route('secteur.edit', $secteur->id));
 });
 
 

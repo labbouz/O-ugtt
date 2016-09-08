@@ -37,15 +37,16 @@
             <div class="white-box">
                 <h3 class="box-title m-b-0">@lang('users.users')</h3>
                 <p class="text-muted m-b-30">@lang('users.info_list_users')</p>
+
                 <div class="table-responsive">
-                    <table id="myTable" class="table table-striped">
+                    <table id="lists_datas" class="table table-striped">
                         <thead>
                         <tr>
                             <th>@lang('users.name_user')</th>
                             <th>@lang('users.email')</th>
-                            <th>@lang('users.add_in')</th>
+                            <th>@lang('main.add_in')</th>
                             <th class="no-sort">@lang('users.droits')</th>
-                            <th class="no-sort">@lang('users.tools')</th>
+                            <th class="no-sort">@lang('main.tools')</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -53,7 +54,7 @@
                         <tr>
                             <td>{{  $user->name }}</td>
                             <td>{{  $user->email }}</td>
-                            <td>{{  $user->created_at }}</td>
+                            <td><?php $date_created_at = new Date($user->created_at); ?>{{ $date_created_at->format('l j F Y - H:i:s') }}</td>
                             <td>{{  $user->is_admin == 1 ? 'مدير' : 'عضو' }}</td>
                             <td>
 
@@ -91,7 +92,7 @@
 
     <script>
         $(document).ready(function(){
-            $('#myTable').DataTable( {
+            $('#lists_datas').DataTable( {
                 "language": {
                     "url": "{{ Request::root() }}/js/lang/Arabic.json"
                 },

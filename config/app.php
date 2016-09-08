@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Africa/Tunis',
 
     /*
     |--------------------------------------------------------------------------
@@ -164,6 +164,9 @@ return [
 
         Watson\Active\ActiveServiceProvider::class,
 
+        Jenssegers\Date\DateServiceProvider::class,
+
+
     ],
 
     /*
@@ -218,6 +221,8 @@ return [
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
 
         'Active' => Watson\Active\Facades\Active::class,
+
+        'Date' => Jenssegers\Date\Date::class,
 
     ],
 

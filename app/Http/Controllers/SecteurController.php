@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Secteur;
+
+use Illuminate\Support\Facades\Redirect;
+
 class SecteurController extends Controller
 {
     /**
@@ -15,7 +19,8 @@ class SecteurController extends Controller
      */
     public function index()
     {
-        return view('secteur.index');
+        $secteurs = Secteur::all();
+        return view('secteur.index', compact('secteurs'));
     }
 
     /**
@@ -25,7 +30,7 @@ class SecteurController extends Controller
      */
     public function create()
     {
-        //
+        return view('secteur.add');
     }
 
     /**
@@ -36,7 +41,15 @@ class SecteurController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nom_secteur' => 'required|max:255',
+        ]);
+
+        Secteur::create([
+            'nom_secteur' => $request->nom_secteur,
+        ]);
+
+        return redirect()->route('secteur.index')->withFlashMessage(trans('secteur.message_save_succes_secteur'));
     }
 
     /**
@@ -58,7 +71,8 @@ class SecteurController extends Controller
      */
     public function edit($id)
     {
-        //
+        $secteur = Secteur::find($id);
+        return view('secteur.edit', compact('secteur'));
     }
 
     /**
@@ -81,6 +95,7 @@ class SecteurController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Secteur::find($id)->delete();
+        return redirect()->route('secteur.index')->withFlashMessage(trans('message_delete_succes_secteur'));
     }
 }
