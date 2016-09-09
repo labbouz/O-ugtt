@@ -64,7 +64,7 @@ Breadcrumbs::register('secteur.create', function($breadcrumbs) {
 Breadcrumbs::register('secteur.edit', function($breadcrumbs, $secteur)
 {
     $breadcrumbs->parent('secteur.index');
-    $breadcrumbs->push(trans('secteur.edit_user') . ' ' . $secteur->nom_secteur, route('secteur.edit', $secteur->id));
+    $breadcrumbs->push(trans('secteur.edit_secteur') . ' ' . $secteur->nom_secteur, route('secteur.edit', $secteur->id));
 });
 
 

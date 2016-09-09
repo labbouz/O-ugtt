@@ -5,7 +5,7 @@
 
 @section('page-title')
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-        <h4 class="page-title"> @lang('secteur.edit_user') {{ $secteur->name }} </h4>
+        <h4 class="page-title"> @lang('secteur.edit_secteur') {{ $secteur->nom_secteur}}</h4>
     </div>
 @endsection
 
@@ -30,9 +30,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="white-box">
-                <h3 class="box-title m-b-0"> @lang('secteur.details_user') </h3>
+                <h3 class="box-title m-b-0"> @lang('secteur.detail_secteur') </h3>
 
-                <p class="text-muted m-b-30 font-13"> @lang('secteur.desc_details_user')  </p>
+                <p class="text-muted m-b-30 font-13"> @lang('secteur.edit_secteur') {{ $secteur->nom_secteur}}  </p>
 
                 {{ Form::model($secteur, [ 'route' => ['secteur.update', $secteur->id], 'method' => 'PATCH'  ] ) }}
                 @include('secteur.form')

@@ -84,7 +84,10 @@ class SecteurController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $secteurUpdated = Secteur::find($id);
+        $secteurUpdated->fill( $request->all() )->save();
+
+        return redirect()->route('secteur.index')->withFlashMessage(trans('secteur.message_update_succes_secteur'));
     }
 
     /**

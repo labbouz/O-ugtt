@@ -16,6 +16,11 @@ return [
     'message_save_succes_secteur' => ' تم اضافة القطاع بنجاح',
     'detail_secteur_edit' => 'تفاصيل خاصة بالقطاع الخاص ',
     'message_delete_succes_secteur' => 'تم حذف القطاع بنجاح',
+    'message_update_succes_secteur' => 'تم التعديل بنجاح',
+
+    'edit_secteur' => 'تعديل في قطاع',
+    'detail_secteur' => 'تعديل قطاع',
+
 
     'transport' => 'النقل',
     'professions_et_services' => 'المهن والخدمات',
