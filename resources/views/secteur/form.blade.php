@@ -1,6 +1,6 @@
 
 
-<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+<div class="form-group{{ $errors->has('secteur_nom') ? ' has-error' : '' }}">
     {{ Form::label('nom_secteur', trans('secteur.secteur_nom'), array('class' => 'control-label')) }}
     {{ Form::text('nom_secteur', old('nom_secteur') , array('class' => 'form-control', 'placeholder'=>"الاسم", 'required' => 'required')) }}
 

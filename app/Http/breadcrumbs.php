@@ -68,4 +68,24 @@ Breadcrumbs::register('secteur.edit', function($breadcrumbs, $secteur)
 });
 
 
+/*
+ *  Breadcrumbs move
+ */
+
+Breadcrumbs::register('move.index', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('move.moves'), route('move.index'));
+});
+
+Breadcrumbs::register('move.create', function($breadcrumbs) {
+    $breadcrumbs->parent('move.index');
+    $breadcrumbs->push(trans('move.add_move'), route('move.create'));
+});
+
+Breadcrumbs::register('move.edit', function($breadcrumbs, $move)
+{
+    $breadcrumbs->parent('move.index');
+    $breadcrumbs->push(trans('move.edit_move') . ' ' . $move->nom_move, route('move.edit', $move->id));
+});
+
 

@@ -12,7 +12,7 @@ return [
     'move_nom' => 'اسم التحرك',
     'moves' => 'التحركات',
     'description_moves' => 'قائمة التحركات المسجلة في النظام',
-    'add_move' => 'إضافة قطاع جديد',
+    'add_move' => 'إضافة تحرك جديد',
     'message_save_succes_move' => ' تم اضافة التحرك بنجاح',
     'detail_move_edit' => 'تفاصيل خاصة بالتحركات ',
     'message_delete_succes_move' => 'تم حذف التحرك بنجاح',
