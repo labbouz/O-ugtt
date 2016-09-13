@@ -14,7 +14,7 @@ class SecteursTableSeeder extends Seeder
     public function run()
     {
         //delete secteurs table records
-        DB::table('secteurs')->delete();
+        DB::table('secteurs')->truncate();
         //insert some dummy records
         DB::table('secteurs')->insert(array(
             array('nom_secteur'=>trans('secteur.transport'), 'created_at' => Carbon::now()->format('Y-m-d H:i:s')),

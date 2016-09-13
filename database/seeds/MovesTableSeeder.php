@@ -13,8 +13,8 @@ class MovesTableSeeder extends Seeder
      */
     public function run()
     {
-        //delete secteurs table records
-        DB::table('moves')->delete();
+        //delete moves table records
+        DB::table('moves')->truncate();
         //insert some dummy records
         DB::table('moves')->insert(array(
             array('nom_move'=>trans('move.session_de_negociation'), 'created_at' => Carbon::now()->format('Y-m-d H:i:s')),
