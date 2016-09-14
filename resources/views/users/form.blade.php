@@ -45,7 +45,7 @@
             <div class="row">
 
                 <div class="form-group col-sm-6">
-                    <input name="password" type="password" data-toggle="validator" data-minlength="6" class="form-control" id="password"data-match-error="Minimum of 6 characters" placeholder="كلمة المرور" required>
+                    <input name="password" type="password" data-toggle="validator" data-minlength="6" class="form-control" id="password" data-match-error="Minimum of 6 characters" placeholder="كلمة المرور" required>
                     <div class="help-block with-errors"></div> </div>
                 <div class="form-group col-sm-6">
                     <input name="password_confirmation" type="password" class="form-control" id="password-confirm" data-match="#password" data-match-error="Whoops, these don't match" placeholder="تأكيد كلمة المرور" required>

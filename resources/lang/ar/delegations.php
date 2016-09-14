@@ -2,6 +2,15 @@
 
 return [
 
+    'delegations' =>  'المعتمديات',
+    'description_delegations' => 'المعتمديّة في تونس هي قسم إداري يرجع بالنظر إلى الولاية وتنقسم إلى عمادات.',
+    'delegation' =>  'معتمدية',
+    'la_delegation' =>  'المعتمدية',
+    'add_delegation' => 'إضافة معتمدية جديدة',
+    'detail_delegation_edit' => 'تفاصيل خاصة بالمعتمدية',
+    'detail_delegation' => 'تعديل في المعتمدية',
+    'edit_delegation' => 'تعديل في معتمدية',
+
     //'Ariana'
     'Ariana_1' => 'أريانة',
     'Ariana_2' => 'حي التضامن',

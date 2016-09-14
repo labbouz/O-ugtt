@@ -2,6 +2,8 @@
 
 return [
 
+    'gouvernorat' => 'الولاية',
+
     'Ariana' => 'أريانة',
     'Beja' => 'باجة',
     'Ben_Arous' => 'بن عروس',

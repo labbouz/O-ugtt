@@ -27,8 +27,8 @@
     <ul class="nav nav-second-level">
         <li><a href="{{ route('admins') }}"><i data-icon="V" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('main.aministrators')</span></a> </li>
         <li><a href="{{ route('secteur.index') }}"><i data-icon="&#xe028;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('main.secteurs')</span></a> </li>
-        <li><a href="javascript:void(0)"><i data-icon="Q" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('main.delegations')</span></a> </li>
-        <li><a href="javascript:void(0)"><i data-icon="U" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('main.structures_syndicales')</span></a> </li>
+        <li><a href="{{ route('delegation.index') }}"><i data-icon="Q" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('main.delegations')</span></a> </li>
+        <li><a href="{{ route('structure_syndicale.index') }}"><i data-icon="U" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('main.structures_syndicales')</span></a> </li>
         <li><a href="javascript:void(0)"><i data-icon="K" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('main.violations_individuelles')</span></a> </li>
         <li><a href="javascript:void(0)"><i data-icon="L" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('main.violations_massives')</span></a> </li>
         <li><a href="{{ route('move.index') }}"><i data-icon="&#xe07d;" class="linea-icon linea-aerrow fa-fw"></i> <span class="hide-menu">@lang('main.moves')</span></a> </li>

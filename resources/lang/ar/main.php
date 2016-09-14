@@ -54,4 +54,7 @@ return [
     'add_in' => 'اضيف في',
 
 
+    'selectionnez' => 'حدد',
+
+
 ];

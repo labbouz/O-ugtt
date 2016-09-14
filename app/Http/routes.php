@@ -43,6 +43,12 @@ Route::group( ['middleware' => ['web' , 'admin'] ], function (){
     Route::resource('move', 'MoveController');
     Route::get('move/{id}/delete', 'MoveController@destroy');
 
+    Route::resource('delegation', 'DelegationController');
+    Route::get('delegation/{id}/delete', 'DelegationController@destroy');
+
+    Route::resource('structure_syndicale', 'StructureSyndicaleController');
+    Route::get('structure_syndicale/{id}/delete', 'StructureSyndicaleController@destroy');
+
 });
 
 Route::group(['middleware' => 'web'], function () {

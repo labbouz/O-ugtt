@@ -89,3 +89,42 @@ Breadcrumbs::register('move.edit', function($breadcrumbs, $move)
 });
 
 
+/*
+ *  Breadcrumbs delegation
+ */
+
+Breadcrumbs::register('delegation.index', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('delegations.delegations'), route('delegation.index'));
+});
+
+Breadcrumbs::register('delegation.create', function($breadcrumbs) {
+    $breadcrumbs->parent('delegation.index');
+    $breadcrumbs->push(trans('delegations.add_delegation'), route('delegation.create'));
+});
+
+Breadcrumbs::register('delegation.edit', function($breadcrumbs, $delegation)
+{
+    $breadcrumbs->parent('delegation.index');
+    $breadcrumbs->push(trans('delegations.edit_delegation') . ' ' . $delegation->nom_delegation, route('delegation.edit', $delegation->id));
+});
+
+/*
+ *  Breadcrumbs structure_syndicale
+ */
+
+Breadcrumbs::register('structure_syndicale.index', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('syndicale.structures_syndicales'), route('structure_syndicale.index'));
+});
+
+Breadcrumbs::register('structure_syndicale.create', function($breadcrumbs) {
+    $breadcrumbs->parent('structure_syndicale.index');
+    $breadcrumbs->push(trans('syndicale.add_structure_syndicale'), route('structure_syndicale.create'));
+});
+
+Breadcrumbs::register('structure_syndicale.edit', function($breadcrumbs, $structure_syndicale)
+{
+    $breadcrumbs->parent('structure_syndicale.index');
+    $breadcrumbs->push(trans('syndicale.edit_structure_syndicale') . ' ' . $structure_syndicale->type_structure_syndicale, route('structure_syndicale.edit', $structure_syndicale->id));
+});
