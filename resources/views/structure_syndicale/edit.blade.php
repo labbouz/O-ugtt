@@ -5,7 +5,7 @@
 
 @section('page-title')
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-        <h4 class="page-title"> @lang('syndicale.edit_structure_syndicale') {{ $structure_syndicale->type_structure_syndicale}}</h4>
+        <h4 class="page-title"> @lang('syndicale.edit_structure_syndicale') </h4>
     </div>
 @endsection
 
@@ -30,9 +30,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="white-box">
-                <h3 class="box-title m-b-0"> @lang('syndicale.detail_move') </h3>
+                <h3 class="box-title m-b-0"> @lang('syndicale.edit_structure_syndicale') {{ $structure_syndicale->type_structure_syndicale}}   </h3>
 
-                <p class="text-muted m-b-30 font-13"> @lang('syndicale.edit_structure_syndicale') {{ $structure_syndicale->type_structure_syndicale}}  </p>
+                <p class="text-muted m-b-30 font-13"> @lang('syndicale.detail_structure_syndicale_edit') {{ $structure_syndicale->type_structure_syndicale}}  </p>
 
                 {{ Form::model($structure_syndicale, [ 'route' => ['structure_syndicale.update', $structure_syndicale->id], 'method' => 'PATCH'  ] ) }}
                 @include('structure_syndicale.form')

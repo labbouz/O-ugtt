@@ -29,6 +29,8 @@ return [
     'description_type' => 'وصف الهيكل النقابي',
     'description_type_structure_syndicale' => 'معلومات تصف الهيكل النقابي ... لتوضح الإختيار لدى مستعملي النظام',
 
+    'edit_structure_syndicale' => 'تعديل في الهيكل النقابي',
+
     /*
 
 
@@ -41,18 +43,6 @@ return [
 
     'edit_move' => 'تعديل في إسم تحرك',
     'detail_move' => 'تعديل تحرك',
-
-
-    'session_de_negociation' => 'جلسة تفاوضية',
-    'travailleurs_reunion' => 'اجتماع بالعمال',
-    'une_protestation' => 'وقفة احتجاجية',
-    'pause_pour_travailler' => 'إيقاف مؤقت للعمل',
-    'institution_d_exercice' => 'إضراب بالمؤسسة',
-    'greve_du_secteur' => 'إضراب قطاعي',
-    'greve_regionale' => 'إضراب جهوي',
-    'une_greve_generale' => 'إضراب عام',
-    'sit_in' => 'اعتصام',
-    'greve_de_la_faim' => 'إضراب جوع',
 */
 
 
