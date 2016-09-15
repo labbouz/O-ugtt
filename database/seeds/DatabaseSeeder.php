@@ -19,11 +19,15 @@ class DatabaseSeeder extends Seeder
         //disable foreign key check for this connection before running seeders
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
+        $this->call('UsersTableSeeder');
         $this->call('GouvernoratsTableSeeder');
         $this->call('DelegationsTableSeeder');
         $this->call('MovesTableSeeder');
         $this->call('SecteursTableSeeder');
         $this->call('StructuresSyndicalesTableSeeder');
+        $this->call('TypesViolationsTableSeeder');
+        $this->call('GravitesTableSeeder');
+        $this->call('ViolationsTableSeeder');
 
         // supposed to only apply to a single connection and reset it's self
         // but I like to explicitly undo what I've done for clarity

@@ -9,7 +9,6 @@ use App\Http\Requests;
 use DB;
 
 use App\Delegation;
-
 use App\Gouvernorat;
 
 use Illuminate\Support\Facades\Redirect;

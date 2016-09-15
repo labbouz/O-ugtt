@@ -128,3 +128,24 @@ Breadcrumbs::register('structure_syndicale.edit', function($breadcrumbs, $struct
     $breadcrumbs->parent('structure_syndicale.index');
     $breadcrumbs->push(trans('syndicale.edit_structure_syndicale') . ' ' . $structure_syndicale->type_structure_syndicale, route('structure_syndicale.edit', $structure_syndicale->id));
 });
+
+
+/*
+ *  Breadcrumbs violation
+ */
+
+Breadcrumbs::register('violation.index', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('violations.violations'), route('violation.index'));
+});
+
+Breadcrumbs::register('violation.create', function($breadcrumbs) {
+    $breadcrumbs->parent('violation.index');
+    $breadcrumbs->push(trans('violations.add_violation'), route('violation.create'));
+});
+
+Breadcrumbs::register('violation.edit', function($breadcrumbs, $violation)
+{
+    $breadcrumbs->parent('violation.index');
+    $breadcrumbs->push(trans('violations.edit_violation') . ' ' . $violation->nom_violation, route('violation.edit', $violation->id));
+});

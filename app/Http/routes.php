@@ -49,6 +49,9 @@ Route::group( ['middleware' => ['web' , 'admin'] ], function (){
     Route::resource('structure_syndicale', 'StructureSyndicaleController');
     Route::get('structure_syndicale/{id}/delete', 'StructureSyndicaleController@destroy');
 
+    Route::resource('violation', 'ViolationController');
+    Route::get('violation/{id}/delete', 'ViolationController@destroy');
+
 });
 
 Route::group(['middleware' => 'web'], function () {
