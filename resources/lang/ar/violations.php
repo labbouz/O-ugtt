@@ -15,8 +15,27 @@ return [
     'desc_gravite_2' => '',
 
 
-    'les_violations' => 'الانتهاكات',
+    'les_violations' => 'أنواع الإنتهاكات',
+    'la_violation' => 'نوع الإنتهاك',
     'violations' => 'انتهاكات',
+    'la' =>'ال',
+    'qui_concerne' => 'التي تخص ال',
+
+    'description_violations' => 'جميع أنواع الإنتهاكات المسجلة في النظام',
+    'add_violation' => 'إضافة نوع إنتهاك جديد',
+
+    'type_violation'=>'تصنيف الإنتهاكات',
+    'gravite'=>'خطورة الإنتهاك',
+
+    'detail_violation_edit'=>'تفاصيل خاصة بالإنتهاك',
+    'nom_violation' => 'اسم نوع الإنتهاك',
+    'type_violation'=>'تصنيف الإنتهاك',
+
+    'description_violation' => 'وصف الإنتهاك',
+    'description_type_violation' => 'معلومات تصف الإنتهاك ... لتوضح الإختيار لدى مستعملي النظام',
+
+    'color' => 'اللون الذي سيظهر في النظام',
+    'class_color' => 'إختر اللون عبر النقر',
 
     'violation_individuelle_1' => 'طرد',
     'violation_individuelle_2' => 'إيقاف وقتي عن العمل دون راتب  من يوم إلى 3 ايام',
@@ -30,6 +49,10 @@ return [
     'violation_individuelle_10' => 'الحط من الدرجة أو السلم',
     'violation_individuelle_11' => 'الحرمان من الترقية',
     'violation_individuelle_12' => 'الحط من العدد المهني',
+
+    'edit_violation'=>'تعديل في نوع الإنتهاك',
+
+
 
     'violation_massives_1' => 'منع تأسيس نقابة',
     'violation_massives_2' => 'الضغط من أجل عدم الترشح',

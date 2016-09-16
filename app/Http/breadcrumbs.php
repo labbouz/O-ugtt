@@ -136,12 +136,22 @@ Breadcrumbs::register('structure_syndicale.edit', function($breadcrumbs, $struct
 
 Breadcrumbs::register('violation.index', function($breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push(trans('violations.violations'), route('violation.index'));
+    $breadcrumbs->push(trans('violations.les_violations'), route('violation.index'));
+});
+
+Breadcrumbs::register('violation.show', function($breadcrumbs, $typeViolation) {
+    $breadcrumbs->parent('violation.index');
+    $breadcrumbs->push(trans('violations.les_violations') . ' '. trans('violations.la') . $typeViolation->nom_type_violation, route('violation.show', $typeViolation->id));
 });
 
 Breadcrumbs::register('violation.create', function($breadcrumbs) {
     $breadcrumbs->parent('violation.index');
     $breadcrumbs->push(trans('violations.add_violation'), route('violation.create'));
+});
+
+Breadcrumbs::register('violation.create_via_type', function($breadcrumbs, $typeViolation) {
+    $breadcrumbs->parent('violation.index');
+    $breadcrumbs->push(trans('violations.add_violation'), route('violation.create_via_type', $typeViolation->id));
 });
 
 Breadcrumbs::register('violation.edit', function($breadcrumbs, $violation)

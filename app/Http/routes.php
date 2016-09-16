@@ -51,6 +51,7 @@ Route::group( ['middleware' => ['web' , 'admin'] ], function (){
 
     Route::resource('violation', 'ViolationController');
     Route::get('violation/{id}/delete', 'ViolationController@destroy');
+    Route::get('violation/create/{id_type_violation}', ['as' => 'violation.create_via_type', 'uses' => 'ViolationController@create']);
 
 });
 

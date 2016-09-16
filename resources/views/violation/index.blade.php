@@ -5,7 +5,11 @@
 
 @section('page-title')
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-        <h4 class="page-title"> @lang('violation.delegations')  </h4>
+        <h4 class="page-title"> @lang('violations.violations')
+            @if(isset($typeViolation))
+                {{ $typeViolation->nom_type_violation }}
+            @endif
+        </h4>
     </div>
 @endsection
 
@@ -13,14 +17,18 @@
 {{-- Block breadcrumb --}}
 
 @section('breadcrumb')
+    @if(!isset($typeViolation))
     {!! Breadcrumbs::render() !!}
+    @else
+    {!! Breadcrumbs::render('violation.show', $typeViolation) !!}
+    @endif
+
 @endsection
 
 
 {{-- Block header--}}
 
 @section('header')
-
     <!-- Custom CSS -->
     {!! Html::style('plugins/bower_components/datatables/jquery.dataTables.min.css') !!}
     <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
@@ -37,14 +45,34 @@
             <div class="white-box">
                 <div class="row">
                     <div class="col-sm-12 col-md-8">
-                        <h3 class="box-title m-b-0">@lang('violation.violations')</h3>
-                        <p class="text-muted m-b-0">@lang('violation.description_violations')</p>
+                        <h3 class="box-title m-b-0">@lang('violations.les_violations')
+                            @if(isset($typeViolation))
+                            {{ trans('violations.la') . $typeViolation->nom_type_violation }}
+                            @endif
+
+                        </h3>
+                        <p class="text-muted m-b-0">
+                            @if(!isset($typeViolation))
+                                @lang('violations.description_violations')
+                            @else
+                                {{ trans('violations.qui_concerne') . $typeViolation->description_type_violation }}
+                            @endif
+
+
+                           </p>
                     </div>
 
 
 
                     <div class="col-sm-12 col-md-4 button-box m-b-0">
-                        <a href="{{ route('delegation.create') }}" class="btn btn-block btn-info btn-lg  "><i class="fa fa-plus-circle m-l-5"></i>@lang('violation.add_delegation') </a>
+
+                        @if(!isset($typeViolation))
+                            <a href="{{ route('violation.create') }}" class="btn btn-block btn-info btn-lg  "><i class="fa fa-plus-circle m-l-5"></i>@lang('violations.add_violation') </a>
+                        @else
+                            <a href="{{ route('violation.create') }}/{{ $typeViolation->id }}" class="btn btn-block btn-info btn-lg  "><i class="fa fa-plus-circle m-l-5"></i>@lang('violations.add_violation') </a>
+                        @endif
+
+
                     </div>
                 </div>
 
@@ -54,8 +82,10 @@
                     <table id="lists_datas" class="table table-striped">
                         <thead>
                         <tr>
-                            <th>@lang('violations.la_delegation')</th>
+                            <th>@lang('violations.la_violation')</th>
+                            @if(!isset($typeViolation))
                             <th class="select-filter">@lang('violations.type_violation')</th>
+                            @endif
                             <th class="select-filter">@lang('violations.gravite')</th>
                             <th>@lang('main.add_in')</th>
                             <th class="no-sort">@lang('main.tools')</th>
@@ -65,8 +95,10 @@
                         @foreach($violations as $violation)
                             <tr>
                                 <td> {{ $violation->nom_violation }} </td>
-                                <td> {{ $violation->nom_type_violation }} </td>
-                                <td> {{ $violation->nom_gravite }} </td>
+                                @if(!isset($typeViolation))
+                                <td> <a href="{{ route('violation.show', ['id' => $violation->type_violationt_id])  }}"> <span class="label {{ $violation->class_color_type_violation  }}">  {{ $violation->nom_type_violation }} </span> </a></td>
+                                 @endif
+                                <td> <span class="label {{ $violation->class_color_gravite  }}"> {{ $violation->nom_gravite }} </span> </td>
                                 <td><?php $date_created_at = new Date($violation->created_at); ?>{{ $date_created_at->format('l j F Y - H:i:s') }}</td>
                                 <td>
                                     <a class="btn btn-success btn-circle" href="{{ route('violation.edit', ['id' => $violation->id])  }}"><i class="fa fa-edit"></i></a>
@@ -103,28 +135,11 @@
     <script>
         $(document).ready(function(){
 
+
             $('#lists_datas').DataTable( {
-
-                initComplete: function () {
-                    this.api().columns('.select-filter').every( function () {
-                        var column = this;
-                        var select = $('<select><option value="">@lang('gouvernorats.gouvernorat')</option></select>')
-                                .appendTo( '.dataTables_filter' ) //$(column.footer()).empty()
-                                .on( 'change', function () {
-                                    var val = $.fn.dataTable.util.escapeRegex(
-                                            $(this).val()
-                                    );
-
-                                    column
-                                            .search( val ? '^'+val+'$' : '', true, false )
-                                            .draw();
-                                } );
-
-                        column.data().unique().sort().each( function ( d, j ) {
-                            select.append( '<option value="'+d+'">'+d+'</option>' )
-                        } );
-                    } );
-                },
+                /*"paging": false,
+                "info": false,
+                */
                 "language": {
                     "url": "{{ Request::root() }}/js/lang/Arabic.json"
                 },
