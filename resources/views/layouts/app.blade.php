@@ -146,7 +146,6 @@
                         <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ Auth::user()->name }} <span class="caret"></span></a>
                         <ul class="dropdown-menu animated flipInY">
                             <li><a href="{{ url('/myprofile') }}"><i class="ti-user"></i> @lang('main.mypofile')</a></li>
-                            <li><a href="#"><i class="ti-layout-tab"></i> @lang('main.myfiles')</a></li>
                             <li><a href="#"><i class="ti-email"></i> @lang('main.inbox')</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#"><i class="ti-settings"></i> @lang('main.configuration_compte')</a></li>

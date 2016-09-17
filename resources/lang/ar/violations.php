@@ -2,11 +2,11 @@
 
 return [
 
-    'types_violations' => 'أنواع الانتهاكات',
+    'types_violations' => 'أنواع الإعتداءات',
 
-    'type_violation_1' => 'فردية',
+    'type_violation_1' => 'على المسؤول النقابي',
     'desc_type_violation_1' => 'اعتداءات على المسؤول النقابي',
-    'type_violation_2' => 'جماعية',
+    'type_violation_2' => 'على النشاط النقابي',
     'desc_type_violation_2' => 'اعتداءات على الحق النقابي',
 
     'nom_gravite_1' => 'خطير',
@@ -15,24 +15,24 @@ return [
     'desc_gravite_2' => '',
 
 
-    'les_violations' => 'أنواع الإنتهاكات',
-    'la_violation' => 'نوع الإنتهاك',
-    'violations' => 'انتهاكات',
+    'les_violations' => 'أنواع الإعتداءات',
+    'la_violation' => 'نوع الإعتداء',
+    'violations' => 'إعتداءات',
     'la' =>'ال',
     'qui_concerne' => 'التي تخص ال',
 
-    'description_violations' => 'جميع أنواع الإنتهاكات المسجلة في النظام',
-    'add_violation' => 'إضافة نوع إنتهاك جديد',
+    'description_violations' => 'جميع أنواع الإعتداءات المسجلة في النظام',
+    'add_violation' => 'إضافة نوع إعتداء جديد',
 
-    'type_violation'=>'تصنيف الإنتهاكات',
-    'gravite'=>'خطورة الإنتهاك',
+    'type_violation'=>'تصنيف الإعتداءات',
+    'gravite'=>'خطورة الإعتداء',
 
-    'detail_violation_edit'=>'تفاصيل خاصة بالإنتهاك',
-    'nom_violation' => 'اسم نوع الإنتهاك',
-    'type_violation'=>'تصنيف الإنتهاك',
+    'detail_violation_edit'=>'تفاصيل خاصة بالإعتداء',
+    'nom_violation' => 'اسم نوع الإعتداء',
+    'type_violation'=>'تصنيف الإعتداء',
 
-    'description_violation' => 'وصف الإنتهاك',
-    'description_type_violation' => 'معلومات تصف الإنتهاك ... لتوضح الإختيار لدى مستعملي النظام',
+    'description_violation' => 'وصف الإعتداء',
+    'description_type_violation' => 'معلومات تصف الإعتداء ... لتوضح الإختيار لدى مستعملي النظام',
 
     'color' => 'اللون الذي سيظهر في النظام',
     'class_color' => 'إختر اللون عبر النقر',
@@ -64,5 +64,6 @@ return [
     'violation_massives_8' => 'منع إنجاز إضراب',
     'violation_massives_9' => 'رفض تفاوض',
     'violation_massives_10' => 'عدم تمكين من الرخص النقابية خالصة الأجر',
+    'violation_massives_11' => 'عدم الاعتراف بالنقابة'
 
 ];
