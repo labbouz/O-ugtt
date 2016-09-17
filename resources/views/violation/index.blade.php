@@ -47,7 +47,7 @@
                     <div class="col-sm-12 col-md-8">
                         <h3 class="box-title m-b-0">@lang('violations.les_violations')
                             @if(isset($typeViolation))
-                            {{ trans('violations.la') . $typeViolation->nom_type_violation }}
+                            {{ $typeViolation->nom_type_violation }}
                             @endif
 
                         </h3>
