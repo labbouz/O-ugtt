@@ -15,6 +15,7 @@ Route::group( ['middleware' => ['web' , 'admin'] ], function (){
      * user route
      */
     Route::get('myprofile', ['as' => 'myprofile', 'uses' => 'UserController@myProfile']);
+    Route::post('myprofile/edit', ['as' => 'myprofile.edit', 'uses' => 'UserController@editMyProfile']);
 
 
     /*

@@ -59,11 +59,10 @@ return [
     'violation_massives_3' => 'منع توزيع بلاغات أو بيانات',
     'violation_massives_4' => 'منع إتصال داخل المؤسسة',
     'violation_massives_5' => 'منع إجتماع بالعمال',
-    'violation_massives_6' => 'منع حضور',
-    'violation_massives_7' => 'اجتماعات نقابية دورية',
-    'violation_massives_8' => 'منع إنجاز إضراب',
-    'violation_massives_9' => 'رفض تفاوض',
-    'violation_massives_10' => 'عدم تمكين من الرخص النقابية خالصة الأجر',
-    'violation_massives_11' => 'عدم الاعتراف بالنقابة'
+    'violation_massives_6' => 'منع حضور اجتماعات نقابية دورية',
+    'violation_massives_7' => 'منع إنجاز إضراب',
+    'violation_massives_8' => 'رفض تفاوض',
+    'violation_massives_9' => 'عدم تمكين من الرخص النقابية خالصة الأجر',
+    'violation_massives_10' => 'عدم الاعتراف بالنقابة'
 
 ];

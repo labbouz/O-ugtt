@@ -11,6 +11,11 @@ Breadcrumbs::register('myprofile', function($breadcrumbs) {
     $breadcrumbs->push(trans('main.mypofile'), route('myprofile'));
 });
 
+Breadcrumbs::register('myprofile.edit', function($breadcrumbs) {
+    $breadcrumbs->parent('myprofile');
+    $breadcrumbs->push(trans('users.change_my_profile'), route('myprofile.edit'));
+});
+
 Breadcrumbs::register('users.index', function($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('main.users'), route('users.index'));

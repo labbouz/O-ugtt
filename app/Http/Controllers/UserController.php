@@ -76,6 +76,12 @@ class UserController extends Controller
         return view('users.myprofile', compact('user'));
     }
 
+    public function editMyProfile(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+        return view('users.editmyprofile', compact('user'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

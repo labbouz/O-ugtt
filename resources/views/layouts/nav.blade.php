@@ -31,10 +31,6 @@
         <li><a href="{{ route('structure_syndicale.index') }}"><i data-icon="U" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('main.structures_syndicales')</span></a> </li>
 
         <li><a href="{{ route('violation.index') }}"><i data-icon="L" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('violations.les_violations')</span></a> </li>
-        {{--
-        <li><a href="{{ route('violation.show', ['id' => 1]) }}"><i data-icon="K" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('violations.type_violation_1')</span></a> </li>
-        <li><a href="{{ route('violation.show', ['id' => 2]) }}"><i data-icon="L" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('violations.type_violation_2')</span></a> </li>
-        --}}
         <li><a href="{{ route('move.index') }}"><i data-icon="&#xe07d;" class="linea-icon linea-aerrow fa-fw"></i> <span class="hide-menu">@lang('main.moves')</span></a> </li>
     </ul>
 </li>
