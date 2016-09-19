@@ -142,7 +142,14 @@
                 <!-- .User Profile -->
                 <div class="user-profile">
                     <div class="dropdown user-pro-body">
-                        <div><img src="{{ Request::root() }}/plugins/images/users/varun.jpg" alt="user-img" class="img-circle"></div>
+                        <div>
+                            <?php $avatar = Auth::user()->profile->avatar; ?>
+                            @if(strlen($avatar)>0)
+                                    <img src="{{ Request::root() }}/{{ $avatar }}" alt="user-img" class="img-circle">
+                            @else
+                                    <img src="{{ Request::root() }}/plugins/images/anonyme.jpg" alt="user-img" class="img-circle">
+                            @endif
+                        </div>
                         <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ Auth::user()->name }} <span class="caret"></span></a>
                         <ul class="dropdown-menu animated flipInY">
                             <li><a href="{{ url('/myprofile') }}"><i class="ti-user"></i> @lang('main.mypofile')</a></li>

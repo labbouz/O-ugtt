@@ -30,5 +30,5 @@
 
 <div class="form-group">
     <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">تسجيل</button>
-    <a href="javascript:void(0)" class="btn btn-inverse waves-effect waves-light" onclick="history.go(-1);return false;">إلغاء</a>
+    <button type="button" class="btn btn-inverse waves-effect waves-light" onclick="history.go(-1);return false;">إلغاء</button>
 </div>

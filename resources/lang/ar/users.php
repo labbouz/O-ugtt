@@ -38,6 +38,9 @@ return [
     'change_my_profile' => 'تعديل معلوماتي الشخصية',
 
     'close' => 'ألغاء',
+    'comple_info' => 'الرجاء إدخال المعلومة',
+    'save_info' => 'تسجيل المعلومات',
+    'message_update_succes_myprofile' => 'تم تسجيل معلوماتك الشخصية بنجاح',
 
 
 ];

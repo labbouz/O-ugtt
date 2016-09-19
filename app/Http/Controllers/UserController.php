@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Profile;
+use App\StructureSyndicale;
 
 use Auth;
 
 use App\Http\Requests;
 use App\Http\Requests\AddUserRequestAdmin;
 use Illuminate\Support\Facades\Redirect;
-
 
 class UserController extends Controller
 {
@@ -45,14 +46,20 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      *
      */
-    public function store(AddUserRequestAdmin $request, User $user)
+    public function store(AddUserRequestAdmin $request)
     {
 
-        $user->create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'is_admin' => $request->is_admin,
+        $user = new User();
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->is_admin = $request->is_admin;
+        $user->save();
+
+
+        Profile::create([
+            'user_id' => $user->id,
         ]);
 
         return redirect()->route('users.index')->withFlashMessage('تم اضافة العضو بنجاح');
@@ -70,16 +77,30 @@ class UserController extends Controller
         //
     }
 
-    public function myProfile(User $user)
+    public function myProfile()
     {
-        $user = $user->find(Auth::user()->id);
-        return view('users.myprofile', compact('user'));
+        $user = User::find(Auth::user()->id);
+        $profile = $user->profile;
+        return view('users.myprofile', compact('user','profile'));
     }
 
     public function editMyProfile(Request $request)
     {
+        $profile = Profile::find(Auth::user()->id);
         $user = User::find(Auth::user()->id);
-        return view('users.editmyprofile', compact('user'));
+        $StructuresSyndicalestList = StructureSyndicale::lists('type_structure_syndicale', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('users.structure_syndicale'), '');
+
+        return view('users.editmyprofile', compact('user','profile','StructuresSyndicalestList'));
+    }
+
+    public function  updateMyProfile($id, Request $request)
+    {
+
+        $profileUpdated = Profile::find($id);
+        $profileUpdated->fill( $request->all() )->save();
+
+        return redirect()->route('myprofile')->withFlashMessage(trans('users.message_update_succes_myprofile'));
+
     }
 
     /**

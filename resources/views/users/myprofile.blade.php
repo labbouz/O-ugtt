@@ -15,25 +15,38 @@
 
 @section('header')
 
-    <!--alerts CSS -->
-    {!! Html::style('plugins/bower_components/sweetalert/sweetalert.css') !!}
+    <!-- Cropper CSS -->
+     {!! Html::style('plugins/bower_components/cropper/cropper.min.css') !!}
 
 @endsection
 
 
 
 @section('content')
+
+    <div id="crop-avatar">
     <div class="row">
         <div class="col-md-4 col-xs-12">
             <div class="white-box">
-                <div class="user-bg"> <img width="100%" alt="user" src="../plugins/images/large/img1.jpg">
+
+
+                <div class="user-bg"> <img width="100%" alt="user" src="{{ Request::root() }}/plugins/images/large/img1.jpg">
                     <div class="overlay-box">
-                        <div class="user-content"> <a href="javascript:void(0)"><img src="../plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img"></a>
-                            <h4 class="text-white">User Name</h4>
-                            <h5 class="text-white">info@myadmin.com</h5>
+                        <div class="user-content">
+                            <a href="javascript:void(0)" class="avatar-view">
+                                @if(strlen($profile->avatar)>0)
+                                    <img src="{{ Request::root() }}/{{ $profile->avatar }}" alt="user-img" class="thumb-lg img-circle">
+                                @else
+                                    <img src="{{ Request::root() }}/plugins/images/anonyme.jpg" alt="user-img" class="thumb-lg img-circle">
+                                @endif
+                            </a>
+                            <h4 class="text-white">{{ $user->name }}</h4>
+                            <h5 class="text-white">{{ $user->email }}</h5>
                         </div>
                     </div>
                 </div>
+
+
                 <div class="user-btm-box">
                     <h3 class="box-title"><strong>@lang('users.role')</strong> </h3>
                      <h2><span class="label label-success">@lang('users.observateur_regional')</span></h2>
@@ -53,6 +66,7 @@
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('myprofile.edit') }}">
                             {{ csrf_field() }}
+
                             <div class="form-body">
                                 <h3 class="box-title">@lang('users.Information_system')</h3>
                                 <hr class="m-t-0 m-b-40">
@@ -61,7 +75,13 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-5">@lang('users.prenom') :</label>
                                             <div class="col-md-7">
-                                                <p class="form-control-static"> John </p>
+                                                <p class="form-control-static">
+                                                    @if ( strlen($profile->prnom) )
+                                                        <span class="label label-success">{{ $profile->prnom }}</span>
+                                                    @else
+                                                        <span class="label label-danger">@lang('users.comple_info')</span>
+                                                    @endif
+                                                 </p>
                                             </div>
                                         </div>
                                     </div>
@@ -70,7 +90,13 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-5">@lang('users.nom') :</label>
                                             <div class="col-md-7">
-                                                <p class="form-control-static"> Doe </p>
+                                                <p class="form-control-static">
+                                                    @if ( strlen($profile->nom) )
+                                                        <span class="label label-success">{{ $profile->nom }}</span>
+                                                    @else
+                                                        <span class="label label-danger">@lang('users.comple_info')</span>
+                                                    @endif
+                                                 </p>
                                             </div>
                                         </div>
                                     </div>
@@ -82,7 +108,13 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-5">@lang('users.societe') :</label>
                                             <div class="col-md-7">
-                                                <p class="form-control-static"> John </p>
+                                                <p class="form-control-static">
+                                                    @if ( strlen($profile->societe) )
+                                                        <span class="label label-success">{{ $profile->societe }}</span>
+                                                    @else
+                                                        <span class="label label-danger">@lang('users.comple_info')</span>
+                                                    @endif
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -91,7 +123,13 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-5">@lang('users.structure_syndicale') :</label>
                                             <div class="col-md-7">
-                                                <p class="form-control-static"> Doe </p>
+                                                <p class="form-control-static">
+                                                    @if ( $profile->structure_syndicale_id > 0 )
+                                                        <span class="label label-success">{{ $profile->structure_syndicale->type_structure_syndicale }} </span>
+                                                    @else
+                                                        <span class="label label-danger">@lang('users.comple_info')</span>
+                                                    @endif
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -103,7 +141,13 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-5">@lang('users.telephone') :</label>
                                             <div class="col-md-7">
-                                                <p class="form-control-static"> Male </p>
+                                                <p class="form-control-static">
+                                                    @if ( strlen($profile->phone_number) )
+                                                        <span class="label label-success">{{ $profile->phone_number }}</span>
+                                                    @else
+                                                        <span class="label label-danger">@lang('users.comple_info')</span>
+                                                    @endif
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -112,7 +156,13 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-5">@lang('users.email2') :</label>
                                             <div class="col-md-7">
-                                                <p class="form-control-static"> 11/06/1987 </p>
+                                                <p class="form-control-static">
+                                                    @if ( strlen($profile->email2) )
+                                                        <span class="label label-success">{{ $profile->email2 }}</span>
+                                                    @else
+                                                        <span class="label label-danger">@lang('users.comple_info')</span>
+                                                    @endif
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -125,7 +175,7 @@
                                     <div class="col-md-6">
                                         <div class="row">
                                             <div class="col-md-offset-5col-md-7">
-                                                <button type="submit"  class="btn btn-info btn-lg"> <i class="fa fa-pencil"></i> @lang('users.change_my_profile')</button>
+                                                <button type="submit"  class="btn btn-info"> <i class="fa fa-pencil"></i> @lang('users.change_my_profile')</button>
                                             </div>
                                         </div>
                                     </div>
@@ -139,18 +189,69 @@
         </div>
     </div>
     <!-- /.row -->
+    <!-- Cropping modal -->
+    <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form class="avatar-form" action="{{ route('myprofile.crop') }}" enctype="multipart/form-data" method="post">
+                    {{ csrf_field() }}
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="avatar-modal-label">Change Avatar</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="avatar-body">
+
+                            <!-- Upload image and data -->
+                            <div class="avatar-upload">
+                                <input type="hidden" class="avatar-src" name="avatar_src">
+                                <input type="hidden" class="avatar-data" name="avatar_data">
+                                <label for="avatarInput">Local upload</label>
+                                <input type="file" class="avatar-input" id="avatarInput" name="avatar_file">
+                            </div>
+
+                            <!-- Crop and preview -->
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="avatar-wrapper"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="avatar-preview preview-lg"></div>
+                                    <div class="avatar-preview preview-md"></div>
+                                    <div class="avatar-preview preview-sm"></div>
+                                </div>
+                            </div>
+
+                            <div class="row avatar-btns">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-primary btn-block avatar-save">Done</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div><!-- /.modal -->
+    </div>
+
 @endsection
 
 
 @section('footer')
 
-    {!! Html::script('js/jasny-bootstrap.js') !!}
+    <!-- Image cropper JavaScript -->
+
+    {!! Html::script('plugins/bower_components/cropper/cropper.min.js') !!}
+    {{--
+    {!! Html::script('plugins/bower_components/cropper/cropper-init.js') !!}
+    --}}
+    {!! Html::script('js/main_cropper.js') !!}
+
+
     <!--Style Switcher -->
     {!! Html::script('plugins/bower_components/styleswitcher/jQuery.style.switcher.js') !!}
-
-    <!-- Sweet-Alert  -->
-    {!! Html::script('plugins/bower_components/sweetalert/sweetalert.min.js') !!}
-    {!! Html::script('plugins/bower_components/sweetalert/jquery.sweet-alert.custom.js') !!}
 
 @endsection
 

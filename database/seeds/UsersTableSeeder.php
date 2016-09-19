@@ -14,6 +14,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //delete users table records
+        DB::table('profiles')->truncate();
         DB::table('users')->truncate();
 
         DB::table('users')->insert([
@@ -23,5 +24,12 @@ class UsersTableSeeder extends Seeder
             'is_admin' => 1,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
+        DB::table('profiles')->insert([
+            'user_id' => 1,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+
     }
 }
