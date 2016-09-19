@@ -17,8 +17,9 @@ Route::group( ['middleware' => ['web' , 'admin'] ], function (){
     Route::get('myprofile', ['as' => 'myprofile', 'uses' => 'UserController@myProfile']);
     Route::post('myprofile/edit', ['as' => 'myprofile.edit', 'uses' => 'UserController@editMyProfile']);
     Route::patch('myprofile/update/{id}', ['as' => 'myprofile.update', 'uses' => 'UserController@updateMyProfile']);
-
     Route::post('myprofile/crop', ['as' => 'myprofile.crop', 'uses' => 'CropProfileController@cropMyProfile']);
+    Route::get('myprofile/changepassword', ['as' => 'changepassword', 'uses' => 'UserController@changePassword']);
+    Route::patch('myprofile/changepassword/{id}', ['as' => 'password.update', 'uses' => 'UserController@updateMyPassword']);
 
 
     /*

@@ -55,7 +55,7 @@
 
 
                     <hr>
-                    <a class="btn btn-block btn-info btn-lg">@lang('users.change_my_password')</a>
+                    <a href="{{ route('changepassword') }}" class="btn btn-block btn-info btn-lg">@lang('users.change_my_password')</a>
                 </div>
             </div>
         </div>
@@ -197,7 +197,7 @@
                     {{ csrf_field() }}
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" id="avatar-modal-label">Change Avatar</h4>
+                        <h4 class="modal-title" id="avatar-modal-label">@lang('users.change_avatar')</h4>
                     </div>
                     <div class="modal-body">
                         <div class="avatar-body">
@@ -224,7 +224,7 @@
 
                             <div class="row avatar-btns">
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-primary btn-block avatar-save">Done</button>
+                                    <button type="submit" class="btn btn-primary btn-block avatar-save">@lang('users.done_change_avatar')</button>
                                 </div>
                             </div>
                         </div>

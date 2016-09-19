@@ -103,6 +103,24 @@ class UserController extends Controller
 
     }
 
+    public function changePassword(Request $request)
+    {
+        $profile = Profile::find(Auth::user()->id);
+        $user = User::find(Auth::user()->id);
+
+        return view('users.changepassword', compact('user','profile'));
+    }
+
+    public function  updateMyPassword($id, Request $request)
+    {
+        $userUpdated = User::find(Auth::user()->id);
+        $password = bcrypt($request->password);
+        $userUpdated->fill( ['password'=>$password] )->save();
+
+        return redirect()->route('myprofile')->withFlashMessage('تم تغيير كلمة المرور بنجاح');
+
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

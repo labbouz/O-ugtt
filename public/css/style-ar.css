@@ -116,15 +116,6 @@ div#avatar-modal > * {direction: ltr !important;}
     margin-right: 5px;
 }
 
-.loading {
-    display: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: #fff url("../img/loading.gif") no-repeat center center;
-    opacity: .75;
-    filter: alpha(opacity=75);
-    z-index: 20140628;
+.modal-header h4 {
+    text-align: right;
 }

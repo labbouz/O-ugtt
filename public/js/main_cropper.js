@@ -305,6 +305,8 @@
     cropDone: function () {
       this.$avatarForm.get(0).reset();
       this.$avatar.attr('src', this.url);
+      // update phot avatar small
+      $('.user-pro-body img').attr('src', this.url);
       this.stopCropper();
       this.$avatarModal.modal('hide');
     },

@@ -11,6 +11,11 @@ Breadcrumbs::register('myprofile', function($breadcrumbs) {
     $breadcrumbs->push(trans('main.mypofile'), route('myprofile'));
 });
 
+Breadcrumbs::register('changepassword', function($breadcrumbs) {
+    $breadcrumbs->parent('myprofile');
+    $breadcrumbs->push(trans('users.change_my_password'), route('changepassword'));
+});
+
 Breadcrumbs::register('myprofile.edit', function($breadcrumbs) {
     $breadcrumbs->parent('myprofile');
     $breadcrumbs->push(trans('users.change_my_profile'), route('myprofile.edit'));

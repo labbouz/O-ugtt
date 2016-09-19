@@ -41,6 +41,10 @@ return [
     'comple_info' => 'الرجاء إدخال المعلومة',
     'save_info' => 'تسجيل المعلومات',
     'message_update_succes_myprofile' => 'تم تسجيل معلوماتك الشخصية بنجاح',
+    'change_avatar' => 'تغيير الصورة الرمزية',
+    'done_change_avatar' => 'قم بتغيير الصورة',
+    'save_new_pass' => 'قم بتسجيل كلمة المرور الجديدة',
+
 
 
 ];
