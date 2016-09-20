@@ -50,7 +50,7 @@ class UsersTableSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        $user_observateur_regional->assignRole('administrator');
+        $user_observateur_regional->assignRole('observateur_regional');
 
         DB::table('profiles')->insert([
             'user_id' => $user_observateur_regional->id,
@@ -69,7 +69,7 @@ class UsersTableSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        $user_observateur_secteur->assignRole('administrator');
+        $user_observateur_secteur->assignRole('observateur_secteur');
 
         DB::table('profiles')->insert([
             'user_id' => $user_observateur_secteur->id,
@@ -88,7 +88,7 @@ class UsersTableSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        $user_observateur->assignRole('administrator');
+        $user_observateur->assignRole('observateur');
 
         DB::table('profiles')->insert([
             'user_id' => $user_observateur->id,

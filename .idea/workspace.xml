@@ -3077,11 +3077,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="changepassword.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/users/changepassword.blade.php">
+      <file leaf-file-name="UsersTableSeeder.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database/seeds/UsersTableSeeder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+            <state relative-caret-position="518">
+              <caret line="90" column="50" selection-start-line="90" selection-start-column="50" selection-end-line="90" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RolesTableSeeder.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/seeds/RolesTableSeeder.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="48" column="34" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -3144,7 +3154,6 @@
         <option value="$PROJECT_DIR$/database/seeds/PermissionsTableSeeder.php" />
         <option value="$PROJECT_DIR$/database/migrations/2015_02_07_172606_create_roles_table.php" />
         <option value="$PROJECT_DIR$/database/seeds/RolesTableSeeder.php" />
-        <option value="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" />
         <option value="$PROJECT_DIR$/resources/views/users/add.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/users/edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/users/form.blade.php" />
@@ -3153,6 +3162,7 @@
         <option value="$PROJECT_DIR$/resources/views/users/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/users/editmyprofile.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/users/changepassword.blade.php" />
+        <option value="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" />
       </list>
     </option>
   </component>
@@ -3232,11 +3242,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
+              <option name="myItemId" value="database" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -3250,29 +3256,11 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="database" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="users" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="o-ugtt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="o-ugtt" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="seeds" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -3483,12 +3471,12 @@
       <workItem from="1474270369972" duration="32447000" />
       <workItem from="1474363184019" duration="16533000" />
       <workItem from="1474396391038" duration="3007000" />
-      <workItem from="1474400690734" duration="749000" />
+      <workItem from="1474400690734" duration="1826000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="292956000" />
+    <option name="totallyTimeSpent" value="294033000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -3771,20 +3759,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/RolesTableSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="47" column="42" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/UsersTableSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="83" column="34" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/users/edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
@@ -3862,6 +3836,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
           <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/RolesTableSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="48" column="34" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/UsersTableSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="90" column="50" selection-start-line="90" selection-start-column="50" selection-end-line="90" selection-end-column="50" />
           <folding />
         </state>
       </provider>
