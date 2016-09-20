@@ -874,12 +874,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kodeine/laravel-acl.git",
-                "reference": "31e20f25663e7644cec00eefc955d0702e4e91de"
+                "reference": "b0851b4d2ab113e210ee81432e659b8996f4fa86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kodeine/laravel-acl/zipball/31e20f25663e7644cec00eefc955d0702e4e91de",
-                "reference": "31e20f25663e7644cec00eefc955d0702e4e91de",
+                "url": "https://api.github.com/repos/kodeine/laravel-acl/zipball/b0851b4d2ab113e210ee81432e659b8996f4fa86",
+                "reference": "b0851b4d2ab113e210ee81432e659b8996f4fa86",
                 "shasum": ""
             },
             "require": {
@@ -913,7 +913,7 @@
                 "roles",
                 "security"
             ],
-            "time": "2016-09-19 20:01:21"
+            "time": "2016-09-20 15:17:28"
         },
         {
             "name": "laravel/framework",

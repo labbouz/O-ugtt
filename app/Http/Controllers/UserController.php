@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use DB;
+
 use App\User;
 use App\Profile;
 use App\StructureSyndicale;
@@ -25,13 +28,53 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = DB::table('users')
+            ->join('roles', 'roles.id', '=', 'users.role_id')
+            ->select('users.*', 'roles.name AS role_name', 'roles.class_color')
+            ->get();
+
+
+        return view('users.index', compact('users'));
+    }
+
+    public function admins()
+    {
+        $users = DB::table('users')
+            ->join('roles', 'roles.id', '=', 'users.role_id')
+            ->select('users.*', 'roles.name AS role_name', 'roles.class_color')
+            ->where('role_id', 1)
+            ->get();
+
+        return view('users.index', compact('users'));
+    }
+
+    public function observateurs_regional()
+    {
+        $users = DB::table('users')
+            ->join('roles', 'roles.id', '=', 'users.role_id')
+            ->select('users.*', 'roles.name AS role_name', 'roles.class_color')
+            ->where('role_id', 2)
+            ->get();
+        return view('users.index', compact('users'));
+    }
+
+    public function observateurs_secteur()
+    {
+        $users = DB::table('users')
+            ->join('roles', 'roles.id', '=', 'users.role_id')
+            ->select('users.*', 'roles.name AS role_name', 'roles.class_color')
+            ->where('role_id', 3)
+            ->get();
         return view('users.index', compact('users'));
     }
 
     public function observateur()
     {
-        $users = User::all();
+        $users = DB::table('users')
+            ->join('roles', 'roles.id', '=', 'users.role_id')
+            ->select('users.*', 'roles.name AS role_name', 'roles.class_color')
+            ->where('role_id', 4)
+            ->get();
         return view('users.index', compact('users'));
     }
 

@@ -21,7 +21,8 @@ class RolesTableSeeder extends Seeder
         $roleAdmin = $role->create([
             'name' => trans('users.role_admin'),
             'slug' => 'administrator',
-            'description' => trans('users.desc_role_admin')
+            'description' => trans('users.desc_role_admin'),
+            'class_color' => 'danger'
         ]);
 
         $roleAdmin->assignPermission('config');
@@ -30,21 +31,24 @@ class RolesTableSeeder extends Seeder
         $roleModerator = $role->create([
             'name' => trans('users.role_observateur_regional'),
             'slug' => 'observateur_regional',
-            'description' => trans('users.desc_role_observateur_regional')
+            'description' => trans('users.desc_role_observateur_regional'),
+            'class_color' => 'info'
         ]);
 
         $role = new Role();
         $roleModerator = $role->create([
             'name' => trans('users.role_observateur_secteur'),
             'slug' => 'observateur_secteur',
-            'description' => trans('users.desc_role_observateur_secteur')
+            'description' => trans('users.desc_role_observateur_secteur'),
+            'class_color' => 'warning'
         ]);
 
         $role = new Role();
         $roleModerator = $role->create([
             'name' => trans('users.role_observateur'),
             'slug' => 'observateur',
-            'description' => trans('users.desc_role_observateur')
+            'description' => trans('users.desc_role_observateur'),
+            'class_color' => 'success'
         ]);
 
 

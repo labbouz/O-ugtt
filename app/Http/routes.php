@@ -41,9 +41,9 @@ Route::group( [
                 'is' => 'administrator'
     ], function (){
 
-    Route::get('admins', ['as' => 'admins', 'uses' => 'UserController@observateur']);
-    Route::get('observateurs_regional', ['as' => 'observateurs-regional', 'uses' => 'UserController@observateur']);
-    Route::get('observateurs_secteur', ['as' => 'observateurs-secteur', 'uses' => 'UserController@observateur']);
+    Route::get('admins', ['as' => 'admins', 'uses' => 'UserController@admins']);
+    Route::get('observateurs_regional', ['as' => 'observateurs-regional', 'uses' => 'UserController@observateurs_regional']);
+    Route::get('observateurs_secteur', ['as' => 'observateurs-secteur', 'uses' => 'UserController@observateurs_secteur']);
 
     /*
     * Administration

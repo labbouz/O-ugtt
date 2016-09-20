@@ -21,30 +21,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-4 col-xs-12">
-            <div class="white-box">
-                <div class="user-bg"> <img width="100%" alt="user" src="{{ Request::root() }}/plugins/images/large/img1.jpg">
-                    <div class="overlay-box">
-                        <div class="user-content">
-                            @if(strlen($profile->avatar)>0)
-                                <img src="{{ Request::root() }}/{{ $profile->avatar }}" alt="user-img" class="thumb-lg img-circle">
-                            @else
-                                <img src="{{ Request::root() }}/plugins/images/anonyme.jpg" alt="user-img" class="thumb-lg img-circle">
-                            @endif
-                            <h4 class="text-white">{{ $user->name }}</h4>
-                            <h5 class="text-white">{{ $user->email }}</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="user-btm-box">
-                    <h3 class="box-title"><strong>@lang('users.role')</strong> </h3>
-                     <h2><span class="label label-success">@lang('users.observateur_regional')</span></h2>
-                    <h3 class="box-title"><strong>@lang('users.region')</strong></h3>
-                    <h2><span class="label label-danger">@lang('gouvernorats.Ariana')</span></h2>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-8 col-xs-12">
+        <div class="col-md-12 col-xs-12">
             <div class="panel panel-info">
                 <div class="panel-heading"> @lang('users.change_my_password')</div>
                 <div class="panel-wrapper collapse in" aria-expanded="true">

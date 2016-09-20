@@ -20,18 +20,78 @@ class UsersTableSeeder extends Seeder
         DB::table('profiles')->truncate();
         DB::table('users')->truncate();
 
-        $user = User::create([
-            'name' => 'LABBOUZ Abdelmonam',
-            'email' => 'labbouz@gmail.com',
+        /*
+         * administrator
+         */
+        $user_administrator = User::create([
+            'name' => 'USER Admin',
+            'email' => 'admin@ugtt.tn',
             'password' => bcrypt('ccxccb01'),
             'role_id' => 1,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        $user->assignRole('administrator');
+        $user_administrator->assignRole('administrator');
 
         DB::table('profiles')->insert([
-            'user_id' => $user->id,
+            'user_id' => $user_administrator->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        /*
+         * observateur_regional
+         */
+
+        $user_observateur_regional = User::create([
+            'name' => 'USER Observateur R',
+            'email' => 'or@ugtt.tn',
+            'password' => bcrypt('ccxccb01'),
+            'role_id' => 2,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        $user_observateur_regional->assignRole('administrator');
+
+        DB::table('profiles')->insert([
+            'user_id' => $user_observateur_regional->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        /*
+         * observateur_secteur
+         */
+
+        $user_observateur_secteur = User::create([
+            'name' => 'USER Observateur S',
+            'email' => 'os@ugtt.tn',
+            'password' => bcrypt('ccxccb01'),
+            'role_id' => 3,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        $user_observateur_secteur->assignRole('administrator');
+
+        DB::table('profiles')->insert([
+            'user_id' => $user_observateur_secteur->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        /*
+         * observateur
+         */
+
+        $user_observateur = User::create([
+            'name' => 'USER Observateur',
+            'email' => 'o@ugtt.tn',
+            'password' => bcrypt('ccxccb01'),
+            'role_id' => 4,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        $user_observateur->assignRole('administrator');
+
+        DB::table('profiles')->insert([
+            'user_id' => $user_observateur->id,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 

@@ -31,9 +31,9 @@
         {{ Form::label('role_id', 'الصلاحيات') }}
 
         @if(!isset($user))
-            {!! Form::select('role_id',$RolestList,null,['class' => 'form-control selectpicker', 'required' => 'required', 'data-style'=>'btn-primary btn-outline']) !!}
+            {!! Form::select('role_id',$RolestList,null,['class' => 'form-control', 'required' => 'required']) !!}
         @else
-            {!! Form::select('role_id',$RolestList,$user->role_id,['class' => 'form-control selectpicker', 'required' => 'required', 'data-style'=>'btn-primary btn-outline']) !!}
+            {!! Form::select('role_id',$RolestList,$user->role_id,['class' => 'form-control', 'required' => 'required']) !!}
         @endif
 
         @if ($errors->has('role_id'))
