@@ -45,6 +45,16 @@ return [
     'done_change_avatar' => 'قم بتغيير الصورة',
     'save_new_pass' => 'قم بتسجيل كلمة المرور الجديدة',
 
+    'role_admin' => 'مشرف عام',
+    'role_observateur' => 'راصد',
+    'role_observateur_regional' => 'راصد جهوي',
+    'role_observateur_secteur' => 'راصد قطاعي',
+
+    'desc_role_admin' => 'لديه جميع الصلاحيات',
+    'desc_role_observateur' => 'لديه الصلاحية المتعلقة بالجهة',
+    'desc_role_observateur_regional' => 'لديه الصلاحية المتعلقة بالجهة وصلاحية إدارة الراصدين التابعين في نفس الجهة',
+    'desc_role_observateur_secteur' => 'لديه الصلاحية المتعلقة بالقطاع',
+
 
 
 ];

@@ -10,7 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::group( ['middleware' => ['web' , 'admin'] ], function (){
+Route::group( ['middleware' => ['web' , 'admin', 'auth', 'acl'] ], function (){
     /*
      * user route
      */
@@ -31,16 +31,23 @@ Route::group( ['middleware' => ['web' , 'admin'] ], function (){
     Route::get('users/{id}/delete', 'UserController@destroy');
 
 
-    Route::get('admins', ['as' => 'admins', 'uses' => 'UserController@observateur']);
+
     Route::get('observateurs_users', ['as' => 'observateurs', 'uses' => 'UserController@observateur']);
+
+});
+
+Route::group( [
+                'middleware' => ['web' , 'admin', 'auth', 'acl'],
+                'is' => 'administrator'
+    ], function (){
+
+    Route::get('admins', ['as' => 'admins', 'uses' => 'UserController@observateur']);
     Route::get('observateurs_regional', ['as' => 'observateurs-regional', 'uses' => 'UserController@observateur']);
     Route::get('observateurs_secteur', ['as' => 'observateurs-secteur', 'uses' => 'UserController@observateur']);
 
-
     /*
-     * Administration
-     */
-
+    * Administration
+    */
     Route::resource('secteur', 'SecteurController');
     Route::get('secteur/{id}/delete', 'SecteurController@destroy');
 
@@ -59,6 +66,7 @@ Route::group( ['middleware' => ['web' , 'admin'] ], function (){
     Route::get('violation/create/{id_type_violation}', ['as' => 'violation.create_via_type', 'uses' => 'ViolationController@create']);
 
 });
+
 
 Route::group(['middleware' => 'web'], function () {
     Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);

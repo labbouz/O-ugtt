@@ -23,6 +23,9 @@
 
 
 @section('content')
+    <pre>
+                    <?php print_r($user->getRoles()); ?>
+                </pre>
 
     <div id="crop-avatar">
     <div class="row">

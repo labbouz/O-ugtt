@@ -23,6 +23,10 @@
 
 @section('header')
 
+    <!-- page CSS -->
+    {!! Html::style('plugins/bower_components/bootstrap-select/bootstrap-select.min.css') !!}
+
+
 @endsection
 
 
@@ -50,5 +54,14 @@
 {{-- Block footer --}}
 
 @section('footer')
+
+    {!! Html::script('plugins/bower_components/bootstrap-select/bootstrap-select.min.js') !!}
+
     {!! Html::script('js/validator.js') !!}
+
+    <script>
+        jQuery(document).ready(function() {
+            $('.selectpicker').selectpicker();
+        });
+    </script>
 @endsection

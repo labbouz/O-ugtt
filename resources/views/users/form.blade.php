@@ -26,13 +26,19 @@
         @endif
     </div>
 
-    <div class="form-group{{ $errors->has('admin') ? ' has-error' : '' }}">
-        {{ Form::label('is_admin', 'الصلاحيات') }}
-        {{ Form::select('is_admin', array('0' => 'عضو', '1' => 'مدير'), null, ['class' => 'form-control'] ) }}
 
-        @if ($errors->has('is_admin'))
+    <div class="form-group{{ $errors->has('admin') ? ' has-error' : '' }}">
+        {{ Form::label('role_id', 'الصلاحيات') }}
+
+        @if(!isset($user))
+            {!! Form::select('role_id',$RolestList,null,['class' => 'form-control selectpicker', 'required' => 'required', 'data-style'=>'btn-primary btn-outline']) !!}
+        @else
+            {!! Form::select('role_id',$RolestList,$user->role_id,['class' => 'form-control selectpicker', 'required' => 'required', 'data-style'=>'btn-primary btn-outline']) !!}
+        @endif
+
+        @if ($errors->has('role_id'))
             <span class="help-block">
-                    <strong>{{ $errors->first('is_admin') }}</strong>
+                    <strong>{{ $errors->first('role_id') }}</strong>
                 </span>
         @endif
     </div>

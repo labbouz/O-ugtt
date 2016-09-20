@@ -13,6 +13,9 @@ use App\Http\Requests;
 use App\Http\Requests\AddUserRequestAdmin;
 use Illuminate\Support\Facades\Redirect;
 
+use Kodeine\Acl\Models\Eloquent\Permission;
+use Kodeine\Acl\Models\Eloquent\Role;
+
 class UserController extends Controller
 {
     /**
@@ -39,7 +42,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.add');
+        $RolestList = Role::lists('name', 'id');
+        return view('users.add', compact('RolestList'));
     }
 
     /**
@@ -54,7 +58,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
-        $user->is_admin = $request->is_admin;
+        $user->role_id = $request->role_id;
         $user->save();
 
 
@@ -129,7 +133,10 @@ class UserController extends Controller
      */
     public  function edit($id, User $user) {
         $user = $user->find($id);
-        return view('users.edit', compact('user'));
+
+        $RolestList = Role::lists('name', 'id');
+
+        return view('users.edit', compact('user','RolestList'));
     }
 
     /**

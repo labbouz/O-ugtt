@@ -55,7 +55,7 @@
                             <td>{{  $user->name }}</td>
                             <td>{{  $user->email }}</td>
                             <td><?php $date_created_at = new Date($user->created_at); ?>{{ $date_created_at->format('l j F Y - H:i:s') }}</td>
-                            <td>{{  $user->is_admin == 1 ? 'مدير' : 'عضو' }}</td>
+                            <td>{{  $user->role_id == 1 ? 'مدير' : 'عضو' }}</td>
                             <td>
 
                                 <a class="btn btn-success btn-circle" href="{{ url('/users/'.$user->id.'/edit')  }}"><i class="fa fa-edit"></i></a>
