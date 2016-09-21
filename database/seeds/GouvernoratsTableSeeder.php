@@ -5,6 +5,7 @@ use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 
 use Kodeine\Acl\Models\Eloquent\Permission;
+use Kodeine\Acl\Models\Eloquent\Role;
 
 class GouvernoratsTableSeeder extends Seeder
 {
@@ -55,12 +56,22 @@ class GouvernoratsTableSeeder extends Seeder
                 'name'        => $gouvernorat['permission_slug'],
                 'slug'        => [
                     'create'     => true,
+                    'read'     => true,
                     'view'       => true,
                     'update'     => true,
-                    'delete'     => false,
+                    'delete'     => true,
                 ],
                 'description' => trans('users.permission_regional').' '.$gouvernorat['nom_gouvernorat']
             ]);
+
+            $role = new Role();
+            $role->create([
+                'name' => trans('users.observateur_pour') .' '. $gouvernorat['nom_gouvernorat'],
+                'slug' => 'rol_regional_'.$gouvernorat['permission_slug'],
+                'description' => trans('users.desc_role_observateur_regional_specif') .' '. $gouvernorat['nom_gouvernorat'],
+                'class_color' => 'info'
+            ]);
+
         }
     }
 }

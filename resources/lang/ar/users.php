@@ -55,9 +55,15 @@ return [
     'desc_role_observateur_regional' => 'لديه الصلاحية المتعلقة بالجهة وصلاحية إدارة الراصدين التابعين في نفس الجهة',
     'desc_role_observateur_secteur' => 'لديه الصلاحية المتعلقة بالقطاع',
 
+    'desc_role_observateur_regional_specif' => 'لديه الصلاحيات المتعلقة بملفات جهة ',
+
     'permission_regional' => 'رخصة جهة',
     'permission_secteur' => 'رخصة قطاع',
 
+    'la_permission_regional' => 'رخصة الجهة',
+    'la_permission_secteur' => 'رخصة القطاع',
+
+    'observateur_pour' => 'راصد بجهة',
 
 
 ];

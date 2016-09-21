@@ -86,7 +86,15 @@ class UserController extends Controller
     public function create()
     {
         $RolestList = Role::lists('name', 'id');
-        return view('users.add', compact('RolestList'));
+
+        $GouvernorastPermissionList = DB::table('permissions')
+            ->join('gouvernorats', 'permissions.name', '=', 'gouvernorats.permission_slug')
+            ->select('permissions.*')
+            ->get();
+
+        $SeteuresPermissionList = DB::table('permissions')->select('permissions.*')->where('name', 'LIKE', 'secteur_%')->get();;
+
+        return view('users.add', compact('RolestList','GouvernorastPermissionList','SeteuresPermissionList'));
     }
 
     /**
@@ -104,6 +112,20 @@ class UserController extends Controller
         $user->role_id = $request->role_id;
         $user->save();
 
+        $user->assignRole($user->role_id );
+
+        /*
+         * Set Permission
+         */
+    /*
+        if(is_array($request->permissions)) {
+            foreach ($request->permissions as $permission){
+
+            }
+
+        }
+*/
+        $user->addPermission(3);
 
         Profile::create([
             'user_id' => $user->id,
@@ -179,7 +201,14 @@ class UserController extends Controller
 
         $RolestList = Role::lists('name', 'id');
 
-        return view('users.edit', compact('user','RolestList'));
+        $GouvernorastPermissionList = DB::table('permissions')
+            ->join('gouvernorats', 'permissions.name', '=', 'gouvernorats.permission_slug')
+            ->select('permissions.*')
+            ->get();
+
+        $SeteuresPermissionList = DB::table('permissions')->select('permissions.*')->where('name', 'LIKE', 'secteur_%')->get();;
+
+        return view('users.edit', compact('user','RolestList','GouvernorastPermissionList','SeteuresPermissionList'));
     }
 
     /**

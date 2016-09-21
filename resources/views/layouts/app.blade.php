@@ -240,6 +240,7 @@
     <!-- Custom Theme JavaScript -->
     {!! Html::script('js/custom.min.js') !!}
 
+
 @yield('footer')
 
 </body>

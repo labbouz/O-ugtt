@@ -7,6 +7,7 @@ use App\Secteur;
 use Carbon\Carbon;
 
 use Kodeine\Acl\Models\Eloquent\Permission;
+use Kodeine\Acl\Models\Eloquent\Role;
 
 class SecteursTableSeeder extends Seeder
 {
@@ -46,9 +47,10 @@ class SecteursTableSeeder extends Seeder
                 'name'        => 'secteur_'.$secteuradedd->id,
                 'slug'        => [
                     'create'     => true,
+                    'read'     => true,
                     'view'       => true,
                     'update'     => true,
-                    'delete'     => false,
+                    'delete'     => true,
                 ],
                 'description' => trans('users.permission_secteur').' '.trans('secteur.secteur_'.$i)
             ]);

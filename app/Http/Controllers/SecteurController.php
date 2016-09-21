@@ -57,13 +57,13 @@ class SecteurController extends Controller
             'name'        => 'secteur_'.$secteuradedd->id,
             'slug'        => [
                 'create'     => true,
+                'read'     => true,
                 'view'       => true,
                 'update'     => true,
-                'delete'     => false,
+                'delete'     => true,
             ],
             'description' => trans('users.permission_secteur').' '.$secteuradedd->nom_secteur
         ]);
-
         return redirect()->route('secteur.index')->withFlashMessage(trans('secteur.message_save_succes_secteur'));
     }
 
