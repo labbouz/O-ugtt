@@ -50,6 +50,8 @@ class StructureSyndicaleController extends Controller
             'description_type' => $request->description_type,
         ]);
 
+
+
         return redirect()->route('structure_syndicale.index')->withFlashMessage(trans('syndicale.message_save_succes_structure_syndicale'));
     }
 

@@ -15,6 +15,7 @@ class CreateGouvernoratsTable extends Migration
         Schema::create('gouvernorats', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom_gouvernorat');
+            $table->string('permission_slug');
             $table->timestamps();
         });
     }

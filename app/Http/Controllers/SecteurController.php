@@ -10,6 +10,8 @@ use App\Secteur;
 
 use Illuminate\Support\Facades\Redirect;
 
+use Kodeine\Acl\Models\Eloquent\Permission;
+
 class SecteurController extends Controller
 {
     /**
@@ -45,8 +47,19 @@ class SecteurController extends Controller
             'nom_secteur' => 'required|max:255',
         ]);
 
-        Secteur::create([
+        $secteuradedd = Secteur::create([
             'nom_secteur' => $request->nom_secteur,
+        ]);
+
+        Permission::create([
+            'name'        => 'secteur_'.$secteuradedd->id,
+            'slug'        => [
+                'create'     => true,
+                'view'       => true,
+                'update'     => true,
+                'delete'     => false,
+            ],
+            'description' => trans('users.permission_secteur').' '.$secteuradedd->nom_secteur
         ]);
 
         return redirect()->route('secteur.index')->withFlashMessage(trans('secteur.message_save_succes_secteur'));

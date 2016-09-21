@@ -2,7 +2,11 @@
 
 use Illuminate\Database\Seeder;
 
+use App\Secteur;
+
 use Carbon\Carbon;
+
+use Kodeine\Acl\Models\Eloquent\Permission;
 
 class SecteursTableSeeder extends Seeder
 {
@@ -15,19 +19,26 @@ class SecteursTableSeeder extends Seeder
     {
         //delete secteurs table records
         DB::table('secteurs')->truncate();
-        //insert some dummy records
-        DB::table('secteurs')->insert(array(
-            array('nom_secteur'=>trans('secteur.transport'), 'created_at' => Carbon::now()->format('Y-m-d H:i:s')),
-            array('nom_secteur'=>trans('secteur.professions_et_services'), 'created_at' => Carbon::now()->format('Y-m-d H:i:s')),
-            array('nom_secteur'=>trans('secteur.travaux'), 'created_at' => Carbon::now()->format('Y-m-d H:i:s')),
-            array('nom_secteur'=>trans('secteur.petrole'), 'created_at' => Carbon::now()->format('Y-m-d H:i:s')),
-            array('nom_secteur'=>trans('secteur.tissage'), 'created_at' => Carbon::now()->format('Y-m-d H:i:s')),
-            array('nom_secteur'=>trans('secteur.sante'), 'created_at' => Carbon::now()->format('Y-m-d H:i:s')),
-            array('nom_secteur'=>trans('secteur.pension_et_le_tourisme'), 'created_at' => Carbon::now()->format('Y-m-d H:i:s')),
-            array('nom_secteur'=>trans('secteur.banques'), 'created_at' => Carbon::now()->format('Y-m-d H:i:s')),
-            array('nom_secteur'=>trans('secteur.metaux_et_produits_electroniques'), 'created_at' => Carbon::now()->format('Y-m-d H:i:s')),
-            array('nom_secteur'=>trans('secteur.communications'), 'created_at' => Carbon::now()->format('Y-m-d H:i:s')),
 
-        ));
+        for($i=1;$i<=10;$i++) {
+
+            $secteuradedd = Secteur::create([
+                'nom_secteur' => trans('secteur.secteur_'.$i),
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+
+            Permission::create([
+                'name'        => 'secteur_'.$secteuradedd->id,
+                'slug'        => [
+                    'create'     => true,
+                    'view'       => true,
+                    'update'     => true,
+                    'delete'     => false,
+                ],
+                'description' => trans('users.permission_secteur').' '.trans('secteur.secteur_'.$i)
+            ]);
+
+        }
+
     }
 }

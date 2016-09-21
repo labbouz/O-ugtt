@@ -14,6 +14,7 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
+        /*
         $permission = new Permission();
         $permission->create([
             'name'        => 'config',
@@ -25,6 +26,7 @@ class PermissionsTableSeeder extends Seeder
             ],
             'description' => 'manage config  permissions'
         ]);
+        */
 
     }
 }

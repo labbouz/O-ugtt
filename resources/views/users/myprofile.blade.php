@@ -23,16 +23,11 @@
 
 
 @section('content')
-    <pre>
-                    <?php print_r($user->getRoles()); ?>
-                </pre>
 
     <div id="crop-avatar">
     <div class="row">
         <div class="col-md-4 col-xs-12">
             <div class="white-box">
-
-
                 <div class="user-bg"> <img width="100%" alt="user" src="{{ Request::root() }}/plugins/images/large/img1.jpg">
                     <div class="overlay-box">
                         <div class="user-content">

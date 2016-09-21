@@ -22,16 +22,16 @@ return [
     'detail_secteur' => 'تعديل قطاع',
 
 
-    'transport' => 'النقل',
-    'professions_et_services' => 'المهن والخدمات',
-    'travaux' => 'البناء',
-    'petrole' => 'النفط',
-    'tissage' => 'النسيج',
-    'sante' => 'الصحة',
-    'pension_et_le_tourisme' => 'المعاش والسياحة',
-    'banques' => 'البنوك',
-    'metaux_et_produits_electroniques' => 'المعادن والالكترونيك',
-    'communications' => 'الاتصالات',
+    'secteur_1' => 'النقل',
+    'secteur_2' => 'المهن والخدمات',
+    'secteur_3' => 'البناء',
+    'secteur_4' => 'النفط',
+    'secteur_5' => 'النسيج',
+    'secteur_6' => 'الصحة',
+    'secteur_7' => 'المعاش والسياحة',
+    'secteur_8' => 'البنوك',
+    'secteur_9' => 'المعادن والالكترونيك',
+    'secteur_10' => 'الاتصالات',
 
 
 
