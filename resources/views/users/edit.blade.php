@@ -47,6 +47,7 @@
             </div>
         </div>
         <div class="col-md-9">
+
             <div class="panel panel-primary">
                 <div class="panel-heading">@lang('users.la_permission_secteur')</div>
                 <div class="panel-wrapper collapse in">

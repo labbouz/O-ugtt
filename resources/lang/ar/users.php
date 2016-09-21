@@ -56,6 +56,7 @@ return [
     'desc_role_observateur_secteur' => 'لديه الصلاحية المتعلقة بالقطاع',
 
     'desc_role_observateur_regional_specif' => 'لديه الصلاحيات المتعلقة بملفات جهة ',
+    'desc_role_observateur_secteur_specif' => 'لديه الصلاحيات المتعلقة بملفات قطاع ',
 
     'permission_regional' => 'رخصة جهة',
     'permission_secteur' => 'رخصة قطاع',
@@ -64,6 +65,7 @@ return [
     'la_permission_secteur' => 'رخصة القطاع',
 
     'observateur_pour' => 'راصد بجهة',
+    'observateur_secteur_pour' => 'راصد بقطاع',
 
 
 ];

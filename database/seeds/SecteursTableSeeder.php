@@ -55,6 +55,14 @@ class SecteursTableSeeder extends Seeder
                 'description' => trans('users.permission_secteur').' '.trans('secteur.secteur_'.$i)
             ]);
 
+            $role = new Role();
+            $role->create([
+                'name' => trans('users.observateur_secteur_pour') .' '. trans('secteur.secteur_'.$i),
+                'slug' => 'rol_secteur_'.$secteuradedd->id,
+                'description' => trans('users.desc_role_observateur_secteur_specif') .' '. trans('secteur.secteur_'.$i),
+                'class_color' => 'primary'
+            ]);
+
         }
 
     }

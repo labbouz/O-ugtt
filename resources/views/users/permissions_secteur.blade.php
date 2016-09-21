@@ -1,11 +1,11 @@
 @if(!isset($user))
 
-    @foreach ($SeteuresPermissionList as $SeteurePermission)
+    @foreach ($SeteuresRolesList as $SeteureRole)
 
-        <div class="col-md-4">
+        <div class="col-lg-6 col-md-6">
             <div class="checkbox checkbox-primary">
-                <input id="checkbox{{ $SeteurePermission->id }}" name="permissions[]" type="checkbox" value="{{ $SeteurePermission->name }}">
-                <label for="checkbox{{ $SeteurePermission->id }}"> {{ $SeteurePermission->description }} </label>
+                <input id="checkbox{{ $SeteureRole->id }}" name="permissions[]" type="checkbox" value="{{ $SeteureRole->slug }}">
+                <label for="checkbox{{ $SeteureRole->id }}"> {{ $SeteureRole->name }} </label>
             </div>
         </div>
 
@@ -13,12 +13,12 @@
 
 @else
 
-    @foreach ($SeteuresPermissionList as $SeteurePermission)
+    @foreach ($SeteuresRolesList as $SeteureRole)
 
-        <div class="col-md-4">
+        <div class="col-lg-6 col-md-6">
             <div class="checkbox checkbox-primary">
-                <input id="checkbox{{ $SeteurePermission->id }}" name="permissions[]" type="checkbox" value="{{ $SeteurePermission->name }}"@permission($SeteurePermission->name) checked @endpermission>
-                <label for="checkbox{{ $SeteurePermission->id }}"> {{ $SeteurePermission->description }} </label>
+                <input id="checkbox{{ $SeteureRole->id }}" name="permissions[]" type="checkbox" value="{{ $SeteureRole->slug }}"@if($user->is($SeteureRole->slug)) checked @endif>
+                <label for="checkbox{{ $SeteureRole->id }}"> {{ $SeteureRole->name }} </label>
             </div>
         </div>
 

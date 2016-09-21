@@ -85,16 +85,18 @@ class UserController extends Controller
      */
     public function create()
     {
-        $RolestList = Role::lists('name', 'id');
+        $RolestList = DB::table('roles')
+            ->where('slug', 'administrator')
+            ->orWhere('slug', 'observateur_regional')
+            ->orWhere('slug', 'observateur_secteur')
+            ->orWhere('slug', 'observateur')
+            ->pluck('name','id');
 
-        $GouvernorastPermissionList = DB::table('permissions')
-            ->join('gouvernorats', 'permissions.name', '=', 'gouvernorats.permission_slug')
-            ->select('permissions.*')
-            ->get();
+        $GouvernorastRolesList = DB::table('roles')->select('roles.*')->where('slug', 'LIKE', 'rol_regional_%')->get();
 
-        $SeteuresPermissionList = DB::table('permissions')->select('permissions.*')->where('name', 'LIKE', 'secteur_%')->get();;
+        $SeteuresRolesList = DB::table('roles')->select('roles.*')->where('slug', 'LIKE', 'rol_secteur_%')->get();
 
-        return view('users.add', compact('RolestList','GouvernorastPermissionList','SeteuresPermissionList'));
+        return view('users.add', compact('RolestList','GouvernorastRolesList','SeteuresRolesList'));
     }
 
     /**
@@ -112,20 +114,15 @@ class UserController extends Controller
         $user->role_id = $request->role_id;
         $user->save();
 
-        $user->assignRole($user->role_id );
+
 
         /*
-         * Set Permission
+         * Set Roles
          */
-    /*
+
         if(is_array($request->permissions)) {
-            foreach ($request->permissions as $permission){
-
-            }
-
+            $user->assignRole( $request->permissions );
         }
-*/
-        $user->addPermission(3);
 
         Profile::create([
             'user_id' => $user->id,
@@ -198,17 +195,22 @@ class UserController extends Controller
      */
     public  function edit($id, User $user) {
         $user = $user->find($id);
+        $user_roles = $user->getRoles();
 
-        $RolestList = Role::lists('name', 'id');
+        $RolestList = DB::table('roles')
+            ->where('slug', 'administrator')
+            ->orWhere('slug', 'observateur_regional')
+            ->orWhere('slug', 'observateur_secteur')
+            ->orWhere('slug', 'observateur')
+            ->pluck('name','id');
 
-        $GouvernorastPermissionList = DB::table('permissions')
-            ->join('gouvernorats', 'permissions.name', '=', 'gouvernorats.permission_slug')
-            ->select('permissions.*')
-            ->get();
+        $GouvernorastRolesList = DB::table('roles')->select('roles.*')->where('slug', 'LIKE', 'rol_regional_%')->get();
 
-        $SeteuresPermissionList = DB::table('permissions')->select('permissions.*')->where('name', 'LIKE', 'secteur_%')->get();;
+        $SeteuresRolesList = DB::table('roles')->select('roles.*')->where('slug', 'LIKE', 'rol_secteur_%')->get();
 
-        return view('users.edit', compact('user','RolestList','GouvernorastPermissionList','SeteuresPermissionList'));
+
+
+        return view('users.edit', compact('user','RolestList','GouvernorastRolesList','SeteuresRolesList', 'user_roles'));
     }
 
     /**
@@ -222,6 +224,15 @@ class UserController extends Controller
     {
         $userUpdated = $user->find($id);
         $userUpdated->fill( $request->all() )->save();
+
+        /*
+         * Set Roles
+         */
+
+        $userUpdated->revokeAllRoles();
+        if(is_array($request->permissions)) {
+            $userUpdated->assignRole( $request->permissions );
+        }
 
         return redirect()->route('users.index')->withFlashMessage('تم التعديل بنجاح');
     }
