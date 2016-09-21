@@ -77,6 +77,12 @@ Breadcrumbs::register('secteur.edit', function($breadcrumbs, $secteur)
     $breadcrumbs->push(trans('secteur.edit_secteur') . ' ' . $secteur->nom_secteur, route('secteur.edit', $secteur->id));
 });
 
+Breadcrumbs::register('secteur.show', function($breadcrumbs, $secteur)
+{
+    $breadcrumbs->parent('secteur.index');
+    $breadcrumbs->push(trans('secteur.la_conventions_sectorielles_conjointes') . '  '  . trans('secteur.pour_secteur') . $secteur->nom_secteur, route('secteur.show', $secteur->id));
+});
+
 
 /*
  *  Breadcrumbs move

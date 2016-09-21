@@ -5,7 +5,7 @@
 
 @section('page-title')
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-        <h4 class="page-title"> @lang('secteur.secteurs')  </h4>
+        <h4 class="page-title"> @lang('secteur.la_conventions_sectorielles_conjointes')  </h4>
     </div>
 @endsection
 
@@ -13,7 +13,7 @@
 {{-- Block breadcrumb --}}
 
 @section('breadcrumb')
-    {!! Breadcrumbs::render() !!}
+    {!! Breadcrumbs::render('secteur.show', $secteur) !!}
 @endsection
 
 
@@ -37,15 +37,18 @@
             <div class="white-box">
                 <div class="row">
                     <div class="col-sm-12 col-md-8">
-                        <h3 class="box-title m-b-0">@lang('secteur.secteurs')</h3>
-                        <p class="text-muted m-b-0">@lang('secteur.description_secteurs')</p>
+                        <h3 class="box-title m-b-0">@lang('secteur.la_conventions_sectorielles_conjointes')  @lang('secteur.pour_secteur') {{ $secteur->nom_secteur }}</h3>
                     </div>
 
+                    <div class="col-sm-12 col-md-4 button-box m-b-0">
+                        <a href="javascript:void(0)" class="btn btn-block btn-info btn-lg " onclick="history.go(-1);return false;">@lang('secteur.secteurs') </a>
+                    </div>
 
-
+                    {{--
                     <div class="col-sm-12 col-md-4 button-box m-b-0">
                         <a href="{{ route('secteur.create') }}" class="btn btn-block btn-info btn-lg  "><i class="fa fa-plus-circle m-l-5"></i>@lang('secteur.add_secteur') </a>
                     </div>
+                    --}}
                 </div>
 
                 <hr class="m-t-20 m-b-30">
@@ -57,30 +60,28 @@
                         <tr>
                             <th>@lang('secteur.secteur_nom')</th>
                             <th>@lang('main.add_in')</th>
-                            <th class="no-sort">@lang('main.tools')</th>
+                        {{--<th class="no-sort">@lang('main.tools')</th> --}}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($secteur->conventions as $convention)
+                        <tr>
+                            <td> {{  $convention->nom_convention }} </td>
+                            <td><?php $date_created_at = new Date($convention->created_at); ?>{{ $date_created_at->format('l j F Y - H:i:s') }}</td>
+                            {{--<td>
+                                <a class="btn btn-success btn-circle" href="{{ url('/convention/'.$convention->id.'/edit')  }}"><i class="fa fa-edit"></i></a>
+                                <a class="btn btn-danger btn-circle" href="{{ url('/convention/'.$convention->id.'/delete')  }}"><i class="fa fa-times"></i></a>
+                            </td>--}}
                         </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($secteurs as $secteur)
-                            <tr>
-                                <td>{{  $secteur->nom_secteur }}
-                                <a href="{{ route('secteur.show', $secteur->id) }}"><span class="label label-info m-r-10"> {{ count($secteur->conventions) }} @lang('secteur.conventions_sectorielles_conjointes') </span></a>
-                                </td>
-                                <td><?php $date_created_at = new Date($secteur->created_at); ?>{{ $date_created_at->format('l j F Y - H:i:s') }}</td>
-                                <td>
-                                    <a class="btn btn-success btn-circle" href="{{ url('/secteur/'.$secteur->id.'/edit')  }}"><i class="fa fa-edit"></i></a>
-                                    <a class="btn btn-danger btn-circle" href="{{ url('/secteur/'.$secteur->id.'/delete')  }}"><i class="fa fa-times"></i></a>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
-
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
+
         </div>
     </div>
-    <!-- .row -->
+</div>
+<!-- .row -->
 @endsection
 
 

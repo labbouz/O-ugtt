@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Secteur;
 
+use DB;
+
 use Illuminate\Support\Facades\Redirect;
 
 use Kodeine\Acl\Models\Eloquent\Permission;
@@ -73,7 +75,8 @@ class SecteurController extends Controller
      */
     public function show($id)
     {
-        //
+        $secteur = Secteur::find($id);
+        return view('secteur.show', compact('secteur'));
     }
 
     /**
@@ -99,6 +102,10 @@ class SecteurController extends Controller
     {
         $secteurUpdated = Secteur::find($id);
         $secteurUpdated->fill( $request->all() )->save();
+
+        DB::table('permissions')
+            ->where('name', 'secteur_'.$secteurUpdated->id)
+            ->update(['description' => trans('users.permission_secteur').' '.$secteurUpdated->nom_secteur]);
 
         return redirect()->route('secteur.index')->withFlashMessage(trans('secteur.message_update_succes_secteur'));
     }
