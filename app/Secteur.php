@@ -12,4 +12,9 @@ class Secteur extends Model
     {
         return $this->hasMany('\App\Convention');
     }
+
+    public function societes()
+    {
+        return $this->hasMany('\App\Societe');
+    }
 }

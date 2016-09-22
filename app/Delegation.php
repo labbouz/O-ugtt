@@ -14,4 +14,9 @@ class Delegation extends Model
         return $this->belongsTo('\App\Gouvernorat');
 
     }
+
+    public function societes()
+    {
+        return $this->hasMany('\App\Societe');
+    }
 }

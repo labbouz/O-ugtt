@@ -4,13 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Gouvernorat extends Model
+class TypeSociete extends Model
 {
+    protected $table = 'types_societes';
 
-    public function delegations()
-    {
-        return $this->hasMany('\App\Delegation');
-    }
+    protected $fillable = ['nom_type_societe'];
 
     public function societes()
     {

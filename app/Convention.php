@@ -13,4 +13,9 @@ class Convention extends Model
         return $this->belongsTo('\App\Secteur');
 
     }
+
+    public function societes()
+    {
+        return $this->hasMany('\App\Societe');
+    }
 }

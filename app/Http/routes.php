@@ -10,6 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+
 Route::group( ['middleware' => ['web' , 'admin', 'auth', 'acl'] ], function (){
     /*
      * user route
@@ -23,6 +24,10 @@ Route::group( ['middleware' => ['web' , 'admin', 'auth', 'acl'] ], function (){
 
 
     Route::get('contacts', ['as' => 'contacts', 'uses' => 'UserController@contacts']);
+
+    Route::resource('societe', 'SocieteController');
+    Route::get('societe/{id}/delete', 'SocieteController@destroy');
+
 
 });
 

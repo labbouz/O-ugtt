@@ -25,7 +25,7 @@
     </ul>
 </li>
 <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="," class="linea-icon linea-elaborate  fa-fw"></i> <span class="hide-menu">@lang('main.stats')</span></a> </li>
-<li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="U" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('main.syndicats')</span></a> </li>
+<li> <a href="{{ route('societe.index') }}" class="waves-effect{{ active(['societe']) }}"><i data-icon="U" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('main.syndicats')</span></a> </li>
 <li> <a href="{{ route('contacts') }}" class="waves-effect{{ active(['contacts']) }}"><i data-icon="&#xe006;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('main.contacts')</span></a> </li>
 @role('administrator')
 <li>

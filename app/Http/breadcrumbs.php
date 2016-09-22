@@ -181,3 +181,23 @@ Breadcrumbs::register('violation.edit', function($breadcrumbs, $violation)
     $breadcrumbs->parent('violation.index');
     $breadcrumbs->push(trans('violations.edit_violation') . ' ' . $violation->nom_violation, route('violation.edit', $violation->id));
 });
+
+/*
+ *  Breadcrumbs delegation
+ */
+
+Breadcrumbs::register('societe.index', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('societe.Institutions_infractions_commises'), route('societe.index'));
+});
+
+Breadcrumbs::register('societe.create', function($breadcrumbs) {
+    $breadcrumbs->parent('societe.index');
+    $breadcrumbs->push(trans('societe.add_societe'), route('societe.create'));
+});
+
+Breadcrumbs::register('societe.edit', function($breadcrumbs, $societe)
+{
+    $breadcrumbs->parent('societe.index');
+    $breadcrumbs->push(trans('societe.edit_societe') . ' ' . $societe->nom_delegation, route('societe.edit', $societe->id));
+});
