@@ -85,5 +85,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
 
+    Route::get('stats', ['as' => 'stats', 'uses' => 'HomeController@stats']);
+
 });
 

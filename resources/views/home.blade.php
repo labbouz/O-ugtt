@@ -159,7 +159,7 @@
     <div class="row">
         <div class="col-md-6 col-lg-6 col-sm-12">
             <div class="white-box">
-                <h3 class="box-title"> ملاحظات جديدة من الراصدون التابعون لنفس الجهة</h3>
+                <h3 class="box-title"> ملاحظات جديدة من الراصدين التابعين لنفس الجهة</h3>
                 <div class="comment-center">
                     <div class="comment-body">
                         <div class="user-img"> <img src="../plugins/images/users/pawandeep.jpg" alt="user" class="img-circle"></div>
