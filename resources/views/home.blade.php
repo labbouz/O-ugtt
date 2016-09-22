@@ -157,14 +157,126 @@
 
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6 col-lg-6 col-sm-12">
             <div class="white-box">
-                <h3 class="box-title"> @lang('main.page') @lang('main.dashboard') </h3>
+                <h3 class="box-title"> ملاحظات جديدة من الراصدون التابعون لنفس الجهة</h3>
+                <div class="comment-center">
+                    <div class="comment-body">
+                        <div class="user-img"> <img src="../plugins/images/users/pawandeep.jpg" alt="user" class="img-circle"></div>
+                        <div class="mail-contnet">
+                            <h5>Pavan kumar</h5>
+                            <span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat.</span> <span class="label label-rounded label-info">PENDING</span><a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-right">April 14, 2016</span></div>
+                    </div>
+                    <div class="comment-body">
+                        <div class="user-img"> <img src="../plugins/images/users/sonu.jpg" alt="user" class="img-circle"> </div>
+                        <div class="mail-contnet">
+                            <h5>Sonu Nigam</h5>
+                            <span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat.</span><span class="label label-rounded label-success">APPROVED</span><a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-right">April 14, 2016</span></div>
+                    </div>
+                    <div class="comment-body">
+                        <div class="user-img"> <img src="../plugins/images/users/arijit.jpg" alt="user" class="img-circle"> </div>
+                        <div class="mail-contnet">
+                            <h5>Arijit Sinh</h5>
+                            <span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. </span><span class="label label-rounded label-danger">REJECTED</span><a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-right">April 14, 2016</span></div>
+                    </div>
+                    <div class="comment-body b-none">
+                        <div class="user-img"> <img src="../plugins/images/users/pawandeep.jpg" alt="user" class="img-circle"></div>
+                        <div class="mail-contnet">
+                            <h5>Pavan kumar</h5>
+                            <span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat.</span> <span class="label label-rounded label-info">PENDING</span> <a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-right">April 14, 2016</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-sm-12">
+            <div class="white-box">
+                <h3 class="box-title">عدد الإنتهاكات حسب القطاع
+                    <div class="col-md-3 col-sm-4 col-xs-6 pull-right">
+                        <select class="form-control pull-right row b-none">
+                            <option>شهر سبتمبر 2016</option>
+                            <option> شهر أوت 2016 </option>
+                            <option> شهر جويلية 2016 </option>
+                            <option> شهر جوان 2016 </option>
+                        </select>
+                    </div>
+                </h3>
+                <div class="row sales-report">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <h2>شهر سبتمبر 2016</h2>
+                        <p> تقرير الإنتهاكات</p>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 ">
+                        <h1 class="text-right text-success m-t-20">183 إنتهاك </h1>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table ">
+                        <thead>
+                        <tr>
 
-           </div>
+                            <th>القطاع</th>
+                            <th>اعتداءات على المسؤول النقابي </th>
+                            <th>اعتداءات على الحق النقابي</th>
+                            <th>عدد الإنتهاكات</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+
+                            <td class="txt-oflo">قطاع المعاش و السياحة </td>
+                            <td>3 </td>
+                            <td>6</td>
+                            <td><span class="text-success">9</span></td>
+                        </tr>
+                        <tr>
+
+                            <td class="txt-oflo">قطاع النفط و المواد الكيميائية</td>
+                            <td>8</td>
+                            <td>13</td>
+                            <td><span class="text-info">21</td>
+                        </tr>
+                        <tr>
+
+                            <td class="txt-oflo">قطاع المهن المختلفة</td>
+                            <td>52</td>
+                            <td>13</td>
+                            <td><span class="text-danger">65</span></td>
+                        </tr>
+                        <tr>
+
+                            <td class="txt-oflo">قطاع المعادن</td>
+                            <td>2</td>
+                            <td>7</td>
+                            <td><span class="text-success">9</span></td>
+                        </tr>
+                        <tr>
+
+                            <td class="txt-oflo">قطاع النسيج </td>
+                            <td>0</td>
+                            <td>3</td>
+                            <td><span class="text-success">3</span></td>
+                        </tr>
+                        <tr>
+
+                            <td class="txt-oflo">قطاع الصحة </td>
+                            <td>11</td>
+                            <td>33</td>
+                            <td><span class="text-danger">44</span></td>
+                        </tr>
+                        <tr>
+
+                            <td class="txt-oflo">قطاع النقل </td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td><span class="text-success">3</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a href="#">شاهد جميع الإحصائيات</a> </div>
+            </div>
         </div>
     </div>
-    <!-- .row -->
+    <!-- /.row -->
 @endsection
 
 

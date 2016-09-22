@@ -5,38 +5,38 @@
 Morris.Area({
         element: 'morris-area-chart',
         data: [{
-            period: '2010',
+            period: '2016-3',
             iphone: 50,
             ipad: 80,
             itouch: 20
         }, {
-            period: '2011',
+            period: '2016-4',
             iphone: 130,
             ipad: 100,
             itouch: 80
         }, {
-            period: '2012',
+            period: '2016-5',
             iphone: 80,
             ipad: 60,
             itouch: 70
         }, {
-            period: '2013',
+            period: '2016-6',
             iphone: 70,
             ipad: 200,
             itouch: 140
         }, {
-            period: '2014',
+            period: '2016-7',
             iphone: 180,
             ipad: 150,
             itouch: 140
         }, {
-            period: '2015',
+            period: '2016-8',
             iphone: 105,
             ipad: 100,
             itouch: 80
         },
          {
-            period: '2016',
+            period: '2016-9',
             iphone: 250,
             ipad: 150,
             itouch: 200
