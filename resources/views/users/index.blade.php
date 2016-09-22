@@ -31,14 +31,19 @@
 {{-- Block content --}}
 
 @section('content')
-{{-- --}}
+
     <div class="row">
         <div class="col-sm-12">
             <div class="white-box">
                 <h3 class="box-title m-b-0">@lang('users.users')</h3>
                 <p class="text-muted m-b-30">@lang('users.info_list_users')</p>
 
-                <div class="table-responsive">
+
+               <?php
+                    $roles_observateur = Auth::user()->getRoles();
+                    array_pull($roles_observateur, Auth::user()->role_id);
+               ?>
+               <div class="table-responsive">
                     <table id="lists_datas" class="table table-striped">
                         <thead>
                         <tr>
@@ -53,21 +58,31 @@
                         </thead>
                         <tbody>
                         @foreach($users as $user)
-                        <tr>
-                            <td>{{  $user->name }}</td>
-                            <td>{{  $user->email }}</td>
-                            <td><?php $date_created_at = new Date($user->created_at); ?>{{ $date_created_at->format('l j F Y - H:i:s') }}</td>
-                            <td><span class="label label-{{  $user->class_color }}">{{  $user->role_name }}</span></td>
+                            <?php $user_check = \App\User::find($user->id); ?>
                             @role('administrator')
-                            <td>
+                            <tr>
+                                <td>{{  $user->name }}</td>
+                                <td>{{  $user->email }}</td>
+                                <td><?php $date_created_at = new Date($user->created_at); ?>{{ $date_created_at->format('l j F Y - H:i:s') }}</td>
+                                <td><span class="label label-{{  $user->class_color }}">{{  $user->role_name }}</span></td>
+                                <td>
+                                    <a class="btn btn-success btn-circle" href="{{ url('/users/'.$user->id.'/edit')  }}"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-danger btn-circle" href="{{ url('/users/'.$user->id.'/delete')  }}"><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+                            @else
 
-                                <a class="btn btn-success btn-circle" href="{{ url('/users/'.$user->id.'/edit')  }}"><i class="fa fa-edit"></i></a>
+                                @if($user_check->is($roles_observateur, 'or'))
+                                    <tr>
+                                        <td>{{  $user->name }}</td>
+                                        <td>{{  $user->email }}</td>
+                                        <td><?php $date_created_at = new Date($user->created_at); ?>{{ $date_created_at->format('l j F Y - H:i:s') }}</td>
+                                        <td><span class="label label-{{  $user->class_color }}">{{  $user->role_name }}</span></td>
+                                    </tr>
+                                @endif
 
-                                <a class="btn btn-danger btn-circle" href="{{ url('/users/'.$user->id.'/delete')  }}"><i class="fa fa-times"></i></a>
-
-                            </td>
                             @endrole
-                        </tr>
+
                         @endforeach
                         </tbody>
                     </table>

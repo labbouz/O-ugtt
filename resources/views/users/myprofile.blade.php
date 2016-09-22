@@ -47,9 +47,10 @@
 
                 <div class="user-btm-box">
                     <h3 class="box-title"><strong>@lang('users.role')</strong> </h3>
-                     <h2><span class="label label-success">@lang('users.observateur_regional')</span></h2>
-                    <h3 class="box-title"><strong>@lang('users.region')</strong></h3>
-                    <h2><span class="label label-danger">@lang('gouvernorats.Ariana')</span></h2>
+                    @foreach ($roles_profile as $role_profile)
+                        <p><span class="label label-{{ $role_profile->class_color }} ">{{ $role_profile->name }}</span></a>
+                    @endforeach
+
 
 
                     <hr>

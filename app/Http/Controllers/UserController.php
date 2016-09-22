@@ -147,7 +147,14 @@ class UserController extends Controller
     {
         $user = User::find(Auth::user()->id);
         $profile = $user->profile;
-        return view('users.myprofile', compact('user','profile'));
+
+        $roles_profile = DB::table('roles')
+            ->join('role_user', 'roles.id', '=', 'role_user.role_id')
+            ->select('roles.*')
+            ->where('role_user.user_id', $user->id)
+            ->get();
+
+        return view('users.myprofile', compact('user','profile','roles_profile'));
     }
 
     public function editMyProfile(Request $request)
