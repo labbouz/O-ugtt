@@ -52,7 +52,7 @@ return [
 
     'desc_role_admin' => 'لديه جميع الصلاحيات',
     'desc_role_observateur' => 'لديه الصلاحية المتعلقة بالجهة',
-    'desc_role_observateur_regional' => 'لديه الصلاحية المتعلقة بالجهة وصلاحية إدارة الراصدين التابعين في نفس الجهة',
+    'desc_role_observateur_regional' => 'لديه الصلاحية المتعلقة بالجهة وصلاحية إدارة الراصدون التابعين في نفس الجهة',
     'desc_role_observateur_secteur' => 'لديه الصلاحية المتعلقة بالقطاع',
 
     'desc_role_observateur_regional_specif' => 'لديه الصلاحيات المتعلقة بملفات جهة ',

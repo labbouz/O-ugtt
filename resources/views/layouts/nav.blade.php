@@ -1,5 +1,7 @@
 <li class="nav-small-cap m-t-10">--- @lang('main.mainmenu')</li>
 <li> <a href="{{ route('home') }}" class="waves-effect {{ active('home') }}"><i data-icon="v" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('main.dashboard')</span></a> </li>
+
+@role('administrator|observateur_regional')
 <li>
     <a href="javascript:void(0)" class="waves-effect {{ active(['users.*','observateurs','observateurs-regional', 'observateurs-secteur']) }}"><i class="linea-icon linea-basic fa-fw icon-people"></i> <span class="hide-menu">@lang('main.users')<span class="fa arrow"></span></span></a>
     <ul class="nav nav-second-level">
@@ -11,6 +13,7 @@
         @endrole
     </ul>
 </li>
+@endrole
 <li>
     <a href="javascript:void(0)" class="waves-effect"><i data-icon="O" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('main.files')<span class="fa arrow"></span><span class="label label-rouded label-purple pull-right">34</span></span></a>
     <ul class="nav nav-second-level">

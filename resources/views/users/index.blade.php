@@ -46,7 +46,9 @@
                             <th>@lang('users.email')</th>
                             <th>@lang('main.add_in')</th>
                             <th class="no-sort">@lang('users.droits')</th>
+                            @role('administrator')
                             <th class="no-sort">@lang('main.tools')</th>
+                            @endrole
                         </tr>
                         </thead>
                         <tbody>
@@ -56,6 +58,7 @@
                             <td>{{  $user->email }}</td>
                             <td><?php $date_created_at = new Date($user->created_at); ?>{{ $date_created_at->format('l j F Y - H:i:s') }}</td>
                             <td><span class="label label-{{  $user->class_color }}">{{  $user->role_name }}</span></td>
+                            @role('administrator')
                             <td>
 
                                 <a class="btn btn-success btn-circle" href="{{ url('/users/'.$user->id.'/edit')  }}"><i class="fa fa-edit"></i></a>
@@ -63,6 +66,7 @@
                                 <a class="btn btn-danger btn-circle" href="{{ url('/users/'.$user->id.'/delete')  }}"><i class="fa fa-times"></i></a>
 
                             </td>
+                            @endrole
                         </tr>
                         @endforeach
                         </tbody>
@@ -97,7 +101,12 @@
                     "url": "{{ Request::root() }}/js/lang/Arabic.json"
                 },
                 "aoColumnDefs": [
+                    @role('administrator')
                     { 'bSortable': false, 'aTargets': [ -1, -2 ] }
+                    @else
+                    { 'bSortable': false, 'aTargets': [ -1 ] }
+                    @endrole
+
                 ]
             } );
 

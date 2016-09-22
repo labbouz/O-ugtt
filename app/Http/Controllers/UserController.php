@@ -114,7 +114,7 @@ class UserController extends Controller
         $user->role_id = $request->role_id;
         $user->save();
 
-
+        $user->assignRole( $user->role_id );
 
         /*
          * Set Roles
@@ -234,6 +234,8 @@ class UserController extends Controller
             $userUpdated->syncRoles( $request->permissions );
         }
 
+        $userUpdated->assignRole( $userUpdated->role_id );
+
         return redirect()->route('users.index')->withFlashMessage('تم التعديل بنجاح');
     }
 
@@ -252,7 +254,15 @@ class UserController extends Controller
      */
     public function destroy($id, User $user)
     {
-        $userUpdated = $user->find($id)->delete();
+
+        // delete profile
+        $userUpdated = User::find($id);
+        $profileUpdated = $userUpdated->profile;
+        $profileUpdated->delete();
+
+        $userUpdated->revokeAllRoles();
+
+        $userUpdated->delete();
         return redirect()->route('users.index')->withFlashMessage('تم حذف العضو بنجاح');
     }
 }

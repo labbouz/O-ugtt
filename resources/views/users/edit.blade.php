@@ -48,7 +48,7 @@
         </div>
         <div class="col-md-9">
 
-            <div class="panel panel-primary">
+            <div class="panel panel-primary permissions_secteurs">
                 <div class="panel-heading">@lang('users.la_permission_secteur')</div>
                 <div class="panel-wrapper collapse in">
                     <div class="panel-body">
@@ -57,7 +57,7 @@
 
                 </div>
             </div>
-            <div class="panel panel-info">
+            <div class="panel panel-info permissions_regional">
                 <div class="panel-heading">@lang('users.la_permission_regional')</div>
                 <div class="panel-wrapper collapse in">
                     <div class="panel-body">
@@ -80,6 +80,64 @@
     <script>
         jQuery(document).ready(function() {
 
+        });
+    </script>
+
+    <script>
+        jQuery(document).ready(function() {
+
+            if($("#role_id").val() == 1) {
+                //$("input:checkbox").trigger('click');
+                $("input:checkbox").attr("checked",true).prop("checked",true);
+            }
+            switch ($("#role_id").val()) {
+                case '1':
+                    $(".permissions_secteurs input:checkbox").removeAttr("disabled");
+                    $(".permissions_regional input:checkbox").removeAttr("disabled");
+                    break;
+
+                case '3':
+                    $(".permissions_secteurs input:checkbox").removeAttr("disabled");
+                    $(".permissions_regional input:checkbox").attr("disabled", true);
+                    break;
+
+                case '2':
+                case '4':
+                    $(".permissions_secteurs input:checkbox").attr("disabled", true);
+                    $(".permissions_regional input:checkbox").removeAttr("disabled");
+                    break;
+            }
+
+            $( "#role_id" ).change(function() {
+
+                if($(this).val() == 1) {
+                    $("input:checkbox").attr("checked",true).prop("checked",true).attr("disabled", true);
+
+                } else {
+                    $("input:checkbox").attr("checked",false).prop("checked",false).removeAttr("disabled");
+
+                }
+
+                switch ($(this).val()) {
+                    case '1':
+                        $(".permissions_secteurs input:checkbox").removeAttr("disabled");
+                        $(".permissions_regional input:checkbox").removeAttr("disabled");
+                        break;
+
+                    case '3':
+                        $(".permissions_secteurs input:checkbox").removeAttr("disabled");
+                        $(".permissions_regional input:checkbox").attr("disabled", true);
+                        break;
+
+                    case '2':
+                    case '4':
+                        $(".permissions_secteurs input:checkbox").attr("disabled", true);
+                        $(".permissions_regional input:checkbox").removeAttr("disabled");
+                        break;
+                }
+
+
+            });
         });
     </script>
 @endsection

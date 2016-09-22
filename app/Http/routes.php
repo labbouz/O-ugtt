@@ -22,9 +22,15 @@ Route::group( ['middleware' => ['web' , 'admin', 'auth', 'acl'] ], function (){
     Route::patch('myprofile/changepassword/{id}', ['as' => 'password.update', 'uses' => 'UserController@updateMyPassword']);
 
 
+
+
+});
+
+Route::group( ['middleware' => ['web' , 'admin', 'auth', 'acl'], 'is' => 'administrator|observateur_regional' ], function (){
+
     /*
-     * Gestion des utilisateurs
-     */
+ * Gestion des utilisateurs
+ */
     Route::resource('users', 'UserController');
 
     Route::post('users/changePassword', 'UserController@updatePassword');
@@ -33,7 +39,6 @@ Route::group( ['middleware' => ['web' , 'admin', 'auth', 'acl'] ], function (){
 
 
     Route::get('observateurs_users', ['as' => 'observateurs', 'uses' => 'UserController@observateur']);
-
 });
 
 Route::group( [

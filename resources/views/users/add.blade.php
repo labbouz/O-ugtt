@@ -48,6 +48,7 @@
 
             </div>
         </div>
+        @role('administrator')
         <div class="col-md-9">
             <div class="panel panel-primary permissions_secteurs">
                 <div class="panel-heading">@lang('users.la_permission_secteur')</div>
@@ -68,7 +69,21 @@
                 </div>
             </div>
         </div>
+        @else
+
+            <?php
+            $roles_observateur = Auth::user()->getRoles();
+            array_pull($roles_observateur, 2);
+            ?>
+            @foreach ($roles_observateur as $role_observateur)
+                {!! Form::hidden('permissions[]', $role_observateur) !!}
+            @endforeach
+
+
+            @endrole
         {{ Form::close() }}
+        </div>
+
     </div>
     <!-- .row -->
 @endsection
@@ -84,16 +99,55 @@
         jQuery(document).ready(function() {
             if($("#role_id").val() == 1) {
                 //$("input:checkbox").trigger('click');
-                $("input:checkbox").attr("checked",true);
+                $("input:checkbox").attr("checked",true).prop("checked",true);
             }
+            switch ($("#role_id").val()) {
+                case '1':
+                    $(".permissions_secteurs input:checkbox").removeAttr("disabled");
+                    $(".permissions_regional input:checkbox").removeAttr("disabled");
+                    break;
+
+                case '3':
+                    $(".permissions_secteurs input:checkbox").removeAttr("disabled");
+                    $(".permissions_regional input:checkbox").attr("disabled", true);
+                    break;
+
+                case '2':
+                case '4':
+                    $(".permissions_secteurs input:checkbox").attr("disabled", true);
+                    $(".permissions_regional input:checkbox").removeAttr("disabled");
+                    break;
+            }
+
             $( "#role_id" ).change(function() {
+
                 if($(this).val() == 1) {
-                    $("input:checkbox").attr("checked",true);
-                    alert('1');
+                    $("input:checkbox").attr("checked",true).prop("checked",true).attr("disabled", true);
+
                 } else {
-                    $("input:checkbox").attr("checked",false);
-                    alert('1ffffff');
+                    $("input:checkbox").attr("checked",false).prop("checked",false).removeAttr("disabled");
+
                 }
+
+                switch ($(this).val()) {
+                    case '1':
+                        $(".permissions_secteurs input:checkbox").removeAttr("disabled");
+                        $(".permissions_regional input:checkbox").removeAttr("disabled");
+                        break;
+
+                    case '3':
+                        $(".permissions_secteurs input:checkbox").removeAttr("disabled");
+                        $(".permissions_regional input:checkbox").attr("disabled", true);
+                        break;
+
+                    case '2':
+                    case '4':
+                        $(".permissions_secteurs input:checkbox").attr("disabled", true);
+                        $(".permissions_regional input:checkbox").removeAttr("disabled");
+                        break;
+                }
+
+
             });
         });
     </script>
