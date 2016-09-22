@@ -89,8 +89,10 @@
             $( "#role_id" ).change(function() {
                 if($(this).val() == 1) {
                     $("input:checkbox").attr("checked",true);
+                    alert('1');
                 } else {
                     $("input:checkbox").attr("checked",false);
+                    alert('1ffffff');
                 }
             });
         });

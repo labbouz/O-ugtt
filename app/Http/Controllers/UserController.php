@@ -229,9 +229,9 @@ class UserController extends Controller
          * Set Roles
          */
 
-        $userUpdated->revokeAllRoles();
+        //$userUpdated->revokeAllRoles();
         if(is_array($request->permissions)) {
-            $userUpdated->assignRole( $request->permissions );
+            $userUpdated->syncRoles( $request->permissions );
         }
 
         return redirect()->route('users.index')->withFlashMessage('تم التعديل بنجاح');

@@ -43,7 +43,7 @@ Morris.Area({
         }],
         xkey: 'period',
         ykeys: ['iphone', 'ipad', 'itouch'],
-        labels: ['iPhone', 'iPad', 'iPod Touch'],
+        labels: ['العدد الجملي للإنتهاكات', 'إنتهاكات على النشاط النقابي', 'إنتهاكات على المسؤل النقابي'],
         pointSize: 3,
         fillOpacity: 0,
         pointStrokeColors:['#00bfc7', '#fb9678', '#9675ce'],
@@ -55,7 +55,7 @@ Morris.Area({
         resize: true
         
     });
-
+/*
 Morris.Area({
         element: 'morris-area-chart2',
         data: [{
@@ -110,7 +110,7 @@ Morris.Area({
         resize: true
         
     });
-
+*/
  
  $('.vcarousel').carousel({
             interval: 3000
@@ -123,11 +123,11 @@ $(".counter").counterUp({
 $(document).ready(function() {
     
    var sparklineLogin = function() { 
-        $('#sales1').sparkline([20, 40, 30], {
+        $('#sales1').sparkline([70, 30], {
             type: 'pie',
             height: '90',
             resize: true,
-            sliceColors: ['#01c0c8', '#7d5ab6', '#ffffff']
+            sliceColors: ['#ffffff','#7d5ab6']
         });
         $('#sparkline2dash').sparkline([6, 10, 9, 11, 9, 10, 12], {
             type: 'bar',
