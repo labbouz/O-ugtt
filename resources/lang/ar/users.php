@@ -45,6 +45,8 @@ return [
     'done_change_avatar' => 'قم بتغيير الصورة',
     'save_new_pass' => 'قم بتسجيل كلمة المرور الجديدة',
 
+    'comple_info_incopmlet' => 'معلومة غير معروفة',
+
     'role_admin' => 'مشرف عام',
     'role_observateur' => 'راصد',
     'role_observateur_regional' => 'راصد جهوي',

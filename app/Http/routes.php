@@ -22,7 +22,7 @@ Route::group( ['middleware' => ['web' , 'admin', 'auth', 'acl'] ], function (){
     Route::patch('myprofile/changepassword/{id}', ['as' => 'password.update', 'uses' => 'UserController@updateMyPassword']);
 
 
-
+    Route::get('contacts', ['as' => 'contacts', 'uses' => 'UserController@contacts']);
 
 });
 

@@ -26,6 +26,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $users = DB::table('users')
@@ -35,6 +36,17 @@ class UserController extends Controller
 
 
         return view('users.index', compact('users'));
+    }
+
+    public function contacts()
+    {
+        $users = DB::table('users')
+            ->join('roles', 'roles.id', '=', 'users.role_id')
+            ->select('users.*', 'roles.name AS role_name', 'roles.class_color')
+            ->get();
+
+
+        return view('users.contacts', compact('users'));
     }
 
     public function admins()

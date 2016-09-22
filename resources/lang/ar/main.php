@@ -18,9 +18,9 @@ return [
     'user' => 'راصد',
     'add_user' => 'إضافة راصد جديد',
     'edit_user' => 'تعديل الراصد',
-    'obesrvateurs_secteur' => 'الراصدون القطاعيين',
-    'obesrvateurs_regional' => 'الراصدون الجهويين',
-    'reg_obesrvateurs_regional' => 'الراصدين',
+    'obesrvateurs_secteur' => 'الراصدون القطاعيون',
+    'obesrvateurs_regional' => 'الراصدون الجهويون',
+    'reg_obesrvateurs_regional' => 'الراصدون',
     'secteurs' => 'القطاعات الخاصة',
     'files' => 'الملفات',
     'search' => 'البحث',
@@ -38,7 +38,7 @@ return [
     'inbox' => 'البريد',
 
     'stats' => 'إحصائيات',
-    'aministrators' => 'المشرفين',
+    'aministrators' => 'المشرفون',
     'delegations' => 'المعتمديات',
     'structures_syndicales' => 'الهياكل النقابية',
 
