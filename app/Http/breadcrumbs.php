@@ -189,7 +189,7 @@ Breadcrumbs::register('violation.edit', function($breadcrumbs, $violation)
 });
 
 /*
- *  Breadcrumbs delegation
+ *  Breadcrumbs societe
  */
 
 Breadcrumbs::register('societe.index', function($breadcrumbs) {
@@ -206,4 +206,30 @@ Breadcrumbs::register('societe.edit', function($breadcrumbs, $societe)
 {
     $breadcrumbs->parent('societe.index');
     $breadcrumbs->push(trans('societe.edit_societe') . ' ' . $societe->nom_delegation, route('societe.edit', $societe->id));
+});
+
+
+/*
+ *  Breadcrumbs dossier
+ */
+
+Breadcrumbs::register('dossier.index', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('dossier.dossiers'), route('dossier.index'));
+});
+
+Breadcrumbs::register('dossier.create', function($breadcrumbs, $societe) {
+    $breadcrumbs->parent('dossier.index');
+    $breadcrumbs->push(trans('dossier.add_dossier'), route('dossier.create', route('dossier.create', $societe->id)));
+});
+
+Breadcrumbs::register('dossier.edit', function($breadcrumbs, $dossier)
+{
+    $breadcrumbs->parent('dossier.index');
+    $breadcrumbs->push(trans('dossier.edit_dossier') . ' ' . $dossier->societe_id, route('dossier.edit', $societe->id));
+});
+
+Breadcrumbs::register('dossier.select', function($breadcrumbs) {
+    $breadcrumbs->parent('dossier.index');
+    $breadcrumbs->push(trans('dossier.select_societe'), route('dossier.select'));
 });

@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\TypeViolation;
+
+use App\Societe;
+use App\Dossier;
+
+use DB;
+
 class DossierController extends Controller
 {
     /**
@@ -15,7 +22,14 @@ class DossierController extends Controller
      */
     public function index()
     {
-        //
+        $dossiers = DB::table('dossiers')
+            ->join('societes', 'societes.id', '=', 'dossiers.societe_id')
+            ->join('gouvernorats', 'gouvernorats.id', '=', 'societes.gouvernorat_id')
+            ->join('secteurs', 'secteurs.id', '=', 'societes.secteur_id')
+            ->select('dossiers.*', 'societes.nom_societe', 'secteurs.nom_secteur', 'gouvernorats.nom_gouvernorat')
+            ->get();
+
+        return view('dossier.index', compact('dossiers'));
     }
 
     /**
@@ -23,9 +37,20 @@ class DossierController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function selectSociete()
     {
-        //
+        $societes = Societe::all();
+
+        return view('societe.select', compact('societes'));
+    }
+
+    public function create($societe_id)
+    {
+        $societe = Societe::find($societe_id);
+
+        $types_violations = TypeViolation::all();
+
+        return view('dossier.add', compact('societe','types_violations') );
     }
 
     /**
@@ -36,7 +61,17 @@ class DossierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'settlement_status' => 'required|max:255',
+            'societe_id' => 'required|integer|min:1',
+        ]);
+
+        Dossier::create([
+            'settlement_status' => $request->settlement_status,
+            'societe_id' => $request->societe_id,
+        ]);
+
+        return redirect()->route('dossier.index')->withFlashMessage(trans('delegations.message_save_succes_dossier'));
     }
 
     /**
@@ -58,7 +93,9 @@ class DossierController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dossier = Dossier::find($id);
+
+        return view('dossier.edit', compact('dossier'));
     }
 
     /**
@@ -70,7 +107,10 @@ class DossierController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dossierUpdated = Dossier::find($id);
+        $dossierUpdated->fill( $request->all() )->save();
+
+        return redirect()->route('dossier.index')->withFlashMessage(trans('dossier.message_update_succes_dossier'));
     }
 
     /**
@@ -81,6 +121,7 @@ class DossierController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Dossier::find($id)->delete();
+        return redirect()->route('dossier.index')->withFlashMessage(trans('dossier.message_delete_succes_dossier'));
     }
 }

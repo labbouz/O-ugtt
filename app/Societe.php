@@ -37,4 +37,9 @@ class Societe extends Model
         return $this->belongsTo('\App\Convention');
 
     }
+
+    public function dossiers()
+    {
+        return $this->hasMany('\App\Dossier');
+    }
 }

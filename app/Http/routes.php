@@ -30,6 +30,9 @@ Route::group( ['middleware' => ['web' , 'admin', 'auth', 'acl'] ], function (){
 
     Route::resource('dossier', 'DossierController');
     Route::get('dossier/{id}/delete', 'DossierController@destroy');
+    Route::get('dossier/create/{societe_id}', ['as' => 'dossier.create', 'uses' => 'DossierController@create']);
+
+    Route::get('select-dossier', ['as' => 'dossier.select', 'uses' => 'DossierController@selectSociete']);
 
 
 });
