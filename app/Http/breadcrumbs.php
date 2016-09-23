@@ -5,6 +5,12 @@ Breadcrumbs::register('home', function($breadcrumbs) {
     $breadcrumbs->push(trans('main.dashboard'), route('home'));
 });
 
+// stats
+Breadcrumbs::register('stats', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('main.stats'), route('stats'));
+});
+
 // contacts
 Breadcrumbs::register('contacts', function($breadcrumbs) {
     $breadcrumbs->parent('home');

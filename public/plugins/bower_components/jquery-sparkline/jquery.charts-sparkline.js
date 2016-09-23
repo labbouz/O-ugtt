@@ -113,11 +113,11 @@ $(document).ready(function() {
             highlightLineColor: 'rgba(0, 0, 0, 0.2)',
             highlightSpotColor: '#6164c1'
         });
-        $('#sparkline11').sparkline([20, 40, 30], {
+        $('#sparkline11').sparkline([50, 30], {
             type: 'pie',
             height: '200',
             resize: true,
-            sliceColors: ['#13dafe', '#6164c1', '#f1f2f7']
+            sliceColors: ['#13dafe', '#f1f2f7']
         });
         
         $("#sparkline12").sparkline([5,6,2,8,9,4,7,10,11,12,10,4,7,10], {
