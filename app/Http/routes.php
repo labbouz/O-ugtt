@@ -28,6 +28,9 @@ Route::group( ['middleware' => ['web' , 'admin', 'auth', 'acl'] ], function (){
     Route::resource('societe', 'SocieteController');
     Route::get('societe/{id}/delete', 'SocieteController@destroy');
 
+    Route::resource('dossier', 'DossierController');
+    Route::get('dossier/{id}/delete', 'DossierController@destroy');
+
 
 });
 
