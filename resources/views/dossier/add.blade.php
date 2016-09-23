@@ -42,9 +42,7 @@
                         @foreach($types_violations as $type_violation)
                         <h3 class="box-title m-b-0">{{ $type_violation->description_type_violation }}</h3>
                             <div class="row">
-                                <?php
-                                //$TypeViolation = App\TypeViolation::find($type_violation->id);
-                                 ?>
+
 
                             </div>
 

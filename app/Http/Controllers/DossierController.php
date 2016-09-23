@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\TypeViolation;
-
+use App\Violation;
 use App\Societe;
 use App\Dossier;
 
@@ -49,6 +49,13 @@ class DossierController extends Controller
         $societe = Societe::find($societe_id);
 
         $types_violations = TypeViolation::all();
+
+        foreach ($types_violations->violations as $violation) {
+            echo '<pre>';
+            print_r($violation);
+            echo '</pre>';
+        }
+        exit();
 
         return view('dossier.add', compact('societe','types_violations') );
     }

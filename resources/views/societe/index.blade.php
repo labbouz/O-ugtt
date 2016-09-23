@@ -63,7 +63,7 @@
                         <tbody>
                         @foreach($societes as $societe)
                             <tr>
-                                <td>{{ $societe->nom_societe }} </td>
+                                <td>{{ $societe->nom_societe }} <a href="{{ route('dossier.create', ['id' => $societe->id]) }}" class="label label-rouded label-purple"><i class="fa fa-plus-circle m-l-5 "></i> @lang('dossier.add_dossier_v')</a></td>
                                 <td>{{ $societe->nom_type_societe }}</td>
                                 <td><?php $date_created_at = new Date($societe->created_at); ?>{{ $date_created_at->format('l j F Y - H:i:s') }}</td>
                                 <td>
