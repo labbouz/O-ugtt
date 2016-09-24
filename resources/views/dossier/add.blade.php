@@ -635,8 +635,6 @@
     </div>
 
 
-
-
     <!-- .row -->
 @endsection
 
