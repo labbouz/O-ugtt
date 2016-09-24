@@ -15,7 +15,7 @@
 </li>
 @endrole
 <li>
-    <a href="javascript:void(0)" class="waves-effect{{ active(['dossier.*','dossier.select']) }}"><i data-icon="O" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('main.files')<span class="fa arrow"></span><span class="label label-rouded label-purple pull-right">34</span></span></a>
+    <a href="javascript:void(0)" class="waves-effect{{ active(['dossier.*','dossier.select']) }}"><i data-icon="O" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('main.files')<span class="fa arrow"></span><span class="label label-rouded label-purple pull-right">{{ count(\App\Dossier::all()) }}</span></span></a>
     <ul class="nav nav-second-level">
         <li><a href="{{ route('dossier.index') }}"><i data-icon="@" class="linea-icon linea-elaborate fa-fw"></i> <span class="hide-menu">@lang('main.files_non_lus')</span></a> </li>
         <li><a href="{{ route('dossier.index') }}"><i data-icon="^" class="linea-icon linea-elaborate fa-fw"></i> <span class="hide-menu">@lang('main.files_important')</span></a> </li>

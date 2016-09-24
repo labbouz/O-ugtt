@@ -14,6 +14,7 @@ use App\Move;
 
 use App\StructureSyndicale;
 
+
 use DB;
 
 class DossierController extends Controller
@@ -59,8 +60,11 @@ class DossierController extends Controller
         $StructuresSyndicalestList = StructureSyndicale::lists('type_structure_syndicale', 'id')->prepend(' ', '');
 
 
+        $dossier = Dossier::create([
+            'societe_id' => $societe_id,
+        ]);
 
-        return view('dossier.add', compact('societe','types_violations', 'moves', 'ListViolations','StructuresSyndicalestList') );
+        return view('dossier.add', compact('dossier','societe','types_violations', 'moves', 'ListViolations','StructuresSyndicalestList') );
     }
 
     /**
@@ -105,7 +109,19 @@ class DossierController extends Controller
     {
         $dossier = Dossier::find($id);
 
-        return view('dossier.edit', compact('dossier'));
+        $societe = Societe::find($dossier->societe_id);
+
+        $types_violations = TypeViolation::all();
+        $moves = Move::all();
+
+        $ListViolations = Violation::all();
+
+        $StructuresSyndicalestList = StructureSyndicale::lists('type_structure_syndicale', 'id')->prepend(' ', '');
+
+
+
+
+        return view('dossier.edit', compact('dossier','societe','types_violations', 'moves', 'ListViolations','StructuresSyndicalestList') );
     }
 
     /**

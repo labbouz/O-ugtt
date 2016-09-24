@@ -226,7 +226,7 @@ Breadcrumbs::register('dossier.create', function($breadcrumbs, $societe) {
 Breadcrumbs::register('dossier.edit', function($breadcrumbs, $dossier)
 {
     $breadcrumbs->parent('dossier.index');
-    $breadcrumbs->push(trans('dossier.edit_dossier') . ' ' . $dossier->societe_id, route('dossier.edit', $societe->id));
+    $breadcrumbs->push(trans('dossier.edit_dossier') . ' ' . $dossier->societe->nom_societe, route('dossier.edit', $dossier->societe_id));
 });
 
 Breadcrumbs::register('dossier.select', function($breadcrumbs) {

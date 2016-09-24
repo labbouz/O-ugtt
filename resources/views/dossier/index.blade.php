@@ -65,13 +65,12 @@
                         <tbody>
                         @foreach($dossiers as $dossier)
                             <tr>
-                                <td> @lang('dossier.delegation') {{ $dossier->nom_societe }} </td>
+                                <td>{{ $dossier->nom_societe }} </td>
                                 <td>{{ $dossier->nom_secteur }}</td>
                                 <td>{{ $dossier->nom_gouvernorat }}</td>
                                 <td><?php $date_created_at = new Date($dossier->created_at); ?>{{ $date_created_at->format('l j F Y - H:i:s') }}</td>
                                 <td>
                                     <a class="btn btn-success btn-circle" href="{{ route('dossier.edit', ['id' => $dossier->id])  }}"><i class="fa fa-edit"></i></a>
-                                    <a class="btn btn-danger btn-circle" href="{{ url('/dossier/'.$dossier->id.'/delete')  }}"><i class="fa fa-times"></i></a>
                                 </td>
                             </tr>
                         @endforeach
