@@ -30,6 +30,6 @@ class CreateGravitesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('gravites');
+        //Schema::drop('gravites');
     }
 }

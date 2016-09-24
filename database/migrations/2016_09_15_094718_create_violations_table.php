@@ -36,6 +36,9 @@ class CreateViolationsTable extends Migration
      */
     public function down()
     {
-        //Schema::drop('violations');
+
+        Schema::drop('violations');
+        Schema::drop('gravites');
+        Schema::drop('types_violations');
     }
 }
