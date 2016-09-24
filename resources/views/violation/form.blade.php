@@ -11,24 +11,24 @@
     @endif
 </div>
 
-<div class="form-group{{ $errors->has('type_violationt_id') ? ' has-error' : '' }}">
-    {{ Form::label('type_violationt_id', trans('violations.type_violation'), array('class' => 'control-label')) }}
+<div class="form-group{{ $errors->has('type_violation_id') ? ' has-error' : '' }}">
+    {{ Form::label('type_violation_id', trans('violations.type_violation'), array('class' => 'control-label')) }}
 
     @if(!isset($violation))
 
         @if(!isset($typeViolation))
-            {!! Form::select('type_violationt_id',$TypeViolationtList,null,['class' => 'form-control', 'required' => 'required']) !!}
+            {!! Form::select('type_violation_id',$TypeViolationtList,null,['class' => 'form-control', 'required' => 'required']) !!}
         @else
-            {!! Form::select('type_violationt_id',$TypeViolationtList,$typeViolation->id,['class' => 'form-control', 'required' => 'required']) !!}
+            {!! Form::select('type_violation_id',$TypeViolationtList,$typeViolation->id,['class' => 'form-control', 'required' => 'required']) !!}
         @endif
 
     @else
-        {!! Form::select('type_violationt_id',$TypeViolationtList,$violation->type_violationt_id,['class' => 'form-control', 'required' => 'required']) !!}
+        {!! Form::select('type_violation_id',$TypeViolationtList,$violation->type_violation_id,['class' => 'form-control', 'required' => 'required']) !!}
     @endif
 
-    @if ($errors->has('type_violationt_id'))
+    @if ($errors->has('type_violation_id'))
         <span class="help-block">
-                    <strong>{{ $errors->first('type_violationt_id') }}</strong>
+                    <strong>{{ $errors->first('type_violation_id') }}</strong>
                 </span>
     @endif
 </div>

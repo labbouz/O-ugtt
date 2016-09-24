@@ -76,7 +76,7 @@ class SocieteController extends Controller
             'secteur_id' => $request->secteur_id,
             'convention_id' => $request->convention_id,
             'nombre_travailleurs' => $request->nombre_travailleurs,
-            'cdi' => $request->cdi,
+            'cdi' => intval($request->cdi),
             'date_cration_societe' => $request->date_cration_societe,
         ]);
 

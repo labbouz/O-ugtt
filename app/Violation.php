@@ -8,7 +8,7 @@ class Violation extends Model
 {
 
 
-    protected $fillable = ['nom_violation','description_violation','type_violationt_id','gravite_id','class_color_violation'];
+    protected $fillable = ['nom_violation','description_violation','type_violation_id','gravite_id','class_color_violation'];
 
     public function typeviolation()
     {

@@ -10,6 +10,9 @@ use App\TypeViolation;
 use App\Violation;
 use App\Societe;
 use App\Dossier;
+use App\Move;
+
+use App\StructureSyndicale;
 
 use DB;
 
@@ -49,15 +52,15 @@ class DossierController extends Controller
         $societe = Societe::find($societe_id);
 
         $types_violations = TypeViolation::all();
+        $moves = Move::all();
 
-        foreach ($types_violations->violations as $violation) {
-            echo '<pre>';
-            print_r($violation);
-            echo '</pre>';
-        }
-        exit();
+        $ListViolations = Violation::all();
 
-        return view('dossier.add', compact('societe','types_violations') );
+        $StructuresSyndicalestList = StructureSyndicale::lists('type_structure_syndicale', 'id')->prepend(' ', '');
+
+
+
+        return view('dossier.add', compact('societe','types_violations', 'moves', 'ListViolations','StructuresSyndicalestList') );
     }
 
     /**

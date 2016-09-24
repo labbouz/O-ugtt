@@ -25,7 +25,7 @@ class ViolationController extends Controller
     public function index()
     {
         $violations = DB::table('violations')
-            ->join('types_violations', 'types_violations.id', '=', 'violations.type_violationt_id')
+            ->join('types_violations', 'types_violations.id', '=', 'violations.type_violation_id')
             ->join('gravites', 'gravites.id', '=', 'violations.gravite_id')
             ->select('violations.*', 'types_violations.nom_type_violation', 'types_violations.class_color_type_violation', 'gravites.nom_gravite', 'gravites.class_color_gravite')
             ->get();
@@ -63,19 +63,19 @@ class ViolationController extends Controller
     {
         $this->validate($request, [
             'nom_violation' => 'required|max:255',
-            'type_violationt_id' => 'required|integer|min:1',
+            'type_violation_id' => 'required|integer|min:1',
             'gravite_id' => 'required|integer|min:1',
         ]);
 
         $violation = Violation::create([
             'nom_violation' => $request->nom_violation,
             'description_violation' => $request->description_violation,
-            'type_violationt_id' => $request->type_violationt_id,
+            'type_violation_id' => $request->type_violation_id,
             'gravite_id' => $request->gravite_id,
             'class_color_violation' => $request->class_color_violation,
         ]);
 
-        return redirect()->route('violation.show',$violation->type_violationt_id)->withFlashMessage(trans('violations.message_save_succes_violation'));
+        return redirect()->route('violation.show',$violation->type_violation_id)->withFlashMessage(trans('violations.message_save_succes_violation'));
     }
 
     /**
@@ -87,10 +87,10 @@ class ViolationController extends Controller
     public function show($id_type_violation)
     {
         $violations = DB::table('violations')
-            ->join('types_violations', 'types_violations.id', '=', 'violations.type_violationt_id')
+            ->join('types_violations', 'types_violations.id', '=', 'violations.type_violation_id')
             ->join('gravites', 'gravites.id', '=', 'violations.gravite_id')
             ->select('violations.*', 'types_violations.nom_type_violation', 'types_violations.class_color_type_violation', 'gravites.nom_gravite', 'gravites.class_color_gravite')
-            ->where('violations.type_violationt_id', '=', $id_type_violation)
+            ->where('violations.type_violation_id', '=', $id_type_violation)
             ->get();
 
         $typeViolation = TypeViolation::find($id_type_violation);
@@ -128,7 +128,7 @@ class ViolationController extends Controller
         $violationUpdated = Violation::find($id);
         $violationUpdated->fill( $request->all() )->save();
 
-        return redirect()->route('violation.show',$violationUpdated->type_violationt_id)->withFlashMessage(trans('violations.message_update_succes_violation'));
+        return redirect()->route('violation.show',$violationUpdated->type_violation_id)->withFlashMessage(trans('violations.message_update_succes_violation'));
     }
 
     /**

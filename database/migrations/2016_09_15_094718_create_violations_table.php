@@ -16,8 +16,8 @@ class CreateViolationsTable extends Migration
             $table->increments('id');
             $table->string('nom_violation');
             $table->text('description_violation');
-            $table->integer('type_violationt_id')->unsigned();
-            $table->foreign('type_violationt_id')->references('id')->on('types_violations');
+            $table->integer('type_violation_id')->unsigned();
+            $table->foreign('type_violation_id')->references('id')->on('types_violations');
             $table->integer('gravite_id')->unsigned();
             $table->foreign('gravite_id')->references('id')->on('gravites');
             $table->string('class_color_violation');

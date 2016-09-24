@@ -29,6 +29,6 @@ class CreateTypesViolationsTable extends Migration
      */
     public function down()
     {
-        //Schema::drop('types_violations');
+        Schema::drop('types_violations');
     }
 }

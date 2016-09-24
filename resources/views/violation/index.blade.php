@@ -96,7 +96,7 @@
                             <tr>
                                 <td> {{ $violation->nom_violation }} </td>
                                 @if(!isset($typeViolation))
-                                <td> <a href="{{ route('violation.show', ['id' => $violation->type_violationt_id])  }}"> <span class="label {{ $violation->class_color_type_violation  }}">  {{ $violation->nom_type_violation }} </span> </a></td>
+                                <td> <a href="{{ route('violation.show', ['id' => $violation->type_violation_id])  }}"> <span class="label {{ $violation->class_color_type_violation  }}">  {{ $violation->nom_type_violation }} </span> </a></td>
                                  @endif
                                 <td> <span class="label {{ $violation->class_color_gravite  }}"> {{ $violation->nom_gravite }} </span> </td>
                                 <td><?php $date_created_at = new Date($violation->created_at); ?>{{ $date_created_at->format('l j F Y - H:i:s') }}</td>
