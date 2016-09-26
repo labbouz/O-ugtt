@@ -74,7 +74,18 @@
         });
 
         $(document).ready(function() {
-
+            $(document).ready(function() {
+                $("#gouvernorat_id").change(function() {
+                    $.getJSON("../ajax/delegations/" + $(this).val(), function(data) {
+                        var $delegations = $("#delegation_id");
+                        $delegations.empty();
+                        $.each(data, function(index, value) {
+                            $delegations.append('<option value="' + index +'">' + value + '</option>');
+                        });
+                        $("#delegation_id").trigger("change");
+                    });
+                });
+            });
         });
 
 

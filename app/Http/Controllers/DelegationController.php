@@ -115,4 +115,11 @@ class DelegationController extends Controller
         Delegation::find($id)->delete();
         return redirect()->route('delegation.index')->withFlashMessage(trans('delegations.message_delete_succes_delegation'));
     }
+
+    public function ajaxDelegationsByGouvernorat($gouvernorat_id = 0){
+        //$delegaions = Delegation::all();
+        $delegaions = Delegation::where('gouvernorat_id', $gouvernorat_id)->lists('nom_delegation', 'id');
+
+        return response()->json($delegaions);
+    }
 }

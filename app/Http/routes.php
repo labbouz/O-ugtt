@@ -93,5 +93,8 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('stats', ['as' => 'stats', 'uses' => 'HomeController@stats']);
 
+
+    Route::get('ajax/delegations/{gouvernorat_id?}', ['as' => 'ajax.delegations', 'uses' => 'DelegationController@ajaxDelegationsByGouvernorat']);
+
 });
 
