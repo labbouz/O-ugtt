@@ -97,57 +97,60 @@
 
     <script>
         jQuery(document).ready(function() {
-            if($("#role_id").val() == 1) {
-                //$("input:checkbox").trigger('click');
-                $("input:checkbox").attr("checked",true).prop("checked",true);
-            }
+
             switch ($("#role_id").val()) {
                 case '1':
-                    $(".permissions_secteurs input:checkbox").removeAttr("disabled");
-                    $(".permissions_regional input:checkbox").removeAttr("disabled");
+                    $(".permissions_secteurs input:checkbox").attr("checked",true).prop("checked",true).removeAttr("disabled");
+                    $(".permissions_regional input:checkbox").attr("checked",true).prop("checked",true).removeAttr("disabled");
+                    $(".permissions_secteurs").fadeOut('fast');
+                    $(".permissions_regional").fadeOut('fast');
                     break;
 
                 case '3':
-                    $(".permissions_secteurs input:checkbox").removeAttr("disabled");
-                    $(".permissions_regional input:checkbox").attr("disabled", true);
+                    $(".permissions_secteurs input:checkbox").attr("checked",false).prop("checked",false).removeAttr("disabled");
+                    $(".permissions_regional input:checkbox").attr("checked",false).prop("checked",false).attr("disabled", true);
+                    $(".permissions_regional").fadeOut('fast', function() {
+                        $(".permissions_secteurs").fadeIn('fast');
+                    });
+
                     break;
 
                 case '2':
                 case '4':
-                    $(".permissions_secteurs input:checkbox").attr("disabled", true);
-                    $(".permissions_regional input:checkbox").removeAttr("disabled");
+                    $(".permissions_secteurs input:checkbox").attr("checked",false).prop("checked",false).attr("disabled", true);
+                    $(".permissions_regional input:checkbox").attr("checked",false).prop("checked",false).removeAttr("disabled");
+                    $(".permissions_secteurs").fadeOut('fast', function() {
+                        $(".permissions_regional").fadeIn('fast');
+                    });
                     break;
             }
 
             $( "#role_id" ).change(function() {
-
-                if($(this).val() == 1) {
-                    $("input:checkbox").attr("checked",true).prop("checked",true).attr("disabled", true);
-
-                } else {
-                    $("input:checkbox").attr("checked",false).prop("checked",false).removeAttr("disabled");
-
-                }
-
                 switch ($(this).val()) {
                     case '1':
-                        $(".permissions_secteurs input:checkbox").removeAttr("disabled");
-                        $(".permissions_regional input:checkbox").removeAttr("disabled");
+                        $(".permissions_secteurs input:checkbox").attr("checked",true).prop("checked",true).removeAttr("disabled");
+                        $(".permissions_regional input:checkbox").attr("checked",true).prop("checked",true).removeAttr("disabled");
+                        $(".permissions_secteurs").fadeOut('fast');
+                        $(".permissions_regional").fadeOut('fast');
                         break;
 
                     case '3':
-                        $(".permissions_secteurs input:checkbox").removeAttr("disabled");
-                        $(".permissions_regional input:checkbox").attr("disabled", true);
+                        $(".permissions_secteurs input:checkbox").attr("checked",false).prop("checked",false).removeAttr("disabled");
+                        $(".permissions_regional input:checkbox").attr("checked",false).prop("checked",false).attr("disabled", true);
+                        $(".permissions_regional").fadeOut('fast', function() {
+                            $(".permissions_secteurs").fadeIn('fast');
+                        });
                         break;
 
                     case '2':
                     case '4':
-                        $(".permissions_secteurs input:checkbox").attr("disabled", true);
-                        $(".permissions_regional input:checkbox").removeAttr("disabled");
+                        $(".permissions_secteurs input:checkbox").attr("checked",false).prop("checked",false).attr("disabled", true);
+                        $(".permissions_regional input:checkbox").attr("checked",false).prop("checked",false).removeAttr("disabled");
+                        $(".permissions_secteurs").fadeOut('fast', function() {
+                            $(".permissions_regional").fadeIn('fast');
+                        });
                         break;
                 }
-
-
             });
         });
     </script>

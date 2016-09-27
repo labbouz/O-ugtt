@@ -50,6 +50,10 @@
 
                 <hr class="m-t-20 m-b-30">
 
+                <pre>
+                    <?php print_r(Auth::user()->getRoles());?>
+                </pre>
+
                  <div class="table-responsive">
                     <table id="lists_datas" class="table table-striped">
                         <thead>

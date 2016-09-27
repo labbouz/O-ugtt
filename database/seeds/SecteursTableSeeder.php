@@ -43,7 +43,9 @@ class SecteursTableSeeder extends Seeder
             /*
              * Creat permission
              */
-            Permission::create([
+            $permission = new Permission();
+
+            $permSecteur = $permission->create([
                 'name'        => 'secteur_'.$secteuradedd->id,
                 'slug'        => [
                     'create'     => true,
@@ -56,12 +58,18 @@ class SecteursTableSeeder extends Seeder
             ]);
 
             $role = new Role();
-            $role->create([
+            $roleSecteur = $role->create([
                 'name' => trans('users.observateur_secteur_pour') .' '. trans('secteur.secteur_'.$i),
                 'slug' => 'rol_secteur_'.$secteuradedd->id,
                 'description' => trans('users.desc_role_observateur_secteur_specif') .' '. trans('secteur.secteur_'.$i),
                 'class_color' => 'primary'
             ]);
+
+
+            /*
+             * assignPermission
+             */
+            $roleSecteur->assignPermission($permSecteur);
 
         }
 

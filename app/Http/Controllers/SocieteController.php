@@ -15,6 +15,9 @@ use App\Secteur;
 use App\Convention;
 use App\Societe;
 
+use Auth;
+use App\User;
+
 
 class SocieteController extends Controller
 {
@@ -40,13 +43,31 @@ class SocieteController extends Controller
      */
     public function create()
     {
+        $user_auth = User::find(Auth::user()->id);
+
         $TypesSocietestList = TypeSociete::lists('nom_type_societe', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.type_societe'), '');
-        $GouvernoratsList = Gouvernorat::lists('nom_gouvernorat', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.gouvernorat'), '');
         $DelegationsList = Delegation::lists('nom_delegation', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.delegatio'), '');
         $SecteurstList = Secteur::lists('nom_secteur', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.secteur'), '');
         $ConventionstList = Convention::lists('nom_convention', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.convention'), '');
 
 
+        if($user_auth->is('administrator,observateur_secteur')) {
+            $GouvernoratsList = Gouvernorat::lists('permission_slug', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.gouvernorat'), '');
+        } else {
+            $GouvernoratsPermission= Gouvernorat::all();
+            $array_gouvernorats_permission =array();
+            foreach ($GouvernoratsPermission as $Gouvernorat) {
+                // filtrer les gouvernorats permessione
+                if ( $user_auth->can('view.'.$Gouvernorat->permission_slug) ) {
+                    $array_gouvernorats_permission[$Gouvernorat->id] = $Gouvernorat->nom_gouvernorat;
+                }
+            }
+
+            $GouvernoratsList = collect($array_gouvernorats_permission);
+            if(count($array_gouvernorats_permission)>1) {
+                $GouvernoratsList->prepend(trans('main.selectionnez') . ' ' . trans('societe.gouvernorat'), '');
+            }
+        }
 
         return view('societe.add', compact('TypesSocietestList','GouvernoratsList','DelegationsList','SecteurstList','ConventionstList'));
     }

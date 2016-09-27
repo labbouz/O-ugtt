@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Redirect;
 use Kodeine\Acl\Models\Eloquent\Permission;
 use Kodeine\Acl\Models\Eloquent\Role;
 
+
+
 class SecteurController extends Controller
 {
     /**
@@ -54,7 +56,8 @@ class SecteurController extends Controller
             'nom_secteur' => $request->nom_secteur,
         ]);
 
-        Permission::create([
+        $permission = new Permission();
+        $permSecteur = $permission->create([
             'name'        => 'secteur_'.$secteuradedd->id,
             'slug'        => [
                 'create'     => true,
@@ -67,12 +70,17 @@ class SecteurController extends Controller
         ]);
 
         $role = new Role();
-        $role->create([
+        $roleSecteur = $role->create([
             'name' => trans('users.observateur_secteur_pour') .' '. $secteuradedd->nom_secteur,
             'slug' => 'rol_secteur_'.$secteuradedd->id,
             'description' => trans('users.desc_role_observateur_secteur_specif') .' '. $secteuradedd->nom_secteur,
             'class_color' => 'primary'
         ]);
+
+        /*
+            * assignPermission
+            */
+        $roleSecteur->assignPermission($permSecteur);
 
         return redirect()->route('secteur.index')->withFlashMessage(trans('secteur.message_save_succes_secteur'));
     }
@@ -131,4 +139,5 @@ class SecteurController extends Controller
         Secteur::find($id)->delete();
         return redirect()->route('secteur.index')->withFlashMessage(trans('message_delete_succes_secteur'));
     }
+
 }

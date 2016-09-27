@@ -52,7 +52,7 @@ class GouvernoratsTableSeeder extends Seeder
 
         foreach ($gouvernorats as $gouvernorat) {
             $permission = new Permission();
-            $permission->create([
+            $permGouvernorar = $permission->create([
                 'name'        => $gouvernorat['permission_slug'],
                 'slug'        => [
                     'create'     => true,
@@ -65,12 +65,17 @@ class GouvernoratsTableSeeder extends Seeder
             ]);
 
             $role = new Role();
-            $role->create([
+            $roleGouvernorar = $role->create([
                 'name' => trans('users.observateur_pour') .' '. $gouvernorat['nom_gouvernorat'],
                 'slug' => 'rol_regional_'.$gouvernorat['permission_slug'],
                 'description' => trans('users.desc_role_observateur_regional_specif') .' '. $gouvernorat['nom_gouvernorat'],
                 'class_color' => 'info'
             ]);
+
+            /*
+             * assignPermission
+             */
+            $roleGouvernorar->assignPermission($permGouvernorar);
 
         }
     }
