@@ -95,6 +95,8 @@ Route::group(['middleware' => 'web'], function () {
 
 
     Route::get('ajax/delegations/{gouvernorat_id?}', ['as' => 'ajax.delegations', 'uses' => 'DelegationController@ajaxDelegationsByGouvernorat']);
+    Route::get('ajax/conventions/{secteur_id?}', ['as' => 'ajax.conventions', 'uses' => 'ConventionController@ajaxConventionsBySecteur']);
+
 
 });
 

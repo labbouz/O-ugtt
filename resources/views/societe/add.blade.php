@@ -85,6 +85,17 @@
                         $("#delegation_id").trigger("change");
                     });
                 });
+
+                $("#secteur_id").change(function() {
+                    $.getJSON("../ajax/conventions/" + $(this).val(), function(data) {
+                        var $conventions = $("#convention_id");
+                        $conventions.empty();
+                        $.each(data, function(index, value) {
+                            $conventions.append('<option value="' + index +'">' + value + '</option>');
+                        });
+                        $("#convention_id").trigger("change");
+                    });
+                });
             });
         });
 
