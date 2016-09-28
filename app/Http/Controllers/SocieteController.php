@@ -44,32 +44,44 @@ class SocieteController extends Controller
     public function create()
     {
         $user_auth = User::find(Auth::user()->id);
-
         $TypesSocietestList = TypeSociete::lists('nom_type_societe', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.type_societe'), '');
-        $DelegationsList = Delegation::lists('nom_delegation', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.delegatio'), '');
-        $SecteurstList = Secteur::lists('nom_secteur', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.secteur'), '');
-        $ConventionstList = Convention::lists('nom_convention', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.convention'), '');
 
-
-        if($user_auth->is('administrator,observateur_secteur')) {
-            $GouvernoratsList = Gouvernorat::lists('permission_slug', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.gouvernorat'), '');
-        } else {
-            $GouvernoratsPermission= Gouvernorat::all();
-            $array_gouvernorats_permission =array();
-            foreach ($GouvernoratsPermission as $Gouvernorat) {
-                // filtrer les gouvernorats permessione
-                if ( $user_auth->can('view.'.$Gouvernorat->permission_slug) ) {
-                    $array_gouvernorats_permission[$Gouvernorat->id] = $Gouvernorat->nom_gouvernorat;
-                }
-            }
-
-            $GouvernoratsList = collect($array_gouvernorats_permission);
-            if(count($array_gouvernorats_permission)>1) {
-                $GouvernoratsList->prepend(trans('main.selectionnez') . ' ' . trans('societe.gouvernorat'), '');
+        /******* Gouvernorats & Delegations **********/
+        $GouvernoratsPermission= Gouvernorat::all();
+        $array_gouvernorats_permission =array();
+        foreach ($GouvernoratsPermission as $Gouvernorat) {
+            // filtrer les gouvernorats permessione
+            if ( $user_auth->can('view.'.$Gouvernorat->permission_slug) ) {
+                $array_gouvernorats_permission[$Gouvernorat->id] = $Gouvernorat->nom_gouvernorat;
             }
         }
+        $GouvernoratsList = collect($array_gouvernorats_permission);
+        if(count($array_gouvernorats_permission)>1) {
+            $GouvernoratsList->prepend(trans('main.selectionnez') . ' ' . trans('societe.gouvernorat'), '');
+            $DelegationsList = Delegation::lists('nom_delegation', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.delegatio'), '');
+        } else {
+            $DelegationsList = Delegation::where('gouvernorat_id', key($array_gouvernorats_permission))->lists('nom_delegation', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.delegatio'), '');
+        }
 
-        return view('societe.add', compact('TypesSocietestList','GouvernoratsList','DelegationsList','SecteurstList','ConventionstList'));
+        /******* Secteurs & Conventions **********/
+
+        $SecteursPermission= Secteur::all();
+        $array_secteurs_permission =array();
+        foreach ($SecteursPermission as $Secteur) {
+            // filtrer les secteurs permessione
+            if ( $user_auth->can('view.secteur_'.$Secteur->id) ) {
+                $array_secteurs_permission[$Secteur->id] = $Secteur->nom_secteur;
+            }
+        }
+        $SecteurstList = collect($array_secteurs_permission);
+        if(count($array_secteurs_permission)>1) {
+            $SecteurstList->prepend(trans('main.selectionnez') . ' ' . trans('societe.secteur'), '');
+            $ConventionstList = Convention::lists('nom_convention', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.convention'), '');
+        } else {
+            $ConventionstList = Convention::where('secteur_id', key($array_secteurs_permission))->lists('nom_convention', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.convention'), '');
+        }
+
+         return view('societe.add', compact('TypesSocietestList','GouvernoratsList','DelegationsList','SecteurstList','ConventionstList'));
     }
 
     /**
@@ -123,13 +135,36 @@ class SocieteController extends Controller
      */
     public function edit($id)
     {
+        $user_auth = User::find(Auth::user()->id);
         $societe = Societe::find($id);
-
         $TypesSocietestList = TypeSociete::lists('nom_type_societe', 'id');
-        $GouvernoratsList = Gouvernorat::lists('nom_gouvernorat', 'id');
-        $DelegationsList = Delegation::lists('nom_delegation', 'id');
-        $SecteurstList = Secteur::lists('nom_secteur', 'id');
-        $ConventionstList = Convention::lists('nom_convention', 'id');
+
+
+        /******* Gouvernorats & Delegations **********/
+        $GouvernoratsPermission= Gouvernorat::all();
+        $array_gouvernorats_permission =array();
+        foreach ($GouvernoratsPermission as $Gouvernorat) {
+            // filtrer les gouvernorats permessione
+            if ( $user_auth->can('view.'.$Gouvernorat->permission_slug) ) {
+                $array_gouvernorats_permission[$Gouvernorat->id] = $Gouvernorat->nom_gouvernorat;
+            }
+        }
+        $GouvernoratsList = collect($array_gouvernorats_permission);
+        $DelegationsList = Delegation::where('gouvernorat_id', $societe->gouvernorat_id)->lists('nom_delegation', 'id');
+
+        /******* Secteurs & Conventions **********/
+        $SecteursPermission= Secteur::all();
+        $array_secteurs_permission =array();
+        foreach ($SecteursPermission as $Secteur) {
+            // filtrer les secteurs permessione
+            if ( $user_auth->can('view.secteur_'.$Secteur->id) ) {
+                $array_secteurs_permission[$Secteur->id] = $Secteur->nom_secteur;
+            }
+        }
+        $SecteurstList = collect($array_secteurs_permission);
+        $ConventionstList = Convention::where('secteur_id', $societe->secteur_id)->lists('nom_convention', 'id');
+
+
 
         return view('societe.edit', compact('societe','TypesSocietestList','GouvernoratsList','DelegationsList','SecteurstList','ConventionstList'));
     }

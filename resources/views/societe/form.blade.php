@@ -36,10 +36,32 @@
     <div class="form-group{{ $errors->has('gouvernorat_id') ? ' has-error' : '' }}">
         {{ Form::label('gouvernorat_id', trans('societe.gouvernorat'), array('class' => 'control-label')) }}
 
-        @if(!isset($societe))
-            {!! Form::select('gouvernorat_id',$GouvernoratsList,null,['class' => 'form-control', 'required' => 'required']) !!}
+        @if( $GouvernoratsList->count()>1)
+
+            {{-- Listing pour sélectionner --}}
+            @if(!isset($societe))
+                {!! Form::select('gouvernorat_id',$GouvernoratsList,null,['class' => 'form-control', 'required' => 'required']) !!}
+            @else
+                {!! Form::select('gouvernorat_id',$GouvernoratsList,$societe->gouvernorat_id,['class' => 'form-control', 'required' => 'required']) !!}
+            @endif
+
         @else
-            {!! Form::select('gouvernorat_id',$GouvernoratsList,$societe->gouvernorat_id,['class' => 'form-control', 'required' => 'required']) !!}
+            {{-- Mette en hiden & display--}}
+            <?php
+            foreach ($GouvernoratsList as $key => $value){
+                $gouvernorat_id_role = $key;
+                $gouvernorat_name_role = $value;
+            }
+            ?>
+            @if(!isset($societe))
+                {!! Form::hidden('gouvernorat_id',$gouvernorat_id_role) !!}
+            @else
+                {!! Form::hidden('gouvernorat_id',$societe->gouvernorat_id) !!}
+            @endif
+
+            {!! Form::text('gouvernorat_nom',$gouvernorat_name_role,['class' => 'form-control', 'disabled' => 'disabled']) !!}
+
+
         @endif
 
         @if ($errors->has('gouvernorat_id'))
