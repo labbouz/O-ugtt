@@ -66,12 +66,12 @@
                 <!-- Search input and Toggle icon -->
                 <ul class="nav navbar-top-links navbar-left hidden-xs">
                     <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-right-circle ti-menu"></i></a></li>
-                    <li>
+                    {{--<li>
                         <form role="search" class="app-search hidden-xs">
                             <input type="text" placeholder="@lang('main.search') ..." class="form-control">
                             <a href=""><i class="fa fa-search"></i></a>
                         </form>
-                    </li>
+                    </li>--}}
                 </ul>
 
                 <!-- This is the message dropdown -->
@@ -165,7 +165,7 @@
                 <ul class="nav" id="side-menu">
                     <li class="sidebar-search hidden-sm hidden-md hidden-lg">
                         <!-- / Search input-group this is only view in mobile-->
-                        <div class="input-group custom-search-form">
+                        <div class="input-oup custom-search-form">
                             <input type="text" class="form-control" placeholder="Search...">
                             <span class="input-group-btn">
                         <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>

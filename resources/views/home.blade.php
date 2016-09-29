@@ -233,7 +233,7 @@
                             <td class="txt-oflo">قطاع النفط و المواد الكيميائية</td>
                             <td>8</td>
                             <td>13</td>
-                            <td><span class="text-info">21</td>
+                            <td><span class="text-info">21</span></td>
                         </tr>
                         <tr>
 
@@ -301,7 +301,7 @@
             $.toast({
                 heading: '@lang('cpanel.6')',
                 text: '@lang('cpanel.5')',
-                position: 'top-right',
+                position: 'top-left',
                 loaderBg:'#ff6849',
                 icon: 'info',
                 hideAfter: 3500,

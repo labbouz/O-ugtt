@@ -1,6 +1,8 @@
 <li class="nav-small-cap m-t-10">--- @lang('main.mainmenu')</li>
 <li> <a href="{{ route('home') }}" class="waves-effect {{ active('home') }}"><i data-icon="v" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('main.dashboard')</span></a> </li>
 
+
+{{--
 @role('administrator|observateur_regional')
 <li>
     <a href="javascript:void(0)" class="waves-effect {{ active(['users.*','observateurs','observateurs-regional', 'observateurs-secteur']) }}"><i class="linea-icon linea-basic fa-fw icon-people"></i> <span class="hide-menu">@lang('main.users')<span class="fa arrow"></span></span></a>
@@ -14,6 +16,10 @@
     </ul>
 </li>
 @endrole
+
+--}}
+<li> <a href="{{ route('users.index') }}" class="waves-effect{{ active(['users.*']) }}"><i class="linea-icon linea-basic fa-fw icon-people"></i> <span class="hide-menu">@lang('main.users')</span></a> </li>
+
 <li>
     <a href="javascript:void(0)" class="waves-effect{{ active(['dossier.*','dossier.select']) }}"><i data-icon="O" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@lang('main.files')<span class="fa arrow"></span><span class="label label-rouded label-purple pull-right">{{ count(\App\Dossier::all()) }}</span></span></a>
     <ul class="nav nav-second-level">

@@ -35,9 +35,20 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="white-box">
-                <h3 class="box-title m-b-0">@lang('users.users')</h3>
-                <p class="text-muted m-b-30">@lang('users.info_list_users')</p>
+                <div class="row">
+                    <div class="col-sm-12 col-md-8">
+                        <h3 class="box-title m-b-0">@lang('users.users')</h3>
+                        <p class="text-muted m-b-30">@lang('users.info_list_users')</p>
+                    </div>
 
+
+
+                    <div class="col-sm-12 col-md-4 button-box m-b-0">
+                        <a href="{{ route('users.create') }}" class="btn btn-block btn-info btn-lg  "><i class="fa fa-plus-circle m-l-5"></i> @lang('main.add_user') </a>
+                    </div>
+                </div>
+
+                <hr class="m-t-20 m-b-30">
 
                <?php
                     $roles_observateur = Auth::user()->getRoles();
