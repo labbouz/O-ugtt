@@ -28,10 +28,7 @@ class SocieteController extends Controller
      */
     public function index()
     {
-        $societes = DB::table('societes')
-            ->join('types_societes', 'types_societes.id', '=', 'societes.type_societe_id')
-            ->select('societes.*', 'types_societes.nom_type_societe')
-            ->get();
+        $societes = Societe::all();
 
         return view('societe.index', compact('societes'));
     }
@@ -44,7 +41,7 @@ class SocieteController extends Controller
     public function create()
     {
         $user_auth = User::find(Auth::user()->id);
-        $TypesSocietestList = TypeSociete::lists('nom_type_societe', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.type_societe'), '');
+        $TypesSocietestList = TypeSociete::lists('nom_type_societe', 'id')->prepend(' ', '');
 
         /******* Gouvernorats & Delegations **********/
         $GouvernoratsPermission= Gouvernorat::all();
@@ -103,14 +100,16 @@ class SocieteController extends Controller
 
         Societe::create([
             'nom_societe' => $request->nom_societe,
+            'nom_marque' => $request->nom_marque,
             'type_societe_id' => $request->type_societe_id,
             'gouvernorat_id' => $request->gouvernorat_id,
             'delegation_id' => $request->delegation_id,
             'secteur_id' => $request->secteur_id,
             'convention_id' => $request->convention_id,
-            'nombre_travailleurs' => $request->nombre_travailleurs,
-            'cdi' => intval($request->cdi),
+            'nombre_travailleurs_cdi' => $request->nombre_travailleurs_cdi,
+            'nombre_travailleurs_cdd' => $request->nombre_travailleurs_cdd,
             'date_cration_societe' => $request->date_cration_societe,
+            'createdby' => Auth::user()->id,
         ]);
 
         return redirect()->route('societe.index')->withFlashMessage(trans('delegations.message_save_succes_societe'));
@@ -186,8 +185,8 @@ class SocieteController extends Controller
                         'delegation_id'=>$request->delegation_id,
                         'secteur_id'=>$request->secteur_id,
                         'convention_id'=>$request->convention_id,
-                        'nombre_travailleurs'=>$request->nombre_travailleurs,
-                        'cdi'=>intval($request->cdi),
+                        'nombre_travailleurs_cdi'=>$request->nombre_travailleurs_cdi,
+                        'nombre_travailleurs_cdd'=>$request->nombre_travailleurs_cdd,
                         'date_cration_societe'=>$request->date_cration_societe])->save();
 
         return redirect()->route('societe.index')->withFlashMessage(trans('societe.message_update_succes_societe'));

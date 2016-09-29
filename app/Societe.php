@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Societe extends Model
 {
-    protected $fillable = ['nom_societe','type_societe_id','gouvernorat_id','delegation_id','secteur_id','convention_id','nombre_travailleurs','cdi','date_cration_societe'];
+    protected $fillable = ['nom_societe', 'nom_marque','type_societe_id','gouvernorat_id','delegation_id','secteur_id','convention_id','nombre_travailleurs_cdi','nombre_travailleurs_cdd','date_cration_societe','createdby'];
 
     public function type_societe()
     {

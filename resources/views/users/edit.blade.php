@@ -88,8 +88,8 @@
 
             switch ($("#role_id").val()) {
                 case '1':
-                    $(".permissions_secteurs").fadeOut('fast');
-                    $(".permissions_regional").fadeOut('fast');
+                    $(".permissions_secteurs").fadeIn('fast');
+                    $(".permissions_regional").fadeIn('fast');
                     break;
 
                 case '3':
@@ -112,8 +112,8 @@
                     case '1':
                         $(".permissions_secteurs input:checkbox").attr("checked",true).prop("checked",true);
                         $(".permissions_regional input:checkbox").attr("checked",true).prop("checked",true);
-                        $(".permissions_secteurs").fadeOut('fast');
-                        $(".permissions_regional").fadeOut('fast');
+                        $(".permissions_secteurs").fadeIn('fast');
+                        $(".permissions_regional").fadeIn('fast');
                         break;
 
                     case '3':

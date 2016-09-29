@@ -7,6 +7,9 @@ use Carbon\Carbon;
 use App\User;
 use App\Profile;
 
+use Kodeine\Acl\Models\Eloquent\Permission;
+use Kodeine\Acl\Models\Eloquent\Role;
+
 class UsersTableSeeder extends Seeder
 {
     /**
@@ -19,6 +22,10 @@ class UsersTableSeeder extends Seeder
         //delete users table records
         DB::table('profiles')->truncate();
         DB::table('users')->truncate();
+
+        $GouvernorastRole = Role::where('slug', 'LIKE', 'rol_regional_%')->get();
+
+        $SeteuresRoles = Role::where('slug', 'LIKE', 'rol_secteur_%')->get();
 
         /*
          * administrator

@@ -34,7 +34,6 @@ class UserController extends Controller
             ->select('users.*', 'roles.name AS role_name', 'roles.class_color')
             ->get();
 
-
         return view('users.index', compact('users'));
     }
 

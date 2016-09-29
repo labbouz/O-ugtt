@@ -1,5 +1,5 @@
 
-<div class="col-md-6">
+<div class="col-md-5">
 
     <div class="form-group{{ $errors->has('nom_societe') ? ' has-error' : '' }}">
         {{ Form::label('nom_societe', trans('societe.nom_societe'), array('class' => 'control-label')) }}
@@ -14,8 +14,23 @@
 
 </div>
 
+<div class="col-md-4">
 
-<div class="col-md-6">
+    <div class="form-group{{ $errors->has('nom_marque') ? ' has-error' : '' }}">
+        {{ Form::label('nom_marque', trans('societe.nom_marque'), array('class' => 'control-label')) }}
+        {{ Form::text('nom_marque', old('nom_marque') , array('class' => 'form-control')) }}
+
+        @if ($errors->has('nom_marque'))
+            <span class="help-block">
+                        <strong>{{ $errors->first('nom_marque') }}</strong>
+                    </span>
+        @endif
+    </div>
+
+</div>
+
+
+<div class="col-md-3">
     <div class="form-group{{ $errors->has('type_societe_id') ? ' has-error' : '' }}">
         {{ Form::label('type_societe_id', trans('societe.type_societe'), array('class' => 'control-label')) }}
 
@@ -124,40 +139,34 @@
 </div>
 <div class="col-md-6">
 
-    <div class="form-group{{ $errors->has('nombre_travailleurs') ? ' has-error' : '' }}">
-        {{ Form::label('nombre_travailleurs', trans('societe.nombre_travailleurs'), array('class' => 'control-label')) }}
-        {{ Form::number('nombre_travailleurs', old('nombre_travailleurs') , array('class' => 'form-control', 'required' => 'required')) }}
+    <div class="form-group{{ $errors->has('nombre_travailleurs_cdi') ? ' has-error' : '' }}">
+        {{ Form::label('nombre_travailleurs_cdi', trans('societe.nombre_travailleurs_cdi'), array('class' => 'control-label')) }}
+        {{ Form::number('nombre_travailleurs_cdi', old('nombre_travailleurs_cdi') , array('class' => 'form-control')) }}
 
-        @if ($errors->has('nombre_travailleurs'))
+        @if ($errors->has('nombre_travailleurs_cdi'))
             <span class="help-block">
-                        <strong>{{ $errors->first('nombre_travailleurs') }}</strong>
+                        <strong>{{ $errors->first('nombre_travailleurs_cdi') }}</strong>
                     </span>
         @endif
     </div>
 
 </div>
-<div class="col-md-12">
 
-    <div class="form-group{{ $errors->has('cdi') ? ' has-error' : '' }}">
+<div class="col-md-6">
 
+    <div class="form-group{{ $errors->has('nombre_travailleurs_cdd') ? ' has-error' : '' }}">
+        {{ Form::label('nombre_travailleurs_cdd', trans('societe.nombre_travailleurs_no_cdi'), array('class' => 'control-label')) }}
+        {{ Form::number('nombre_travailleurs_cdd', old('nombre_travailleurs_cdd') , array('class' => 'form-control')) }}
 
-        <div class="checkbox checkbox-primary">
-            @if(!isset($societe))
-                <input type="checkbox" id="cdi" name="cdi" value="1" >
-            @else
-                <input type="checkbox" id="cdi" name="cdi"  value="1" @if($societe->cdi)  checked @endif >
-            @endif
-            {{ Form::label('cdi', trans('societe.cdi'), array('class' => 'control-label')) }}
-        </div>
-
-        @if ($errors->has('cdi'))
+        @if ($errors->has('nombre_travailleurs_cdd'))
             <span class="help-block">
-                        <strong>{{ $errors->first('cdi') }}</strong>
+                        <strong>{{ $errors->first('nombre_travailleurs_cdd') }}</strong>
                     </span>
         @endif
     </div>
 
 </div>
+
 <div class="col-md-6">
 
     <div class="form-group{{ $errors->has('date_cration_societe') ? ' has-error' : '' }}">

@@ -9,6 +9,7 @@ return [
     'detail_societe_edit' => 'تفاصيل عن المؤسسة التي وقع فيها الانتهاك',
 
     'nom_societe' => 'اسم المؤسسة',
+    'nom_marque' => 'اسم العلامة التجارية',
     'type_societe' => 'تصنيف المؤسسة',
     'type_societe_1' => 'خاصة',
     'type_societe_2' => 'عمومية',
@@ -18,12 +19,9 @@ return [
     'gouvernorat' => 'الولاية',
     'secteur' => 'القطاع',
     'convention' => 'الاتفاق القطاعي المشترك',
-    'nombre_travailleurs' => 'عدد العمال',
-    'cdi' => 'قارون',
-    'no_cdi' => 'غير قارون',
+    'nombre_travailleurs_cdi' => 'عدد العمال القارون',
+    'nombre_travailleurs_no_cdi' => 'عدد العمال القارون',
     'date_cration_societe' => 'تاريخ تأسيس النقاية',
-
-
     'add_societe' => 'إضافة مؤسسة جديدة',
     'edit_societe' => 'تعديل مؤسسة',
     '' => '',

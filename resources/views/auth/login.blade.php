@@ -8,7 +8,8 @@
                     {{ csrf_field() }}
                 <a href="javascript:void(0)" class="text-center db"><img src="{{ Request::root() }}/plugins/images/eliteadmin-logo-dark.png" alt="Home" />
                     <br/>
-                    <h2 class="logo-ar"><strong>@lang('main.system')</strong> @lang('main.observatoir') </h2></a>
+                    <img src="{{ Request::root() }}/plugins/images/eliteadmin-text-dark.png" alt="Home" />
+                    </a>
 
 
 

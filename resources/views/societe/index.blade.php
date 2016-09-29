@@ -56,6 +56,10 @@
                         <thead>
                         <tr>
                             <th>@lang('societe.nom_societe')</th>
+                            <th class="select-filter">@lang('societe.gouvernorat')</th>
+                            <th class="select-filter">@lang('societe.delegatio')</th>
+                            <th class="select-filter">@lang('societe.secteur')</th>
+                            <th class="select-filter">@lang('societe.convention')</th>
                             <th class="select-filter">@lang('societe.type_societe')</th>
                             <th>@lang('main.add_in')</th>
                             <th class="no-sort">@lang('main.tools')</th>
@@ -65,7 +69,11 @@
                         @foreach($societes as $societe)
                             <tr>
                                 <td>{{ $societe->nom_societe }} <a href="{{ route('dossier.create', ['id' => $societe->id]) }}" class="label label-rouded label-purple"><i class="fa fa-plus-circle m-l-5 "></i> @lang('dossier.add_dossier_v')</a></td>
-                                <td>{{ $societe->nom_type_societe }}</td>
+                                <td>{{ $societe->gouvernorat->nom_gouvernorat }}</td>
+                                <td>{{ $societe->delegation->nom_delegation }}</td>
+                                <td>{{ $societe->secteur->nom_secteur }}</td>
+                                <td>{{ $societe->convention->nom_convention }}</td>
+                                <td>{{ $societe->type_societe->nom_type_societe }}</td>
                                 <td><?php $date_created_at = new Date($societe->created_at); ?>{{ $date_created_at->format('l j F Y - H:i:s') }}</td>
                                 <td>
                                     <a class="btn btn-success btn-circle" href="{{ route('societe.edit', ['id' => $societe->id])  }}"><i class="fa fa-edit"></i></a>
@@ -107,7 +115,7 @@
                 initComplete: function () {
                     this.api().columns('.select-filter').every( function () {
                         var column = this;
-                        var select = $('<select><option value="">@lang('societe.type_societe')</option></select>')
+                        var select = $('<select class="m-r-20"><option value=""> ------------ </option></select>')
                                 .appendTo( '.dataTables_filter' ) //$(column.footer()).empty()
                                 .on( 'change', function () {
                                     var val = $.fn.dataTable.util.escapeRegex(
