@@ -39,6 +39,7 @@ return [
     'secteur_10' => 'التعليم الخاص',
     'secteur_11' => 'الرصيف',
     'secteur_12' => 'الإعلام و التثقيف',
+    'secteur_13' => 'الاتصالات',
 
     'conventions_secteur_1'              => [
         'convention_1' => 'صناعة الحليب',
