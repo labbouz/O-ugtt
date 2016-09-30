@@ -18,14 +18,16 @@ return [
     'delegatio' => 'المعتمدية',
     'gouvernorat' => 'الولاية',
     'secteur' => 'القطاع',
-    'convention' => 'الاتفاق القطاعي المشترك',
+    'convention' => 'الإتفاقية القطاعية المعتمدة',
     'nombre_travailleurs_cdi' => 'عدد العمال القارون',
-    'nombre_travailleurs_no_cdi' => 'عدد العمال القارون',
+    'nombre_travailleurs_no_cdi' => 'عدد العمال الغير قارون',
     'date_cration_societe' => 'تاريخ تأسيس النقاية',
     'add_societe' => 'إضافة مؤسسة جديدة',
     'edit_societe' => 'تعديل مؤسسة',
-    '' => '',
-    '' => '',
+    'accord_de_fondation' => 'اتفاقية مؤسسة',
+    'convention_cadre_commun' => 'اتفاقية إطارية مشتركة',
+    'existe' => 'نعم',
+    'not_existe' => 'لا',
 
 
 ];

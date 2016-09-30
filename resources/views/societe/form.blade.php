@@ -121,6 +121,116 @@
     </div>
 </div>
 <div class="col-md-6">
+    <div class="form-group{{ $errors->has('accord_de_fondation') ? ' has-error' : '' }}">
+        {{ Form::label('accord_de_fondation', trans('societe.accord_de_fondation'), array('class' => 'control-label')) }}
+
+
+            @if(!isset($societe))
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="radio radio-success">
+                        {{  Form::radio('accord_de_fondation', 1, null, ['id'=>'accord_de_fondation_oui']) }}
+                        {{ Form::label('accord_de_fondation_oui', trans('societe.existe'), array('class' => 'control-label')) }}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="radio radio-danger">
+                        {{  Form::radio('accord_de_fondation', 0, true, ['id' => 'accord_de_fondation_non']) }}
+                        {{ Form::label('accord_de_fondation_non', trans('societe.not_existe'), array('class' => 'control-label')) }}
+                    </div>
+                </div>
+            </div>
+
+            @else
+            <?php
+                $checked_oui = null;
+                $checked_non = null;
+                if($societe->accord_de_fondation== 1) {
+                    $checked_oui = true;
+                }else {
+                    $checked_non = true;
+                }
+            ?>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="radio radio-success">
+                        {{  Form::radio('accord_de_fondation', 1, $checked_oui, ['id'=>'accord_de_fondation_oui']) }}
+                        {{ Form::label('accord_de_fondation_oui', trans('societe.existe'), array('class' => 'control-label')) }}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="radio radio-danger">
+                        {{  Form::radio('accord_de_fondation', 0, $checked_non, ['id' => 'accord_de_fondation_non']) }}
+                        {{ Form::label('accord_de_fondation_non', trans('societe.not_existe'), array('class' => 'control-label')) }}
+                    </div>
+                </div>
+            </div>
+
+            @endif
+
+
+        @if ($errors->has('accord_de_fondation'))
+            <span class="help-block">
+                <strong>{{ $errors->first('accord_de_fondation') }}</strong>
+            </span>
+        @endif
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="form-group{{ $errors->has('convention_cadre_commun') ? ' has-error' : '' }}">
+        {{ Form::label('convention_cadre_commun', trans('societe.convention_cadre_commun'), array('class' => 'control-label')) }}
+
+        @if(!isset($societe))
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="radio radio-success">
+                        {{  Form::radio('convention_cadre_commun', 1, null, ['id'=>'convention_cadre_commun_oui','class' => 'convention_cadre_commun']) }}
+                        {{ Form::label('convention_cadre_commun_oui', trans('societe.existe'), array('class' => 'control-label')) }}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="radio radio-danger">
+                        {{  Form::radio('convention_cadre_commun', 0, true, ['id' => 'convention_cadre_commun_non','class' => 'convention_cadre_commun']) }}
+                        {{ Form::label('convention_cadre_commun_non', trans('societe.not_existe'), array('class' => 'control-label')) }}
+                    </div>
+                </div>
+            </div>
+
+        @else
+            <?php
+            $checked_oui = null;
+            $checked_non = null;
+            if($societe->convention_cadre_commun== 1) {
+                $checked_oui = true;
+            } else {
+                $checked_non = true;
+            }
+            ?>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="radio radio-success">
+                            {{  Form::radio('convention_cadre_commun', 1, $checked_oui, ['id'=>'convention_cadre_commun_oui','class' => 'convention_cadre_commun']) }}
+                            {{ Form::label('convention_cadre_commun_oui', trans('societe.existe'), array('class' => 'control-label')) }}
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="radio radio-danger">
+                            {{  Form::radio('convention_cadre_commun', 0, $checked_non, ['id' => 'convention_cadre_commun_non','class' => 'convention_cadre_commun']) }}
+                            {{ Form::label('convention_cadre_commun_non', trans('societe.not_existe'), array('class' => 'control-label')) }}
+                        </div>
+                    </div>
+                </div>
+        @endif
+
+
+        @if ($errors->has('accord_de_fondation'))
+            <span class="help-block">
+                <strong>{{ $errors->first('accord_de_fondation') }}</strong>
+            </span>
+        @endif
+    </div>
+</div>
+<div class="col-md-12 field_convention">
     <div class="form-group{{ $errors->has('convention_id') ? ' has-error' : '' }}">
         {{ Form::label('convention_id', trans('societe.convention'), array('class' => 'control-label')) }}
 

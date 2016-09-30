@@ -87,7 +87,7 @@ class ConventionController extends Controller
     }
 
     public function ajaxConventionsBySecteur($secteur_id = 0){
-        $conventions = Convention::where('secteur_id', $secteur_id)->lists('nom_convention', 'id');
+        $conventions = Convention::where('secteur_id', $secteur_id)->lists('nom_convention', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.convention'), 0);
 
         return response()->json($conventions);
     }

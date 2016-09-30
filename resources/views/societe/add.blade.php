@@ -97,6 +97,23 @@
                 });
             });
 
+
+            if($('input.convention_cadre_commun:checked').val()=='1') {
+                $('.field_convention').fadeOut('fast');
+            } else {
+                $('.field_convention').fadeIn('fast');
+            }
+
+            $(".convention_cadre_commun").change(function() {
+                var _convention = $(this).val();
+                if(_convention=='1') {
+                    $('.field_convention').fadeOut('fast');
+                } else {
+                    $('.field_convention').fadeIn('fast');
+                }
+
+            });
+
         });
 
 

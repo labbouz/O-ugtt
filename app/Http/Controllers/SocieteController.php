@@ -73,9 +73,9 @@ class SocieteController extends Controller
         $SecteurstList = collect($array_secteurs_permission);
         if(count($array_secteurs_permission)>1) {
             $SecteurstList->prepend(trans('main.selectionnez') . ' ' . trans('societe.secteur'), '');
-            $ConventionstList = Convention::lists('nom_convention', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.convention'), '');
+            $ConventionstList = Convention::lists('nom_convention', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.convention'), 0);
         } else {
-            $ConventionstList = Convention::where('secteur_id', key($array_secteurs_permission))->lists('nom_convention', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.convention'), '');
+            $ConventionstList = Convention::where('secteur_id', key($array_secteurs_permission))->lists('nom_convention', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.convention'), 0);
         }
 
          return view('societe.add', compact('TypesSocietestList','GouvernoratsList','DelegationsList','SecteurstList','ConventionstList'));
@@ -95,8 +95,8 @@ class SocieteController extends Controller
             'gouvernorat_id' => 'required|integer|min:1',
             'delegation_id' => 'required|integer|min:1',
             'secteur_id' => 'required|integer|min:1',
-            'convention_id' => 'required|integer|min:1',
-        ]);
+
+        ]); //            'convention_id' => 'required|integer|min:1',
 
         Societe::create([
             'nom_societe' => $request->nom_societe,
@@ -105,6 +105,8 @@ class SocieteController extends Controller
             'gouvernorat_id' => $request->gouvernorat_id,
             'delegation_id' => $request->delegation_id,
             'secteur_id' => $request->secteur_id,
+            'accord_de_fondation' => $request->accord_de_fondation,
+            'convention_cadre_commun' => $request->convention_cadre_commun,
             'convention_id' => $request->convention_id,
             'nombre_travailleurs_cdi' => $request->nombre_travailleurs_cdi,
             'nombre_travailleurs_cdd' => $request->nombre_travailleurs_cdd,
@@ -161,7 +163,7 @@ class SocieteController extends Controller
             }
         }
         $SecteurstList = collect($array_secteurs_permission);
-        $ConventionstList = Convention::where('secteur_id', $societe->secteur_id)->lists('nom_convention', 'id');
+        $ConventionstList = Convention::where('secteur_id', $societe->secteur_id)->lists('nom_convention', 'id')->prepend(trans('main.selectionnez') . ' ' . trans('societe.convention'), 0);
 
 
 
@@ -184,6 +186,8 @@ class SocieteController extends Controller
                         'gouvernorat_id'=>$request->gouvernorat_id,
                         'delegation_id'=>$request->delegation_id,
                         'secteur_id'=>$request->secteur_id,
+                        'accord_de_fondation' => $request->accord_de_fondation,
+                        'convention_cadre_commun' => $request->convention_cadre_commun,
                         'convention_id'=>$request->convention_id,
                         'nombre_travailleurs_cdi'=>$request->nombre_travailleurs_cdi,
                         'nombre_travailleurs_cdd'=>$request->nombre_travailleurs_cdd,

@@ -24,8 +24,10 @@ class CreateSocietesTable extends Migration
             $table->foreign('delegation_id')->references('id')->on('delegations');
             $table->integer('secteur_id')->unsigned();
             $table->foreign('secteur_id')->references('id')->on('secteurs');
+            $table->tinyInteger('accord_de_fondation');
+            $table->tinyInteger('convention_cadre_commun');
             $table->integer('convention_id')->unsigned();
-            $table->foreign('convention_id')->references('id')->on('conventions');
+            //$table->foreign('convention_id')->references('id')->on('conventions');
             $table->integer('nombre_travailleurs_cdi');
             $table->integer('nombre_travailleurs_cdd');
             $table->date('date_cration_societe');
