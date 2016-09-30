@@ -107,10 +107,32 @@
     <div class="form-group{{ $errors->has('secteur_id') ? ' has-error' : '' }}">
         {{ Form::label('secteur_id', trans('societe.secteur'), array('class' => 'control-label')) }}
 
-        @if(!isset($societe))
-            {!! Form::select('secteur_id',$SecteurstList,null,['class' => 'form-control', 'required' => 'required']) !!}
+        @if( $SecteurstList->count()>1)
+
+            {{-- Listing pour sélectionner --}}
+            @if(!isset($societe))
+                {!! Form::select('secteur_id',$SecteurstList,null,['class' => 'form-control', 'required' => 'required']) !!}
+            @else
+                {!! Form::select('secteur_id',$SecteurstList,$societe->secteur_id,['class' => 'form-control', 'required' => 'required']) !!}
+            @endif
+
         @else
-            {!! Form::select('secteur_id',$SecteurstList,$societe->secteur_id,['class' => 'form-control', 'required' => 'required']) !!}
+
+            {{-- Mette en hiden & display--}}
+            <?php
+            foreach ($SecteurstList as $key => $value){
+                $secteur_id_role = $key;
+                $secteur_name_role = $value;
+            }
+            ?>
+            @if(!isset($societe))
+                {!! Form::hidden('secteur_id',$secteur_id_role) !!}
+            @else
+                {!! Form::hidden('secteur_id',$societe->secteur_id) !!}
+            @endif
+
+            {!! Form::text('secteur_nom',$secteur_name_role,['class' => 'form-control', 'disabled' => 'disabled']) !!}
+
         @endif
 
         @if ($errors->has('secteur_id'))
