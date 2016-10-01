@@ -25,7 +25,7 @@ return [
     'add_societe' => 'إضافة مؤسسة جديدة',
     'edit_societe' => 'تعديل مؤسسة',
     'accord_de_fondation' => 'اتفاقية مؤسسة',
-    'convention_cadre_commun' => 'اتفاقية إطارية مشتركة',
+    'convention_cadre_commun' => 'لديه اتفاقية قطاعية مشتركة ؟',
     'existe' => 'نعم',
     'not_existe' => 'لا',
 

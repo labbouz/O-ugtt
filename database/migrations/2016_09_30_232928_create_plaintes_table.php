@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDossiersTable extends Migration
+class CreatePlaintesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,10 @@ class CreateDossiersTable extends Migration
      */
     public function up()
     {
-        Schema::create('dossiers', function (Blueprint $table) {
+        Schema::create('plaintes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('societe_id')->unsigned();
-            $table->foreign('societe_id')->references('id')->on('societes');
-            $table->tinyInteger('settlement_status');
-            $table->text('remarque');
+            $table->string('nom_plainte');
+            $table->tinyInteger('categorie_plainte');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateDossiersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('dossiers');
+        Schema::drop('plaintes');
     }
 }

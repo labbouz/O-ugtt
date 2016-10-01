@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Move extends Model
+class Media extends Model
 {
-    protected $table = 'moves';
+    protected $table = 'medias';
 
-    protected $fillable = ['nom_move'];
+    protected $fillable = ['nom_media','categorie_media'];
 
     public function dossiers()
     {

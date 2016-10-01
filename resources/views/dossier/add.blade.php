@@ -36,6 +36,7 @@
 @section('content')
 
     <div class="row">
+        {{-- Info societe --}}
         <div class="col-md-12">
             <div class="panel panel-info">
                 <div class="panel-heading">
@@ -73,28 +74,43 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label>@lang('societe.secteur') :</label>
+                                    <strong>{{ $societe->secteur->nom_secteur }}</strong>
+                                </div>
+                            </div>
+                            @if($societe->convention_cadre_commun)
+                            <div class="col-md-6">
+                                <div class="form-group">
                                     <label>@lang('societe.convention') :</label>
                                     <strong>{{ $societe->convention->nom_convention }}</strong>
                                 </div>
                             </div>
+                            @endif
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('societe.nombre_travailleurs') :</label>
-                                    <strong>{{ $societe->nombre_travailleurs }}</strong>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('societe.cdi') :</label>
+                                    <label>@lang('societe.accord_de_fondation') :</label>
 
-                                    @if($societe->cdi)
-                                        <strong>@lang('dossier.cdi_oui')</strong>
+                                    @if($societe->accord_de_fondation)
+                                        <strong>@lang('societe.existe')</strong>
                                     @else
-                                        <strong>@lang('dossier.cdi_non')</strong>
+                                        <strong>@lang('societe.not_existe')</strong>
                                     @endif
 
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>@lang('societe.nombre_travailleurs_cdi') :</label>
+                                    <strong>{{ $societe->nombre_travailleurs_cdi }}</strong>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>@lang('societe.nombre_travailleurs_no_cdi') :</label>
+                                    <strong>{{ $societe->nombre_travailleurs_cdd }}</strong>
+                                </div>
+                            </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('societe.date_cration_societe') :</label>
@@ -112,6 +128,8 @@
                 </div>
             </div>
         </div>
+
+        {{-- Info les violations --}}
         <div class="col-md-12">
             <div class="panel panel-info">
                 <div class="panel-heading">
@@ -374,262 +392,9 @@
         @endforeach
         {{-- tous les violation --}}
 
-        <div class="col-md-12">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    مواجهة الانتهاك - الاعــــــلام
-                </div>
-                <div class="panel-wrapper collapse in" aria-expanded="true">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-3 text-left">
-                                <div class="m-t-10"><label><strong>هيكل نقابي</strong></label></div>
-                            </div>
-
-                            <div class="col-lg-2 col-md-2">
-                                <div class="checkbox checkbox-primary ">
-                                    <input id="checkbox_media_1" name="medias[]" type="checkbox" value="1">
-                                    <label for="checkbox_media_1"> محلي  </label>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2">
-                                <div class="checkbox checkbox-primary ">
-                                    <input id="checkbox_media_2" name="medias[]" type="checkbox" value="2">
-                                    <label for="checkbox_media_2"> جهوي  </label>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2">
-                                <div class="checkbox checkbox-primary ">
-                                    <input id="checkbox_media_3" name="medias[]" type="checkbox" value="3">
-                                    <label for="checkbox_media_3"> قطاعي   </label>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2">
-                                <div class="checkbox checkbox-primary ">
-                                    <input id="checkbox_media_4" name="medias[]" type="checkbox" value="4">
-                                    <label for="checkbox_media_4"> وطني  </label>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3 col-md-3 text-left">
-                                <div class="m-t-10"><label><strong>تفقدية الشغل</strong></label></div>
-                            </div>
-
-                            <div class="col-lg-2 col-md-2">
-                                <div class="checkbox checkbox-primary ">
-                                    <input id="checkbox_media_5" name="medias[]" type="checkbox" value="5">
-                                    <label for="checkbox_media_5"> محلي </label>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2">
-                                <div class="checkbox checkbox-primary ">
-                                    <input id="checkbox_media_6" name="medias[]" type="checkbox" value="6">
-                                    <label for="checkbox_media_6"> جهوي </label>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2">
-                                <div class="checkbox checkbox-primary ">
-                                    <input id="checkbox_media_7" name="medias[]" type="checkbox" value="7">
-                                    <label for="checkbox_media_7"> مركزي </label>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3 col-md-3 text-left">
-                                <div class="m-t-10"><label><strong>وسائل الاعلام</strong></label></div>
-                            </div>
-
-                            <div class="col-lg-2 col-md-2">
-                                <div class="checkbox checkbox-primary ">
-                                    <input id="checkbox_media_8" name="medias[]" type="checkbox" value="8">
-                                    <label for="checkbox_media_8"> مرئية</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2">
-                                <div class="checkbox checkbox-primary ">
-                                    <input id="checkbox_media_9" name="medias[]" type="checkbox" value="9">
-                                    <label for="checkbox_media_9"> مسموعة</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2">
-                                <div class="checkbox checkbox-primary ">
-                                    <input id="checkbox_media_10" name="medias[]" type="checkbox" value="10">
-                                    <label for="checkbox_media_10"> مكتوبة</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3 col-md-3 text-left">
-                                <div class="m-t-10"><label><strong>المجتمع المدني</strong></label></div>
-                            </div>
-
-                            <div class="col-lg-2 col-md-2">
-                                <div class="checkbox checkbox-primary ">
-                                    <input id="checkbox_media_11" name="medias[]" type="checkbox" value="11">
-                                    <label for="checkbox_media_11"> جمعيات</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2">
-                                <div class="checkbox checkbox-primary ">
-                                    <input id="checkbox_media_12" name="medias[]" type="checkbox" value="12">
-                                    <label for="checkbox_media_12"> منضمات </label>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2">
-                                <div class="checkbox checkbox-primary ">
-                                    <input id="checkbox_media_13" name="medias[]" type="checkbox" value="13">
-                                    <label for="checkbox_media_13">احزاب</label>
-                                </div>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-
-        <div class="col-md-12">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    مواجهة الانتهاك - الشكـــــاوي
-                </div>
-                <div class="panel-wrapper collapse in" aria-expanded="true">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4">
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox_plainte_1" name="plaintes[]" type="checkbox" value="1">
-                                    <label for="checkbox_plainte_1"> تفقدية الشغل المحلية </label>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-4">
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox_plainte_2" name="plaintes[]" type="checkbox" value="2">
-                                    <label for="checkbox_plainte_2"> تفقدية الشغل الجهوية  </label>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-4">
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox_plainte_3" name="plaintes[]" type="checkbox" value="3">
-                                    <label for="checkbox_plainte_3"> تفقدية الشغل الوطنية </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4">
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox_plainte_4" name="plaintes[]" type="checkbox" value="4">
-                                    <label for="checkbox_plainte_4"> الامن </label>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-4">
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox_plainte_5" name="plaintes[]" type="checkbox" value="5">
-                                    <label for="checkbox_plainte_5"> القضاء </label>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4">
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox_plainte_6" name="plaintes[]" type="checkbox" value="6">
-                                    <label for="checkbox_plainte_6"> منضمات وطنية </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4">
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox_plainte_7" name="plaintes[]" type="checkbox" value="7">
-                                    <label for="checkbox_plainte_7"> منضمات دولية </label>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-12">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    مواجهة الانتهاك - التحركات
-                </div>
-                <div class="panel-wrapper collapse in" aria-expanded="true">
-                    <div class="panel-body">
-                        @foreach($moves as $move)
-                            <div class="col-lg-4 col-md-4">
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox_move_{{ $move->id }}" name="violations[]" type="checkbox" value="{{ $move->id }}">
-                                    <label for="checkbox_move_{{ $move->id }}"> {{ $move->nom_move }} </label>
-                                </div>
-                            </div>
-                        @endforeach
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-12">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    النتيجـــة
-                </div>
-                <div class="panel-wrapper collapse in" aria-expanded="true">
-                    <div class="panel-body">
-                        <div class="col-md-12">
-                            <div class="radio radio-success">
-                                <input type="radio" name="settlement_status" id="radio_oui" value="oui">
-                                <label for="radio_oui"> تسوية الوضعية </label>
-                            </div>
-
-                            <div class="radio radio-danger">
-                                <input type="radio" name="settlement_status" id="radio_non" value="non">
-                                <label for="radio_non"> عدم تسوية الوضعية </label>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-12">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    ملاحظات (وصف وجيز للوضع النهائي للانتهاك)
-                </div>
-                <div class="panel-wrapper collapse in" aria-expanded="true">
-                    <div class="panel-body">
-                        <div class="col-md-12">
-                            <textarea class="form-control" rows="5" autocomplete="off"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-12">
-
-            <div class="panel panel-info">
-                <button type="submit" class="btn btn-block btn-info btn-lg">تسجيل</button>
-
-            </div>
-
-        </div>
+        {!! Form::open( ['route' => 'dossier.store', 'data-toggle' => 'validator'] ) !!}
+        @include('dossier.form')
+        {{ Form::close() }}
 
 
     </div>

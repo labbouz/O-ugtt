@@ -11,6 +11,12 @@ use App\Violation;
 use App\Societe;
 use App\Dossier;
 use App\Move;
+use App\Media;
+use App\Plainte;
+
+use App\Dossier_move;
+use App\Media_dossier;
+use App\Plainte_dossier;
 
 use App\StructureSyndicale;
 
@@ -51,20 +57,19 @@ class DossierController extends Controller
     public function create($societe_id)
     {
         $societe = Societe::find($societe_id);
-
         $types_violations = TypeViolation::all();
         $moves = Move::all();
+        $medias = Media::all();
+        $plaintes = Plainte::all();
 
         $ListViolations = Violation::all();
 
         $StructuresSyndicalestList = StructureSyndicale::lists('type_structure_syndicale', 'id')->prepend(' ', '');
 
+        $dossier = new Dossier();
+        $dossier->societe_id =  $societe_id;
 
-        $dossier = Dossier::create([
-            'societe_id' => $societe_id,
-        ]);
-
-        return view('dossier.add', compact('dossier','societe','types_violations', 'moves', 'ListViolations','StructuresSyndicalestList') );
+        return view('dossier.add', compact('dossier','societe','types_violations', 'moves','medias','plaintes', 'ListViolations','StructuresSyndicalestList') );
     }
 
     /**
@@ -80,10 +85,41 @@ class DossierController extends Controller
             'societe_id' => 'required|integer|min:1',
         ]);
 
-        Dossier::create([
+        $dossier = Dossier::create([
             'settlement_status' => $request->settlement_status,
             'societe_id' => $request->societe_id,
+            'remarque' => $request->remarque,
         ]);
+
+        if (count($request->moves) > 0) {
+            $moves = $request->moves;
+            foreach ($moves as $id_move) {
+                $dossier_move = new Dossier_move();
+                $dossier_move->move_id = $id_move;
+                $dossier_move->dossier_id = $dossier->id;
+                $dossier_move->save();
+            }
+        }
+
+        if (count($request->medias) > 0) {
+            $medias = $request->medias;
+            foreach ($medias as $id_media) {
+                $media_dossier = new Media_dossier();
+                $media_dossier->media_id = $id_media;
+                $media_dossier->dossier_id = $dossier->id;
+                $media_dossier->save();
+            }
+        }
+
+        if (count($request->plaintes) > 0) {
+            $plaintes = $request->plaintes;
+            foreach ($plaintes as $id_plainte) {
+                $plainte_dossier = new Plainte_dossier();
+                $plainte_dossier->	plainte_id = $id_plainte;
+                $plainte_dossier->dossier_id = $dossier->id;
+                $plainte_dossier->save();
+            }
+        }
 
         return redirect()->route('dossier.index')->withFlashMessage(trans('delegations.message_save_succes_dossier'));
     }
@@ -110,9 +146,10 @@ class DossierController extends Controller
         $dossier = Dossier::find($id);
 
         $societe = Societe::find($dossier->societe_id);
-
         $types_violations = TypeViolation::all();
         $moves = Move::all();
+        $medias = Media::all();
+        $plaintes = Plainte::all();
 
         $ListViolations = Violation::all();
 
@@ -121,7 +158,8 @@ class DossierController extends Controller
 
 
 
-        return view('dossier.edit', compact('dossier','societe','types_violations', 'moves', 'ListViolations','StructuresSyndicalestList') );
+
+        return view('dossier.edit', compact('dossier','societe','types_violations', 'moves', 'medias', 'plaintes','ListViolations','StructuresSyndicalestList') );
     }
 
     /**
@@ -135,6 +173,13 @@ class DossierController extends Controller
     {
         $dossierUpdated = Dossier::find($id);
         $dossierUpdated->fill( $request->all() )->save();
+
+        $dossierUpdated->moves()->sync($request->moves);
+
+        $dossierUpdated->medias()->sync($request->medias);
+
+        $dossierUpdated->plaintes()->sync($request->plaintes);
+
 
         return redirect()->route('dossier.index')->withFlashMessage(trans('dossier.message_update_succes_dossier'));
     }

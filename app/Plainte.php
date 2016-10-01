@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Move extends Model
+class Plainte extends Model
 {
-    protected $table = 'moves';
+    protected $table = 'plaintes';
 
-    protected $fillable = ['nom_move'];
+    protected $fillable = ['nom_plainte','categorie_plainte'];
 
     public function dossiers()
     {
